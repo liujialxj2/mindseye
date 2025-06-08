@@ -1,6 +1,7 @@
 {
   "buildConfig": {
-    "outputDirectory": "dist"
+    "outputDirectory": "dist",
+    "buildCommand": "npm run build"
   },
   "headers": [
     {
@@ -76,11 +77,17 @@
       ]
     }
   ],
-  "redirects": [
+  "routes": [
     {
-      "source": "/",
-      "destination": "/index.html",
+      "pattern": "/api/*",
+      "originalPath": "https://api.mindseye.com/",
       "statusCode": 200
+    },
+    {
+      "pattern": "/*",
+      "originalPath": "/index.html",
+      "statusCode": 200,
+      "forwardQueryParams": true
     }
   ]
 } 

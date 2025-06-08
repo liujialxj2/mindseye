@@ -1,2 +1,3 @@
 # Cloudflare Pages 重定向规则
-/*    /index.html   200 
+/api/*  https://api.mindseye.com/:splat  200
+/* /index.html 200! 
