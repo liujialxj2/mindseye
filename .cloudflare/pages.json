@@ -79,11 +79,6 @@
   ],
   "routes": [
     {
-      "pattern": "/api/*",
-      "originalPath": "https://api.mindseye.com/",
-      "statusCode": 200
-    },
-    {
       "pattern": "/*",
       "originalPath": "/index.html",
       "statusCode": 200,
