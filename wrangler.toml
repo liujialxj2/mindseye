@@ -5,4 +5,7 @@ compatibility_date = "2023-01-01"
 bucket = "./dist"
 
 [build]
-command = "npm run build" 
+command = "npm run build"
+
+# 特别为Cloudflare Pages添加的配置
+pages_build_output_dir = "dist" 
