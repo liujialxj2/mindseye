@@ -1,5 +1,2 @@
 # 仅提供简单的重定向到首页，避免无限循环
-/ /index.html 200
-
-# 图片重定向规则
-/images/* /dist/images/:splat 200 
+/ /index.html 200 

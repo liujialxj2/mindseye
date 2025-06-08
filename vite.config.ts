@@ -19,9 +19,6 @@ export default defineConfig({
         assetFileNames: 'assets/[name].[hash].[ext]',
         manualChunks: undefined
       }
-    },
-    // 将public目录下的资源复制到根目录
-    copyPublicDir: true
-  },
-  publicDir: 'public'
+    }
+  }
 });
