@@ -1,0 +1,33 @@
+/* GameDistribution 样式覆盖 */
+
+/* 隐藏错误消息 */
+div[class*="blocked-sdk"],
+div[id*="blocked-sdk"],
+div[class*="blocked"],
+div[id*="blocked"],
+div[class*="error-container"],
+div[id*="error-container"],
+div[class*="message-container"],
+div[id*="message-container"] {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* 确保游戏iframe可见 */
+iframe#game-iframe {
+  visibility: visible !important;
+  opacity: 1 !important;
+  z-index: 1000 !important;
+}
+
+/* 移除任何覆盖层 */
+.gd-overlay,
+[class*="gd-overlay"],
+[id*="gd-overlay"],
+.blocked-overlay,
+[class*="blocked-overlay"],
+[id*="blocked-overlay"] {
+  display: none !important;
+} 

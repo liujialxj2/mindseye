@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- 允许第三方cookie -->
     <meta http-equiv="origin-trial" content="Third-party cookie access allowed">
+    <!-- 允许跨域储存访问 -->
+    <meta http-equiv="storage-access" content="allow">
+    <!-- 允许嵌入 -->
+    <meta http-equiv="Content-Security-Policy" content="frame-ancestors 'self' *.gamedistribution.com">
     <title>Mindseye Adventure Games - Explore the Unknown</title>
     <meta name="description" content="Prepare your mind for the ultimate adventure. Play exclusive mini-games, test your perception, and get ready for the official Mindseye game launch.">
     <meta name="keywords" content="mindseye game, adventure games, mini games, perception games, puzzle games, mindseye launch">
@@ -15,6 +19,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- 预加载GameDistribution资源 -->
+    <link rel="preconnect" href="https://html5.api.gamedistribution.com">
+    <link rel="preconnect" href="https://img.gamedistribution.com">
+    <!-- GameDistribution 样式覆盖 -->
+    <link rel="stylesheet" href="/gd-style-fix.css">
+    <!-- GameDistribution域名桥接 -->
+    <script src="/gd-domain-bridge.js"></script>
     <!-- Game Distribution SDK initialization -->
     <script src="/gameDistributionInit.js"></script>
     <!-- Game Distribution adapter -->
