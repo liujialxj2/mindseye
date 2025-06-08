@@ -34,7 +34,7 @@ const GameShowcase = () => {
       title: "Aventador Vice Crime City",
       description: "Experience city driving with four game modes. Navigate realistic traffic and monitor your fuel while exploring busy streets. Enjoy stunning morning city graphics, transforming the city into a spectacle. Pedestrians add unpredictability, and hitting them triggers police chases. Customize your car's appearance and performance. All this chaos is accompanied by your cute dog. Whether evading the cops or just cruising, Aventador Vice Crime City offers a thrilling and visually amazing experience.",
       instructions: "W, A, S, D/Arrow Keys: Drive/Steer/Brake\nLeft Shift Key: Nitro Boost\nC Key: Change Camera View\nG Key: Slow Motion",
-      embedUrl: "https://html5.gamedistribution.com/be4f7b9d1f3c4370a27cd86ba14fe15e/?gd_sdk_referrer_url=" + currentDomain,
+      embedUrl: "https://html5.gamedistribution.com/be4f7b9d1f3c4370a27cd86ba14fe15e/?gd_sdk_referrer_url=" + currentDomain + "&gd_zone_config=eyJwYXJlbnRVUkwiOiIiLCJwYXJlbnREb21haW4iOiJtaW5kc2V5ZS5jb29sIiwicGFyZW50QWxsb3dGdWxsU2NyZWVuIjp0cnVlLCJhbGxvd0Z1bGxTY3JlZW4iOnRydWUsImhhc0FwaSI6ZmFsc2V9",
       thumbnailUrl: "/images/games/01.jpg",
       highScore: "12,745",
       onlinePlayers: "3,256"
@@ -43,7 +43,7 @@ const GameShowcase = () => {
       title: "Strykon",
       description: "Strykon is a mobile FPS game with exciting missions and combat. Play different modes like Deathmatch, Team Deathmatch, and Free-For-All where your goal is to survive. Choose from many weapons like pistols, rifles, shotguns, and sniper rifles. Each gun has its own style. Enjoy great graphics, realistic sounds, and simple controls. Earn rewards through battle passes to keep the game interesting. Whether you're completing missions or battling enemies, this shooter game is full of action anywhere, anytime!",
       instructions: "Keyboard: WASD\nG Key: Grenade-Gun\nC Key: Crouch\nR Key: Reload\n1 - Primary Weapon\n2 - Secondary Weapon\nM1: Aim\nM2: Shoot\nSpace: Jump\nESC or TAB: Menu\nScroll Wheel: Change Weapons\nSHIFT + W: Run\nSHIFT + W + C: Slide",
-      embedUrl: "https://html5.gamedistribution.com/59361631a2614fc095ef2a1740e02d78/?gd_sdk_referrer_url=" + currentDomain,
+      embedUrl: "https://html5.gamedistribution.com/59361631a2614fc095ef2a1740e02d78/?gd_sdk_referrer_url=" + currentDomain + "&gd_zone_config=eyJwYXJlbnRVUkwiOiIiLCJwYXJlbnREb21haW4iOiJtaW5kc2V5ZS5jb29sIiwicGFyZW50QWxsb3dGdWxsU2NyZWVuIjp0cnVlLCJhbGxvd0Z1bGxTY3JlZW4iOnRydWUsImhhc0FwaSI6ZmFsc2V9",
       thumbnailUrl: "/images/games/02.jpg",
       highScore: "9,321",
       onlinePlayers: "4,562"
@@ -52,7 +52,7 @@ const GameShowcase = () => {
       title: "Feed me Monsters! Idle Battle",
       description: "The fate of the world is in your hands. Will you accept the challenge and become a beacon of hope in a land filled with darkness? Prepare yourself for epic showdowns with a variety of enemies! From fierce beasts lurking in the wilderness to bizarre mutants threatening humanity, each monster poses a unique challenge. Defeating these foes not only earns you coins and experience points but also unlocks new abilities to enhance your combat prowess. Are you ready to embark on this thrilling adventure? Adjust your strategies, overcome each opponent, claim victory, and restore balance to the world!",
       instructions: "Get ready to face various enemies! From fierce beasts lurking in the wild to deformed mutants threatening humanity, each monster brings a unique challenge. Defeating these enemies earns you coins and XP, and unlocks new abilities to enhance your combat skills. Are you ready to start this exciting adventure? Adjust your strategy, defeat each enemy, claim victory, and restore balance to the world!",
-      embedUrl: "https://html5.gamedistribution.com/84b087130dcf437a93254e42d2da2268/?gd_sdk_referrer_url=" + currentDomain,
+      embedUrl: "https://html5.gamedistribution.com/84b087130dcf437a93254e42d2da2268/?gd_sdk_referrer_url=" + currentDomain + "&gd_zone_config=eyJwYXJlbnRVUkwiOiIiLCJwYXJlbnREb21haW4iOiJtaW5kc2V5ZS5jb29sIiwicGFyZW50QWxsb3dGdWxsU2NyZWVuIjp0cnVlLCJhbGxvd0Z1bGxTY3JlZW4iOnRydWUsImhhc0FwaSI6ZmFsc2V9",
       thumbnailUrl: "/images/games/03.jpg",
       highScore: "15,687",
       onlinePlayers: "2,912"
@@ -181,6 +181,7 @@ const GameShowcase = () => {
                     allowFullScreen
                     frameBorder="0"
                     scrolling="no"
+                    sandbox="allow-forms allow-scripts allow-same-origin allow-top-navigation allow-popups allow-pointer-lock allow-popups-to-escape-sandbox"
                   ></iframe>
                 </div>
               ) : (
