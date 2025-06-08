@@ -1,0 +1,62 @@
+/**
+ * GameDistribution Style Overrides
+ * Hides blocked messages and other error overlays
+ */
+
+/* Hide blocked messages */
+div[class*="blocked-sdk"],
+div[id*="blocked-sdk"],
+div[class*="blocked"],
+div[id*="blocked"],
+div[class*="error-container"],
+div[id*="error-container"],
+div[class*="gdpr"],
+div[id*="gdpr"],
+div[class*="message-container"],
+div[id*="message-container"] {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  height: 0 !important;
+  width: 0 !important;
+  position: absolute !important;
+  z-index: -9999 !important;
+}
+
+/* Make iframe content fully visible */
+iframe#game-iframe {
+  visibility: visible !important;
+  opacity: 1 !important;
+  z-index: 1000 !important;
+}
+
+/* Remove any overlay */
+.gd-overlay,
+[class*="gd-overlay"],
+[id*="gd-overlay"],
+.blocked-overlay,
+[class*="blocked-overlay"],
+[id*="blocked-overlay"] {
+  display: none !important;
+}
+
+/* Fix for any message boxes */
+.gd-message-box,
+[class*="gd-message"],
+[id*="gd-message"] {
+  display: none !important;
+}
+
+/* General visibility fix */
+[style*="visibility: hidden"],
+[style*="display: none"] {
+  visibility: visible !important;
+  display: block !important;
+}
+
+/* Fix iframe content */
+iframe#game-iframe {
+  position: relative !important;
+  background-color: #000 !important;
+} 

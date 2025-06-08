@@ -181,7 +181,6 @@ const GameShowcase = () => {
                     allowFullScreen
                     frameBorder="0"
                     scrolling="no"
-                    sandbox="allow-forms allow-scripts allow-same-origin allow-top-navigation allow-popups allow-pointer-lock allow-popups-to-escape-sandbox"
                   ></iframe>
                 </div>
               ) : (

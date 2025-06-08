@@ -4,34 +4,6 @@
  */
 
 (function() {
-  // 模拟localStorage（用于iframe内不能访问真正的localStorage时）
-  window.virtualStorage = {};
-  
-  // 创建一个虚拟localStorage代理
-  const virtualLocalStorage = {
-    getItem: function(key) {
-      return window.virtualStorage[key] || null;
-    },
-    setItem: function(key, value) {
-      try {
-        window.virtualStorage[key] = value.toString();
-        // 同时尝试使用真实localStorage
-        try { localStorage.setItem(key, value); } catch(e) {}
-        return true;
-      } catch(e) {
-        return false;
-      }
-    },
-    removeItem: function(key) {
-      delete window.virtualStorage[key];
-      try { localStorage.removeItem(key); } catch(e) {}
-    },
-    clear: function() {
-      window.virtualStorage = {};
-      try { localStorage.clear(); } catch(e) {}
-    }
-  };
-  
   // 当iframe加载时执行
   window.addEventListener('message', function(event) {
     // 只处理来自GameDistribution的消息
@@ -57,30 +29,6 @@
               break;
             case 'game_error':
               console.error('Game error:', data.message);
-              break;
-            case 'localStorage_get':
-              // 处理localStorage读取请求
-              if (data.key) {
-                const value = virtualLocalStorage.getItem(data.key);
-                event.source.postMessage(JSON.stringify({
-                  type: 'localStorage_response',
-                  action: 'get',
-                  key: data.key,
-                  value: value
-                }), '*');
-              }
-              break;
-            case 'localStorage_set':
-              // 处理localStorage写入请求
-              if (data.key && data.value !== undefined) {
-                const success = virtualLocalStorage.setItem(data.key, data.value);
-                event.source.postMessage(JSON.stringify({
-                  type: 'localStorage_response',
-                  action: 'set',
-                  key: data.key,
-                  success: success
-                }), '*');
-              }
               break;
           }
         }
@@ -113,13 +61,8 @@
   if (attemptCookieAccess()) {
     console.log('Third-party cookies are enabled');
   } else {
-    console.log('Third-party cookies are blocked, using fallback');
+    console.log('Third-party cookies are blocked');
   }
-  
-  // 监听iframe的localStorage错误
-  window.addEventListener('storage_error', function(e) {
-    console.log('Storage error caught, using virtual storage instead');
-  });
   
   // 重写console.error以捕获游戏错误
   const originalError = console.error;
@@ -141,12 +84,8 @@
           document.head.appendChild(script);
         }
       }, 2000);
-    } else if (errorString.includes('localStorage') || errorString.includes('Storage')) {
-      // 触发自定义事件，通知我们的处理程序
-      const event = new CustomEvent('storage_error', { detail: errorString });
-      window.dispatchEvent(event);
     }
   };
   
-  console.log('GameDistribution adapter initialized with virtual storage');
+  console.log('GameDistribution adapter initialized');
 })(); 

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameDistribution Configuration for Mindseye</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #333;
+        }
+        .container {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>GameDistribution Domain Verification</h1>
+        
+        <p>This page validates that this website is registered with GameDistribution.</p>
+        
+        <!-- GameDistribution verification tag -->
+        <div data-gd-domain-verified="mindseye.cool"></div>
+        
+        <!-- Domain verification information -->
+        <div class="domain-info">
+            <h2>Verified Domains:</h2>
+            <ul>
+                <li>mindseye.cool</li>
+                <li>www.mindseye.cool</li>
+                <li>mindseye-88s.pages.dev</li>
+                <li>*.mindseye-88s.pages.dev</li>
+                <li>23db1c8a.mindseye-88s.pages.dev</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Include GameDistribution SDK for verification -->
+    <script>
+        window.GD_OPTIONS = {
+            gameId: "mindseye-games",
+            advertisementSettings: {
+                debug: false
+            },
+            onEvent: function(event) {
+                console.log(event.name);
+            }
+        };
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = 'https://html5.api.gamedistribution.com/main.min.js';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'gamedistribution-jssdk'));
+    </script>
+</body>
+</html> 
