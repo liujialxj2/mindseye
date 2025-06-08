@@ -1,11 +1,23 @@
+# Cloudflare Pages 配置
 name = "mindseye"
-compatibility_date = "2023-01-01"
+compatibility_date = "2025-06-08"
 
+# 构建输出目录
 [site]
 bucket = "./dist"
 
+# 构建命令
 [build]
 command = "npm run build"
+output_directory = "dist"
 
-# 特别为Cloudflare Pages添加的配置
-pages_build_output_dir = "dist" 
+# 自定义页面规则
+[site.static_files]
+"/*.js" = { content_type = "application/javascript" }
+"/*.css" = { content_type = "text/css" }
+"/*.jpg" = { content_type = "image/jpeg" }
+"/*.jpeg" = { content_type = "image/jpeg" }
+"/*.png" = { content_type = "image/png" }
+"/*.webp" = { content_type = "image/webp" }
+"/*.svg" = { content_type = "image/svg+xml" }
+"/*.gif" = { content_type = "image/gif" } 

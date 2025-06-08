@@ -21,4 +21,22 @@
   Content-Type: text/css
 
 /*.json
-  Content-Type: application/json 
+  Content-Type: application/json
+
+/*.jpg
+  Content-Type: image/jpeg
+  
+/*.jpeg
+  Content-Type: image/jpeg
+  
+/*.png
+  Content-Type: image/png
+  
+/*.webp
+  Content-Type: image/webp
+  
+/*.svg
+  Content-Type: image/svg+xml
+  
+/*.gif
+  Content-Type: image/gif 
