@@ -1,10 +1,4 @@
-# Cloudflare Pages 配置
+# Cloudflare Pages configuration
 name = "mindseye"
 compatibility_date = "2025-06-08"
-pages_build_output_dir = "dist"
-
-[build]
-command = "npm run build"
-
-[site]
-bucket = "./dist" 
+pages_build_output_dir = "dist" 

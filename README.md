@@ -1,104 +1,111 @@
-# Mindseye 游戏官网
+# Mindseye Game Official Website
 
-这是Mindseye游戏的官方网站项目，展示游戏特性和迷你游戏。
+This is the official website project for Mindseye game, showcasing game features and mini-games.
 
-## 项目说明
+## Project Overview
 
-- **项目名称**：Mindseye游戏官网
-- **部署地址**：https://www.mindseye.cool/
-- **GitHub仓库**：https://github.com/liujialxj2/mindseye
+- **Project Name**: Mindseye Game Official Website
+- **Deployment URL**: https://www.mindseye.cool/
+- **GitHub Repository**: https://github.com/liujialxj2/mindseye
 
-## 技术栈
+## Technology Stack
 
 - React + TypeScript
-- Vite 构建工具
-- Tailwind CSS 样式框架
-- Cloudflare Pages 部署
+- Vite build tool
+- Tailwind CSS framework
+- Cloudflare Pages deployment
 
-## 项目结构
+## Project Structure
 
 ```
 mindseye/
-├── public/             # 静态资源目录
-│   ├── images/         # 图片资源
-│   │   ├── screenshots/  # 游戏截图
-│   │   ├── games/        # 迷你游戏图片
-│   │   └── logo.webp     # 网站logo
-├── src/                # 源代码目录
-│   ├── components/     # React组件
-│   ├── App.tsx         # 应用主组件
-│   └── main.tsx        # 入口文件
-├── dist/               # 构建输出目录
-├── _headers            # Cloudflare自定义响应头配置
-├── _redirects          # Cloudflare重定向规则
-├── copy-assets.cjs     # 资源复制脚本
-├── wrangler.toml       # Cloudflare Wrangler配置
-└── package.json        # 项目依赖配置
+├── public/             # Static assets directory
+│   ├── images/         # Image assets
+│   │   ├── screenshots/  # Game screenshots
+│   │   ├── games/        # Mini-games images
+│   │   └── logo.webp     # Website logo
+├── src/                # Source code directory
+│   ├── components/     # React components
+│   ├── App.tsx         # Main application component
+│   └── main.tsx        # Entry file
+├── dist/               # Build output directory
+├── _redirects          # Cloudflare redirect rules
+├── deploy.js           # Deployment helper script
+├── wrangler.toml       # Cloudflare Wrangler configuration
+└── package.json        # Project dependencies configuration
 ```
 
-## 部署配置
+## Deployment Configuration
 
-### Cloudflare Pages配置
+### Cloudflare Pages Configuration
 
-项目使用Cloudflare Pages进行部署，主要配置包括：
+The project uses Cloudflare Pages for deployment with the following configurations:
 
-1. **_headers文件**：配置各种文件类型的MIME类型，确保浏览器正确识别文件类型。
-2. **_redirects文件**：配置SPA应用的路由重定向规则。
-3. **wrangler.toml**：Cloudflare Wrangler配置文件，指定构建输出目录和自定义页面规则。
-4. **.cloudflare/pages.json**：Cloudflare Pages的配置文件，包含构建配置、响应头设置和重定向规则。
+1. **_redirects file**: Configures routing redirect rules for SPA applications.
+2. **wrangler.toml**: Cloudflare Wrangler configuration file specifying the build output directory and custom page rules.
+3. **.cloudflare/pages.json**: Cloudflare Pages configuration file containing build settings, response headers, and redirect rules.
 
-### 构建流程
+### Build & Deployment Process
 
-1. 使用Vite进行项目构建：`vite build`
-2. 使用自定义脚本`copy-assets.cjs`复制静态资源到dist目录
-3. 部署到Cloudflare Pages
+1. Build the project using Vite: `npm run build`
+2. Deploy to Cloudflare Pages: `npm run deploy`
 
-## 图片资源处理
+## Image Asset Handling
 
-项目中的图片资源存放在`public/images`目录下，通过以下方式确保正确加载：
+Image assets in the project are stored in the `public/images` directory and loaded using the following approach:
 
-1. 在构建过程中，使用`copy-assets.cjs`脚本将图片复制到`dist/images`目录
-2. 在`_headers`文件中配置正确的MIME类型，确保图片文件被正确识别
-3. 在组件中使用绝对路径引用图片：`/images/screenshots/screenshot1.jpg`
+1. In components, reference images using absolute paths: `/images/screenshots/screenshot1.jpg`
+2. Proper MIME types are configured in `.cloudflare/pages.json` to ensure correct image recognition
 
-## 常见问题解决
+## Common Issues & Solutions
 
-### MIME类型错误
+### MIME Type Errors
 
-**问题**：浏览器无法正确加载图片，提示MIME类型错误。
+**Issue**: Browser cannot load images properly, showing MIME type errors.
 
-**解决方案**：
-1. 在`_headers`文件中添加图片文件的MIME类型配置
-2. 在`.cloudflare/pages.json`中添加图片文件的MIME类型配置
-3. 创建`wrangler.toml`文件，添加自定义页面规则
+**Solution**:
+1. Add MIME type configurations for image files in `.cloudflare/pages.json`
+2. Ensure wrangler.toml is correctly configured
 
-### 资源路径问题
+### Resource Path Issues
 
-**问题**：构建后的资源路径引用错误。
+**Issue**: Resource path references are incorrect after building.
 
-**解决方案**：
-1. 修改`index.html`中的资源引用路径，使用正确的相对路径
-2. 使用`copy-assets.cjs`脚本确保静态资源被正确复制到构建目录
+**Solution**:
+1. Modify resource reference paths in `index.html` to use correct relative paths
+2. Ensure static assets are correctly placed in the public directory
 
-## 开发指南
+## Development Guide
 
-### 本地开发
+### Local Development
 
 ```bash
-# 安装依赖
+# Install dependencies
 npm install
 
-# 启动开发服务器
+# Start development server
 npm run dev
 
-# 构建项目
+# Build project
 npm run build
 
-# 预览构建结果
+# Preview build results
 npm run preview
+
+# Deploy to Cloudflare Pages
+npm run deploy
 ```
 
-### 部署更新
+### Deployment Updates
 
-1. 提交代码到GitHub仓库
-2. Cloudflare Pages会自动从GitHub仓库拉取最新代码并部署
+1. Commit code to GitHub repository
+2. Use the deploy script to manually deploy: `npm run deploy`
+3. Alternatively, Cloudflare Pages can automatically deploy from your GitHub repository
+
+### Manual Deployment Steps
+
+If you prefer to deploy manually:
+
+1. Install Wrangler CLI: `npm install -g wrangler`
+2. Login to Cloudflare: `wrangler login`
+3. Deploy: `wrangler pages deploy dist`
