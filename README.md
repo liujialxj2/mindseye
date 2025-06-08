@@ -30,7 +30,7 @@ mindseye/
 │   └── main.tsx        # Entry file
 ├── dist/               # Build output directory
 ├── _redirects          # Cloudflare redirect rules
-├── deploy.js           # Deployment helper script
+├── deploy.cjs          # Deployment helper script
 ├── wrangler.toml       # Cloudflare Wrangler configuration
 └── package.json        # Project dependencies configuration
 ```
