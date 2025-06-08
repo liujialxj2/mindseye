@@ -38,7 +38,7 @@ const Hero = () => {
         const screenshotArray: Screenshot[] = [];
         
         for (let i = 1; i <= 8; i++) {
-          const imagePath = `./dist/images/screenshots/screenshot${i}.jpg`;
+          const imagePath = `/images/screenshots/screenshot${i}.jpg`;
           
           // 检查图片是否存在
           const imgExists = await new Promise((resolve) => {

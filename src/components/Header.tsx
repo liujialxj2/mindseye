@@ -10,7 +10,7 @@ const Header = () => {
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-3">
             <img 
-              src="./dist/images/logo.webp" 
+              src="/images/logo.webp" 
               alt="Mindseye Logo" 
               className="w-10 h-10 object-contain" 
             />
