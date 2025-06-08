@@ -27,6 +27,11 @@
       "source": "/",
       "destination": "/index.html",
       "statusCode": 200
+    },
+    {
+      "source": "/images/:path*",
+      "destination": "/dist/images/:path*",
+      "statusCode": 200
     }
   ]
 } 
