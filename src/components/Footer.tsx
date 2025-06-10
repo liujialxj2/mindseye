@@ -1,98 +1,93 @@
 import React from 'react';
-import { 
-  Twitter, 
-  Facebook, 
-  Instagram, 
-  Youtube, 
-  Mail,
-  MapPin,
-  Phone
-} from 'lucide-react';
+import { Link } from 'react-router-dom';
 
-const Footer = () => {
+/**
+ * 页脚组件
+ */
+export default function Footer() {
   return (
-    <footer className="bg-black border-t border-blue-500/20">
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {/* Brand Section */}
-          <div className="lg:col-span-1">
-            <div className="flex items-center space-x-3 mb-4">
-              <img 
-                src="/images/logo.webp" 
-                alt="Mindseye Logo" 
-                className="w-10 h-10 object-contain" 
-              />
-              <span className="text-2xl font-bold text-white">MINDSEYE</span>
-            </div>
-            <p className="text-gray-400 mb-6 leading-relaxed">
-              Prepare your mind for the ultimate adventure. Experience the future of gaming with Mindseye.
+    <footer className="bg-gray-900 text-white py-12 border-t border-gray-800">
+      <div className="container mx-auto px-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* 左侧 Logo 和介绍 */}
+          <div>
+            <Link to="/" className="inline-block">
+              <span className="text-2xl font-bold">
+                Mindseye<span className="text-blue-500">Games</span>
+              </span>
+            </Link>
+            <p className="mt-4 text-gray-400">
+              探索我们精选的HTML5小游戏，享受高品质的在线游戏体验。我们提供来自CrazyGames的精彩游戏内容。
             </p>
-            <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">
-                <Twitter className="w-5 h-5" />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">
-                <Facebook className="w-5 h-5" />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">
-                <Instagram className="w-5 h-5" />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">
-                <Youtube className="w-5 h-5" />
-              </a>
-            </div>
           </div>
-
-          {/* Quick Links */}
+          
+          {/* 中间 链接 */}
           <div>
-            <h3 className="text-white font-semibold mb-4">Quick Links</h3>
+            <h3 className="text-lg font-semibold mb-4">快速链接</h3>
             <ul className="space-y-2">
-              <li><a href="#home" className="text-gray-400 hover:text-blue-400 transition-colors">Home</a></li>
-              <li><a href="#games" className="text-gray-400 hover:text-blue-400 transition-colors">Games</a></li>
-              <li><a href="#about" className="text-gray-400 hover:text-blue-400 transition-colors">About</a></li>
-              <li><a href="#community" className="text-gray-400 hover:text-blue-400 transition-colors">Community</a></li>
-              <li><a href="#faq" className="text-gray-400 hover:text-blue-400 transition-colors">FAQ</a></li>
+              <li>
+                <Link to="/" className="text-gray-400 hover:text-blue-400 transition-colors">
+                  首页
+                </Link>
+              </li>
+              <li>
+                <Link to="/games" className="text-gray-400 hover:text-blue-400 transition-colors">
+                  游戏
+                </Link>
+              </li>
+              <li>
+                <Link to="/about" className="text-gray-400 hover:text-blue-400 transition-colors">
+                  关于我们
+                </Link>
+              </li>
+              <li>
+                <Link to="/contact" className="text-gray-400 hover:text-blue-400 transition-colors">
+                  联系我们
+                </Link>
+              </li>
             </ul>
           </div>
-
-          {/* Support */}
+          
+          {/* 右侧 联系方式 */}
           <div>
-            <h3 className="text-white font-semibold mb-4">Support</h3>
-            <ul className="space-y-2">
-              <li><a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">Help Center</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">Bug Reports</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">Feature Requests</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">Privacy Policy</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">Terms of Service</a></li>
-            </ul>
+            <h3 className="text-lg font-semibold mb-4">联系我们</h3>
+            <p className="text-gray-400 mb-2">
+              有任何问题或建议？请与我们联系！
+            </p>
+            <p className="text-gray-400 flex items-center">
+              <span className="mr-2">✉️</span>
+              <a href="mailto:contact@mindseye.com" className="hover:text-blue-400">
+                contact@mindseye.com
+              </a>
+            </p>
           </div>
         </div>
-
-        {/* Contact Info */}
-        <div className="border-t border-gray-800 mt-12 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-6 text-sm text-gray-400">
-              <div className="flex items-center space-x-2">
-                <Mail className="w-4 h-4" />
-                <span>contact@mindseye-games.com</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Phone className="w-4 h-4" />
-                <span>+1 (555) 123-4567</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <MapPin className="w-4 h-4" />
-                <span>San Francisco, CA</span>
-              </div>
-            </div>
-            <div className="text-gray-400 text-sm">
-              © 2024 Mindseye Games. All rights reserved.
-            </div>
+        
+        {/* 底部版权信息 */}
+        <div className="mt-8 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
+          <p className="text-gray-500 text-sm mb-4 md:mb-0">
+            © {new Date().getFullYear()} Mindseye Games. 保留所有权利。
+          </p>
+          <div className="flex space-x-6">
+            <a href="#" className="text-gray-400 hover:text-blue-400">
+              隐私政策
+            </a>
+            <a href="#" className="text-gray-400 hover:text-blue-400">
+              使用条款
+            </a>
+            <a href="#" className="text-gray-400 hover:text-blue-400">
+              站点地图
+            </a>
           </div>
+        </div>
+        
+        {/* 免责声明 */}
+        <div className="mt-8 text-xs text-gray-600 text-center">
+          <p>
+            本网站上的游戏由CrazyGames提供。Mindseye Games不拥有这些游戏的所有权。所有游戏版权归其各自所有者。
+          </p>
         </div>
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}

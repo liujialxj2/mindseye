@@ -1,84 +1,108 @@
 import React, { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 
-const Header = () => {
+/**
+ * 网站头部导航组件
+ */
+export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+  const location = useLocation();
+  
+  // 导航链接
+  const navLinks = [
+    { title: '首页', url: '/' },
+    { title: '游戏', url: '/games' },
+    { title: '关于', url: '/about' },
+    { title: '联系', url: '/contact' }
+  ];
+  
+  // 判断导航链接是否激活
+  const isActive = (path: string) => {
+    if (path === '/') {
+      return location.pathname === '/';
+    }
+    return location.pathname.startsWith(path);
+  };
+  
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-b border-blue-500/20">
-      <div className="container mx-auto px-4 py-4">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-3">
-            <img 
-              src="/images/logo.webp" 
-              alt="Mindseye Logo" 
-              className="w-10 h-10 object-contain" 
-            />
-            <span className="text-2xl font-bold text-white">MINDSEYE</span>
-          </div>
-
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            <a href="#home" className="text-gray-300 hover:text-blue-400 transition-colors">Home</a>
-            <a href="#games" className="text-gray-300 hover:text-blue-400 transition-colors">Games</a>
-            <a href="#about" className="text-gray-300 hover:text-blue-400 transition-colors">About</a>
-            <a href="#community" className="text-gray-300 hover:text-blue-400 transition-colors">Community</a>
-            <a href="#faq" className="text-gray-300 hover:text-blue-400 transition-colors">FAQ</a>
+    <header className="bg-black text-white sticky top-0 z-50">
+      <div className="container mx-auto px-4">
+        <div className="flex justify-between items-center h-16">
+          {/* Logo */}
+          <Link to="/" className="flex items-center">
+            <span className="text-xl font-bold text-white">
+              Mindseye<span className="text-blue-500">Games</span>
+            </span>
+          </Link>
+          
+          {/* 桌面导航 */}
+          <nav className="hidden md:flex space-x-8">
+            {navLinks.map((link) => (
+              <Link
+                key={link.url}
+                to={link.url}
+                className={`transition-colors ${
+                  isActive(link.url)
+                    ? 'text-blue-400 font-medium'
+                    : 'text-gray-300 hover:text-blue-400'
+                }`}
+              >
+                {link.title}
+              </Link>
+            ))}
           </nav>
-
-          <div className="hidden md:flex items-center space-x-4">
-            <a 
-              href="https://www.mindseye.game/" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="px-6 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 z-50 cursor-pointer"
-              style={{ position: 'relative' }}
-              onClick={(e) => {
-                window.open('https://www.mindseye.game/', '_blank', 'noopener,noreferrer');
-                e.preventDefault();
-              }}
+          
+          {/* 游戏按钮 */}
+          <div className="hidden md:block">
+            <Link
+              to="/games"
+              className="px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-md font-medium hover:from-blue-600 hover:to-purple-700 transition-colors"
             >
-              Official Site
-            </a>
+              玩游戏
+            </Link>
           </div>
-
-          {/* Mobile Menu Button */}
+          
+          {/* 移动端菜单按钮 */}
           <button
+            className="md:hidden text-gray-300 hover:text-white"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden text-white"
           >
-            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
-
-        {/* Mobile Menu */}
-        {isMenuOpen && (
-          <div className="md:hidden mt-4 pb-4 border-t border-blue-500/20">
-            <nav className="flex flex-col space-y-4 mt-4">
-              <a href="#home" className="text-gray-300 hover:text-blue-400 transition-colors">Home</a>
-              <a href="#games" className="text-gray-300 hover:text-blue-400 transition-colors">Games</a>
-              <a href="#about" className="text-gray-300 hover:text-blue-400 transition-colors">About</a>
-              <a href="#community" className="text-gray-300 hover:text-blue-400 transition-colors">Community</a>
-              <a href="#faq" className="text-gray-300 hover:text-blue-400 transition-colors">FAQ</a>
-              <a 
-                href="https://www.mindseye.game/" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="w-full px-6 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-lg text-center z-50 cursor-pointer"
-                style={{ position: 'relative' }}
-                onClick={(e) => {
-                  window.open('https://www.mindseye.game/', '_blank', 'noopener,noreferrer');
-                  e.preventDefault();
-                }}
+      </div>
+      
+      {/* 移动端菜单 */}
+      {isMenuOpen && (
+        <div className="md:hidden bg-gray-900 border-t border-gray-800">
+          <div className="container mx-auto px-4 py-4">
+            <nav className="flex flex-col space-y-4">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.url}
+                  to={link.url}
+                  className={`transition-colors px-2 py-2 ${
+                    isActive(link.url)
+                      ? 'text-blue-400 font-medium'
+                      : 'text-gray-300 hover:text-blue-400'
+                  }`}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {link.title}
+                </Link>
+              ))}
+              <Link
+                to="/games"
+                className="px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-md font-medium text-center hover:from-blue-600 hover:to-purple-700 transition-colors"
+                onClick={() => setIsMenuOpen(false)}
               >
-                Official Site
-              </a>
+                玩游戏
+              </Link>
             </nav>
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </header>
   );
-};
-
-export default Header;
+}

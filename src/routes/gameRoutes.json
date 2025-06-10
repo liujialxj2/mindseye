@@ -1,0 +1,9 @@
+[
+  {
+    "path": "/games/sample-game",
+    "component": "GameDetail",
+    "props": {
+      "gameId": "game-1"
+    }
+  }
+]

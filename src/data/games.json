@@ -1,0 +1,21 @@
+[
+  {
+    "id": "game-1",
+    "title": "示例游戏",
+    "description": "这是一个示例游戏，用于展示多游戏系统的功能。",
+    "instructions": "使用键盘和鼠标控制游戏。具体操作请参见游戏内提示。",
+    "thumbnailUrl": "/images/games/01.jpg",
+    "embedUrl": "https://html5.gamedistribution.com/be4f7b9d1f3c4370a27cd86ba14fe15e/?gd_sdk_referrer_url=https://mindseye-88s.pages.dev",
+    "slug": "sample-game",
+    "highlights": [
+      "精美的图形和动画效果",
+      "简单易上手的操作",
+      "适合所有年龄段的玩家",
+      "无需下载，即点即玩"
+    ],
+    "category": "休闲游戏",
+    "tags": ["HTML5", "在线游戏"],
+    "createdAt": "2023-01-01T00:00:00.000Z",
+    "updatedAt": "2023-01-01T00:00:00.000Z"
+  }
+] 
