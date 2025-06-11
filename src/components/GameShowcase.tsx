@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Play, RotateCcw, Trophy, Users, Maximize, Info } from 'lucide-react';
+import GameDistributionFrame from './GameDistributionFrame';
 
 // 为不同浏览器的全屏API扩展类型定义
 declare global {
@@ -24,68 +25,84 @@ const GameShowcase = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [showInstructions, setShowInstructions] = useState(false);
+  const gameFrameRef = useRef<HTMLDivElement>(null);
 
-  // Get current domain for proper GameDistribution integration
+  // 获取当前域名，用于 GameDistribution 集成
   const currentDomain = typeof window !== 'undefined' ? window.location.origin : 'https://www.mindseye.cool';
 
-  // 游戏数据 - 使用提供的游戏信息
+  // 精选游戏数据
   const games = [
     {
-      title: "Aventador Vice Crime City",
-      description: "Experience city driving with four game modes. Navigate realistic traffic and monitor your fuel while exploring busy streets. Enjoy stunning morning city graphics, transforming the city into a spectacle. Pedestrians add unpredictability, and hitting them triggers police chases. Customize your car's appearance and performance. All this chaos is accompanied by your cute dog. Whether evading the cops or just cruising, Aventador Vice Crime City offers a thrilling and visually amazing experience.",
-      instructions: "W, A, S, D/Arrow Keys: Drive/Steer/Brake\nLeft Shift Key: Nitro Boost\nC Key: Change Camera View\nG Key: Slow Motion",
-      embedUrl: "https://html5.gamedistribution.com/be4f7b9d1f3c4370a27cd86ba14fe15e/?gd_sdk_referrer_url=" + currentDomain + "&gd_zone_config=eyJwYXJlbnRVUkwiOiIiLCJwYXJlbnREb21haW4iOiJtaW5kc2V5ZS5jb29sIiwicGFyZW50QWxsb3dGdWxsU2NyZWVuIjp0cnVlLCJhbGxvd0Z1bGxTY3JlZW4iOnRydWUsImhhc0FwaSI6ZmFsc2V9",
-      thumbnailUrl: "/images/games/01.jpg",
-      highScore: "12,745",
-      onlinePlayers: "3,256"
+      id: 'perception-puzzle',
+      title: '知觉拼图',
+      description: '在这款引人入胜的游戏中测试你的知觉能力。识别模式、解决视觉谜题，提升你的观察技巧。',
+      instructions: '使用鼠标点击匹配的图形。在时间结束前找出所有匹配项，以获得最高分。\n\n技巧：先专注于边缘部分，再向中心移动。',
+      thumbnailUrl: 'https://img.gamedistribution.com/62381d033e714230acd2147b60a24550-512x384.jpg',
+      embedUrl: 'https://html5.gamedistribution.com/62381d033e714230acd2147b60a24550/',
+      highScore: 2840,
+      onlinePlayers: 143,
+      isGameDistribution: true
     },
     {
-      title: "Strykon",
-      description: "Strykon is a mobile FPS game with exciting missions and combat. Play different modes like Deathmatch, Team Deathmatch, and Free-For-All where your goal is to survive. Choose from many weapons like pistols, rifles, shotguns, and sniper rifles. Each gun has its own style. Enjoy great graphics, realistic sounds, and simple controls. Earn rewards through battle passes to keep the game interesting. Whether you're completing missions or battling enemies, this shooter game is full of action anywhere, anytime!",
-      instructions: "Keyboard: WASD\nG Key: Grenade-Gun\nC Key: Crouch\nR Key: Reload\n1 - Primary Weapon\n2 - Secondary Weapon\nM1: Aim\nM2: Shoot\nSpace: Jump\nESC or TAB: Menu\nScroll Wheel: Change Weapons\nSHIFT + W: Run\nSHIFT + W + C: Slide",
-      embedUrl: "https://html5.gamedistribution.com/59361631a2614fc095ef2a1740e02d78/?gd_sdk_referrer_url=" + currentDomain + "&gd_zone_config=eyJwYXJlbnRVUkwiOiIiLCJwYXJlbnREb21haW4iOiJtaW5kc2V5ZS5jb29sIiwicGFyZW50QWxsb3dGdWxsU2NyZWVuIjp0cnVlLCJhbGxvd0Z1bGxTY3JlZW4iOnRydWUsImhhc0FwaSI6ZmFsc2V9",
-      thumbnailUrl: "/images/games/02.jpg",
-      highScore: "9,321",
-      onlinePlayers: "4,562"
+      id: 'memory-maze',
+      title: '记忆迷宫',
+      description: '一款测试你的空间记忆能力的挑战性游戏。记住路径，避开障碍，找到通往下一关的道路。',
+      instructions: '使用方向键或WASD移动。记住迷宫的布局，并在黑暗环境中找到出口。\n\n每一关的难度都会增加，保持专注！',
+      thumbnailUrl: 'https://img.gamedistribution.com/6c82ded251754899bace3d781d03d607-512x384.jpg',
+      embedUrl: 'https://html5.gamedistribution.com/6c82ded251754899bace3d781d03d607/',
+      highScore: 1560,
+      onlinePlayers: 95,
+      isGameDistribution: true
     },
     {
-      title: "Feed me Monsters! Idle Battle",
-      description: "The fate of the world is in your hands. Will you accept the challenge and become a beacon of hope in a land filled with darkness? Prepare yourself for epic showdowns with a variety of enemies! From fierce beasts lurking in the wilderness to bizarre mutants threatening humanity, each monster poses a unique challenge. Defeating these foes not only earns you coins and experience points but also unlocks new abilities to enhance your combat prowess. Are you ready to embark on this thrilling adventure? Adjust your strategies, overcome each opponent, claim victory, and restore balance to the world!",
-      instructions: "Get ready to face various enemies! From fierce beasts lurking in the wild to deformed mutants threatening humanity, each monster brings a unique challenge. Defeating these enemies earns you coins and XP, and unlocks new abilities to enhance your combat skills. Are you ready to start this exciting adventure? Adjust your strategy, defeat each enemy, claim victory, and restore balance to the world!",
-      embedUrl: "https://html5.gamedistribution.com/84b087130dcf437a93254e42d2da2268/?gd_sdk_referrer_url=" + currentDomain + "&gd_zone_config=eyJwYXJlbnRVUkwiOiIiLCJwYXJlbnREb21haW4iOiJtaW5kc2V5ZS5jb29sIiwicGFyZW50QWxsb3dGdWxsU2NyZWVuIjp0cnVlLCJhbGxvd0Z1bGxTY3JlZW4iOnRydWUsImhhc0FwaSI6ZmFsc2V9",
-      thumbnailUrl: "/images/games/03.jpg",
-      highScore: "15,687",
-      onlinePlayers: "2,912"
+      id: 'pattern-recognition',
+      title: '图案识别',
+      description: '提高你的图案识别能力。在这款游戏中，你需要在不断变化的背景中识别隐藏的图案。',
+      instructions: '观察屏幕上显示的图案，然后在接下来的选项中选择匹配的一项。\n\n随着关卡的进展，图案会变得更加复杂，背景干扰也会增加。',
+      thumbnailUrl: 'https://img.gamedistribution.com/5ecf233acb5a453bb50dbcb77df39df8-512x384.jpg',
+      embedUrl: 'https://html5.gamedistribution.com/5ecf233acb5a453bb50dbcb77df39df8/',
+      highScore: 3250,
+      onlinePlayers: 128,
+      isGameDistribution: true
     }
   ];
 
-  // 处理游戏全屏
+  // 处理游戏加载事件
+  const handleGameLoaded = () => {
+    console.log('游戏加载完成');
+  };
+
+  // 处理游戏错误事件
+  const handleGameError = (error: string) => {
+    console.error('游戏加载错误:', error);
+  };
+
+  // 处理全屏
   const handleFullscreen = () => {
-    const iframe = document.getElementById('game-iframe') as HTMLElement;
-    if (iframe) {
-      if (!isFullscreen) {
-        if (iframe.requestFullscreen) {
-          iframe.requestFullscreen();
-        } else if (iframe.mozRequestFullScreen) {
-          iframe.mozRequestFullScreen();
-        } else if (iframe.webkitRequestFullscreen) {
-          iframe.webkitRequestFullscreen();
-        } else if (iframe.msRequestFullscreen) {
-          iframe.msRequestFullscreen();
-        }
-        setIsFullscreen(true);
-      } else {
-        if (document.exitFullscreen) {
-          document.exitFullscreen();
-        } else if (document.mozCancelFullScreen) {
-          document.mozCancelFullScreen();
-        } else if (document.webkitExitFullscreen) {
-          document.webkitExitFullscreen();
-        } else if (document.msExitFullscreen) {
-          document.msExitFullscreen();
-        }
-        setIsFullscreen(false);
+    if (!gameFrameRef.current) return;
+    
+    if (!isFullscreen) {
+      if (gameFrameRef.current.requestFullscreen) {
+        gameFrameRef.current.requestFullscreen();
+      } else if ((gameFrameRef.current as any).mozRequestFullScreen) {
+        (gameFrameRef.current as any).mozRequestFullScreen();
+      } else if ((gameFrameRef.current as any).webkitRequestFullscreen) {
+        (gameFrameRef.current as any).webkitRequestFullscreen();
+      } else if ((gameFrameRef.current as any).msRequestFullscreen) {
+        (gameFrameRef.current as any).msRequestFullscreen();
       }
+      setIsFullscreen(true);
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if ((document as any).mozCancelFullScreen) {
+        (document as any).mozCancelFullScreen();
+      } else if ((document as any).webkitExitFullscreen) {
+        (document as any).webkitExitFullscreen();
+      } else if ((document as any).msExitFullscreen) {
+        (document as any).msExitFullscreen();
+      }
+      setIsFullscreen(false);
     }
   };
 
@@ -94,9 +111,9 @@ const GameShowcase = () => {
     const fullscreenChangeHandler = () => {
       setIsFullscreen(
         !!document.fullscreenElement ||
-        !!document.mozFullScreenElement ||
-        !!document.webkitFullscreenElement ||
-        !!document.msFullscreenElement
+        !!(document as any).mozFullScreenElement ||
+        !!(document as any).webkitFullscreenElement ||
+        !!(document as any).msFullscreenElement
       );
     };
 
@@ -118,23 +135,23 @@ const GameShowcase = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-5xl font-bold text-white mb-6 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-            Experience Mindseye Mini Games
+            体验精选小游戏
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Immerse yourself in these mini games designed for the Mindseye universe, train your perception abilities, and prepare for the full game experience.
+            沉浸在这些为 Mindseye 宇宙设计的小游戏中，训练你的感知能力，为完整的游戏体验做好准备。
           </p>
         </div>
 
         <div className="max-w-6xl mx-auto">
-          {/* Game Selector */}
+          {/* 游戏选择器 */}
           <div className="flex flex-wrap justify-center gap-4 mb-8">
             {games.map((game, index) => (
               <button
                 key={index}
                 onClick={() => {
                   setActiveGame(index);
-                  setIsPlaying(false); // Reset play state when switching games
-                  setShowInstructions(false); // Hide instructions
+                  setIsPlaying(false); // 切换游戏时重置播放状态
+                  setShowInstructions(false); // 隐藏说明
                 }}
                 className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
                   activeGame === index
@@ -147,7 +164,7 @@ const GameShowcase = () => {
             ))}
           </div>
 
-          {/* Game Display Area */}
+          {/* 游戏显示区域 */}
           <div className="bg-gray-900 rounded-2xl p-6 border border-blue-500/30">
             <div className="mb-6">
               <h3 className="text-2xl font-bold text-white mb-2">
@@ -158,30 +175,40 @@ const GameShowcase = () => {
               </p>
             </div>
 
-            {/* Instructions */}
+            {/* 游戏说明 */}
             {showInstructions && (
               <div className="bg-gray-800 rounded-xl p-4 mb-6 border border-blue-500/20">
-                <h4 className="text-lg font-semibold text-blue-400 mb-2">Instructions</h4>
+                <h4 className="text-lg font-semibold text-blue-400 mb-2">游戏说明</h4>
                 <p className="text-gray-300 whitespace-pre-line">
                   {games[activeGame].instructions}
                 </p>
               </div>
             )}
 
-            {/* Game Frame */}
-            <div className="bg-black rounded-xl overflow-hidden border border-blue-500/20 mb-6">
+            {/* 游戏框架 */}
+            <div ref={gameFrameRef} className="bg-black rounded-xl overflow-hidden border border-blue-500/20 mb-6">
               {isPlaying ? (
                 <div className="aspect-video w-full h-full">
-                  <iframe 
-                    id="game-iframe"
-                    src={games[activeGame].embedUrl} 
-                    title={games[activeGame].title}
-                    className="w-full h-full"
-                    allow="fullscreen; accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                    frameBorder="0"
-                    scrolling="no"
-                  ></iframe>
+                  {games[activeGame].isGameDistribution ? (
+                    <GameDistributionFrame
+                      gameId={games[activeGame].id}
+                      gameUrl={games[activeGame].embedUrl}
+                      title={games[activeGame].title}
+                      onGameLoaded={handleGameLoaded}
+                      onGameError={handleGameError}
+                    />
+                  ) : (
+                    <iframe 
+                      id="game-iframe"
+                      src={games[activeGame].embedUrl} 
+                      title={games[activeGame].title}
+                      className="w-full h-full"
+                      allow="fullscreen; accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      frameBorder="0"
+                      scrolling="no"
+                    ></iframe>
+                  )}
                 </div>
               ) : (
                 <div 
@@ -199,14 +226,14 @@ const GameShowcase = () => {
                     >
                       <Play className="w-12 h-12 text-white" />
                     </div>
-                    <h4 className="text-xl font-bold text-white mb-2">Get Ready</h4>
-                    <p className="text-gray-400">Click the play button to start your adventure</p>
+                    <h4 className="text-xl font-bold text-white mb-2">准备好了吗？</h4>
+                    <p className="text-gray-400">点击播放按钮开始你的冒险</p>
                   </div>
                 </div>
               )}
             </div>
 
-            {/* Game Controls */}
+            {/* 游戏控制 */}
             <div className="flex flex-wrap gap-4 justify-between items-center">
               <div className="flex gap-4">
                 <button 
@@ -215,13 +242,13 @@ const GameShowcase = () => {
                 >
                   {isPlaying ? (
                     <>
-                      <RotateCcw className="w-4 h-4" />
-                      <span>Restart</span>
+                      <RotateCcw className="w-4 h-4 mr-2" />
+                      <span>重新开始</span>
                     </>
                   ) : (
                     <>
-                      <Play className="w-4 h-4" />
-                      <span>Start</span>
+                      <Play className="w-4 h-4 mr-2" />
+                      <span>开始</span>
                     </>
                   )}
                 </button>
@@ -231,8 +258,8 @@ const GameShowcase = () => {
                     className="flex items-center space-x-2 px-4 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-600 transition-colors"
                     onClick={handleFullscreen}
                   >
-                    <Maximize className="w-4 h-4" />
-                    <span>Fullscreen</span>
+                    <Maximize className="w-4 h-4 mr-2" />
+                    <span>全屏</span>
                   </button>
                 )}
                 
@@ -240,19 +267,19 @@ const GameShowcase = () => {
                   className={`flex items-center space-x-2 px-4 py-2 ${showInstructions ? 'bg-blue-600' : 'bg-gray-700'} text-white rounded-lg hover:brightness-110 transition-all`}
                   onClick={() => setShowInstructions(!showInstructions)}
                 >
-                  <Info className="w-4 h-4" />
-                  <span>{showInstructions ? 'Hide Instructions' : 'View Instructions'}</span>
+                  <Info className="w-4 h-4 mr-2" />
+                  <span>{showInstructions ? '隐藏说明' : '查看说明'}</span>
                 </button>
               </div>
               
               <div className="flex items-center space-x-6 text-gray-300">
                 <div className="flex items-center space-x-2">
                   <Trophy className="w-4 h-4 text-yellow-500" />
-                  <span>High Score: {games[activeGame].highScore}</span>
+                  <span>最高分: {games[activeGame].highScore}</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <Users className="w-4 h-4 text-blue-400" />
-                  <span>Online Players: {games[activeGame].onlinePlayers}</span>
+                  <span>在线玩家: {games[activeGame].onlinePlayers}</span>
                 </div>
               </div>
             </div>
