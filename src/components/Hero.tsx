@@ -14,7 +14,7 @@ const Hero = () => {
     minutes: 0,
     seconds: 0
   });
-  
+
   // 图片滚动状态
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [isMouseOver, setIsMouseOver] = useState(false);

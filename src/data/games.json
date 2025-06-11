@@ -1,21 +1,202 @@
 [
   {
     "id": "game-1",
-    "title": "示例游戏",
-    "description": "这是一个示例游戏，用于展示多游戏系统的功能。",
-    "instructions": "使用键盘和鼠标控制游戏。具体操作请参见游戏内提示。",
-    "thumbnailUrl": "/images/games/01.jpg",
-    "embedUrl": "https://html5.gamedistribution.com/be4f7b9d1f3c4370a27cd86ba14fe15e/?gd_sdk_referrer_url=https://mindseye-88s.pages.dev",
-    "slug": "sample-game",
+    "title": "2048",
+    "description": "2048是一款流行的数字拼图游戏，由意大利开发者Gabriele Cirulli开发。游戏的目标是在一个4x4网格上滑动数字方块，将相同的数字合并，最终达成数字2048。这款游戏需要策略思考，成为全球流行的休闲解谜游戏。",
+    "instructions": "使用键盘的上下左右方向键或者触屏滑动来移动数字方块。当两个相同的数字方块碰撞时，它们会合并成为它们的和。尝试合并方块直到获得2048！",
+    "thumbnailUrl": "https://img.crazygames.com/games/2048/cover-1585661425166.png",
+    "embedUrl": "https://html5.gamedistribution.com/2048/?gd_sdk_referrer_url=https://mindseye-88s.pages.dev",
+    "slug": "2048",
     "highlights": [
-      "精美的图形和动画效果",
-      "简单易上手的操作",
-      "适合所有年龄段的玩家",
+      "经典数字拼图游戏",
+      "简单易上手但难以精通",
+      "锻炼逻辑思维能力",
+      "全球超过1亿玩家",
       "无需下载，即点即玩"
     ],
-    "category": "休闲游戏",
-    "tags": ["HTML5", "在线游戏"],
+    "category": "解谜游戏",
+    "tags": ["解谜", "数学", "策略", "休闲"],
     "createdAt": "2023-01-01T00:00:00.000Z",
     "updatedAt": "2023-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "game-2",
+    "title": "Slope",
+    "description": "Slope是一款令人肾上腺素飙升的3D滚球游戏。你需要控制一个球体在一个不断倾斜变化的赛道上前进，同时避开各种障碍物。游戏速度会随着你的前进而不断加快，测试你的反应能力和控制技巧。",
+    "instructions": "使用左右箭头键或A和D键控制球体的移动。避开红色障碍物和赛道边缘，尽可能走得更远。",
+    "thumbnailUrl": "https://img.crazygames.com/slope/20230519142705/slope-cover?auto=format,compress&q=75&cs=strip&ch=DPR",
+    "embedUrl": "https://html5.gamedistribution.com/slope/?gd_sdk_referrer_url=https://mindseye-88s.pages.dev",
+    "slug": "slope",
+    "highlights": [
+      "刺激的3D无尽跑酷游戏",
+      "简单的控制方式，极具挑战性的游戏玩法",
+      "速度感十足的视觉效果",
+      "测试你的反应能力和手眼协调性",
+      "在各大游戏平台均获得高评价"
+    ],
+    "category": "动作游戏",
+    "tags": ["3D", "反应", "技巧", "街机"],
+    "createdAt": "2023-01-02T00:00:00.000Z",
+    "updatedAt": "2023-01-02T00:00:00.000Z"
+  },
+  {
+    "id": "game-3",
+    "title": "Minecraft Classic",
+    "description": "Minecraft Classic是经典沙盒建造游戏Minecraft的网页版。在这个创意平台中，你可以放置方块，建造任何你能想象到的结构。这个版本包含了原版Minecraft的基础元素，让你可以无限制地发挥创意。",
+    "instructions": "使用WASD键移动，空格键跳跃。用鼠标点击放置或移除方块。通过1-9数字键选择不同的方块类型。",
+    "thumbnailUrl": "https://img.crazygames.com/minecraft-classic/20200407153956/minecraft-classic-cover?auto=format,compress&q=75&cs=strip&ch=DPR",
+    "embedUrl": "https://classic.minecraft.net/?gd_sdk_referrer_url=https://mindseye-88s.pages.dev",
+    "slug": "minecraft-classic",
+    "highlights": [
+      "原汁原味的Minecraft创造模式体验",
+      "无限制的创意建造空间",
+      "32种不同类型的方块可供使用",
+      "可与朋友分享你的创作",
+      "经典像素风格画面"
+    ],
+    "category": "沙盒游戏",
+    "tags": ["建造", "创意", "沙盒", "像素风"],
+    "createdAt": "2023-01-03T00:00:00.000Z",
+    "updatedAt": "2023-01-03T00:00:00.000Z"
+  },
+  {
+    "id": "game-4",
+    "title": "Among Us",
+    "description": "Among Us是一款多人社交推理游戏，玩家分为船员和内鬼两个阵营。船员需要完成任务并找出隐藏的内鬼，而内鬼则需要暗中破坏并杀死船员。通过会议系统，玩家们可以讨论并投票驱逐可疑的玩家。",
+    "instructions": "使用键盘WASD或方向键移动角色。点击屏幕上的交互物体完成任务。在紧急会议中讨论并投票。如果你是内鬼，可以使用破坏按钮和击杀按钮。",
+    "thumbnailUrl": "https://img.crazygames.com/among-us/20220719153730/among-us-cover?auto=format,compress&q=75&cs=strip&ch=DPR",
+    "embedUrl": "https://html5.gamedistribution.com/among-us/?gd_sdk_referrer_url=https://mindseye-88s.pages.dev",
+    "slug": "among-us",
+    "highlights": [
+      "刺激的多人社交推理游戏",
+      "支持4-15名玩家同时在线",
+      "需要策略性思考和团队合作",
+      "多种地图和自定义选项",
+      "2020年最受欢迎的游戏之一"
+    ],
+    "category": "多人游戏",
+    "tags": ["策略", "合作", "社交", "推理"],
+    "createdAt": "2023-01-04T00:00:00.000Z",
+    "updatedAt": "2023-01-04T00:00:00.000Z"
+  },
+  {
+    "id": "game-5",
+    "title": "Wordle",
+    "description": "Wordle是一款风靡全球的单词猜谜游戏。每天都有一个新的五字母单词需要猜测，你有六次机会。每次猜测后，游戏会给出颜色提示：绿色表示字母正确且位置正确，黄色表示字母正确但位置错误，灰色表示字母不在目标单词中。",
+    "instructions": "输入一个五字母的单词并按回车提交。根据颜色提示调整你的下一次猜测。绿色表示字母和位置都正确，黄色表示字母正确但位置错误，灰色表示字母不在目标单词中。",
+    "thumbnailUrl": "https://img.crazygames.com/wordle/20230320160732/wordle-cover?auto=format,compress&q=75&cs=strip&ch=DPR",
+    "embedUrl": "https://www.powerlanguage.co.uk/wordle/?gd_sdk_referrer_url=https://mindseye-88s.pages.dev",
+    "slug": "wordle",
+    "highlights": [
+      "每天更新的单词挑战",
+      "简单易上手的游戏规则",
+      "锻炼词汇能力和逻辑推理",
+      "可以分享你的成绩到社交媒体",
+      "全球数百万玩家的日常挑战"
+    ],
+    "category": "文字游戏",
+    "tags": ["单词", "解谜", "逻辑", "休闲"],
+    "createdAt": "2023-01-05T00:00:00.000Z",
+    "updatedAt": "2023-01-05T00:00:00.000Z"
+  },
+  {
+    "id": "game-6",
+    "title": "Car Rush",
+    "description": "Car Rush是一款紧张刺激的交通驾驶游戏。你需要控制一辆汽车在繁忙的道路上穿行，避开其他车辆和障碍物。随着游戏的进行，难度会逐渐增加，测试你的反应速度和驾驶技巧。",
+    "instructions": "使用键盘方向键或屏幕左右两侧控制汽车左右移动。避开其他交通工具，收集路上的金币和能量加成。",
+    "thumbnailUrl": "https://img.crazygames.com/car-rush/20230517150000/car-rush-cover?auto=format,compress&q=75&cs=strip&ch=DPR",
+    "embedUrl": "https://html5.gamedistribution.com/car-rush/?gd_sdk_referrer_url=https://mindseye-88s.pages.dev",
+    "slug": "car-rush",
+    "highlights": [
+      "紧张刺激的交通竞速游戏",
+      "简单的控制方式，适合所有年龄段",
+      "逐渐增加的难度曲线",
+      "多种车辆可以解锁和升级",
+      "精美的3D图形和流畅的游戏体验"
+    ],
+    "category": "竞速游戏",
+    "tags": ["驾驶", "竞速", "反应", "街机"],
+    "createdAt": "2023-01-06T00:00:00.000Z",
+    "updatedAt": "2023-01-06T00:00:00.000Z"
+  },
+  {
+    "id": "game-7",
+    "title": "Cookie Clicker",
+    "description": "Cookie Clicker是一款简单上瘾的放置类游戏。开始时，你只需点击屏幕上的巨大饼干来生产更多饼干。随着饼干数量的增加，你可以购买各种升级和自动生产设施，最终建立一个庞大的饼干帝国。",
+    "instructions": "点击大饼干来制作饼干。使用获得的饼干购买升级和自动生产工具。随着游戏进行，解锁更多高级功能和成就。",
+    "thumbnailUrl": "https://img.crazygames.com/cookie-clicker/20200507143753/cookie-clicker-cover?auto=format,compress&q=75&cs=strip&ch=DPR",
+    "embedUrl": "https://orteil.dashnet.org/cookieclicker/?gd_sdk_referrer_url=https://mindseye-88s.pages.dev",
+    "slug": "cookie-clicker",
+    "highlights": [
+      "简单上瘾的放置类游戏",
+      "数百种不同的升级和成就",
+      "有趣的游戏机制和幽默元素",
+      "可以离线继续生产饼干",
+      "历史悠久且备受玩家喜爱的经典游戏"
+    ],
+    "category": "放置游戏",
+    "tags": ["点击", "放置", "策略", "休闲"],
+    "createdAt": "2023-01-07T00:00:00.000Z",
+    "updatedAt": "2023-01-07T00:00:00.000Z"
+  },
+  {
+    "id": "game-8",
+    "title": "Basketball Stars",
+    "description": "Basketball Stars是一款精彩的篮球体育游戏，你可以体验快节奏的一对一或二对二篮球比赛。游戏拥有简单直观的控制系统，同时提供深度的游戏体验，包括各种特殊投篮和防守动作。",
+    "instructions": "使用WASD或方向键移动角色。按J键投篮，K键防守和抢断。在比赛中积累能量可以释放特殊技能投篮。",
+    "thumbnailUrl": "https://img.crazygames.com/basketball-stars/20230818135856/basketball-stars-cover?auto=format,compress&q=75&cs=strip&ch=DPR",
+    "embedUrl": "https://html5.gamedistribution.com/basketball-stars/?gd_sdk_referrer_url=https://mindseye-88s.pages.dev",
+    "slug": "basketball-stars",
+    "highlights": [
+      "精彩的一对一或二对二篮球比赛",
+      "丰富的角色选择和球场环境",
+      "简单直观的控制系统",
+      "特殊投篮和技能系统",
+      "支持单人和双人对战模式"
+    ],
+    "category": "体育游戏",
+    "tags": ["篮球", "体育", "技巧", "对战"],
+    "createdAt": "2023-01-08T00:00:00.000Z",
+    "updatedAt": "2023-01-08T00:00:00.000Z"
+  },
+  {
+    "id": "game-9",
+    "title": "Tower Defense Master",
+    "description": "Tower Defense Master是一款策略性极强的塔防游戏。你需要在敌人到达终点前，通过合理布置防御塔来阻止他们的进攻。游戏提供多种不同类型的塔，每种都有独特的攻击方式和升级路径，需要你合理规划资源和策略。",
+    "instructions": "点击空地建造防御塔。点击已有的塔可以升级或出售。使用金币来建造和升级防御系统。根据敌人类型调整你的防御策略。",
+    "thumbnailUrl": "https://img.crazygames.com/tower-defense/20230517165631/tower-defense-cover?auto=format,compress&q=75&cs=strip&ch=DPR",
+    "embedUrl": "https://html5.gamedistribution.com/tower-defense/?gd_sdk_referrer_url=https://mindseye-88s.pages.dev",
+    "slug": "tower-defense-master",
+    "highlights": [
+      "深度策略塔防游戏体验",
+      "多种类型的防御塔和敌人",
+      "50多个具有挑战性的关卡",
+      "丰富的升级系统",
+      "需要战略思考和资源管理"
+    ],
+    "category": "策略游戏",
+    "tags": ["塔防", "策略", "管理", "防御"],
+    "createdAt": "2023-01-09T00:00:00.000Z",
+    "updatedAt": "2023-01-09T00:00:00.000Z"
+  },
+  {
+    "id": "game-10",
+    "title": "Fireboy and Watergirl",
+    "description": "Fireboy and Watergirl是一款经典的双人合作解谜游戏。玩家需要同时控制火男孩和水女孩，利用他们各自的特殊能力，在充满陷阱和谜题的神庙中收集宝石并找到出口。火男孩可以通过熔岩但不能碰水，水女孩则相反。",
+    "instructions": "使用箭头键控制火男孩，WASD键控制水女孩。让火男孩远离水，让水女孩远离熔岩。合作收集钻石并到达各自的出口。",
+    "thumbnailUrl": "https://img.crazygames.com/fireboy-and-watergirl-forest-temple/20221202114712/fireboy-and-watergirl-forest-temple-cover?auto=format,compress&q=75&cs=strip&ch=DPR",
+    "embedUrl": "https://html5.gamedistribution.com/fireboy-and-watergirl/?gd_sdk_referrer_url=https://mindseye-88s.pages.dev",
+    "slug": "fireboy-and-watergirl",
+    "highlights": [
+      "经典的双人合作解谜游戏",
+      "对协调能力和团队合作的考验",
+      "40多个精心设计的关卡",
+      "独特的角色能力和互动元素",
+      "适合朋友和家人一起游玩"
+    ],
+    "category": "合作游戏",
+    "tags": ["解谜", "合作", "冒险", "技巧"],
+    "createdAt": "2023-01-10T00:00:00.000Z",
+    "updatedAt": "2023-01-10T00:00:00.000Z"
   }
 ] 

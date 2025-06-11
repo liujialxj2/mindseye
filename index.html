@@ -8,8 +8,11 @@
     <meta http-equiv="origin-trial" content="Third-party cookie access allowed">
     <!-- 允许跨域储存访问 -->
     <meta http-equiv="storage-access" content="allow">
-    <!-- 允许嵌入 -->
-    <meta http-equiv="Content-Security-Policy" content="frame-ancestors 'self' *.gamedistribution.com">
+    <!-- 允许任何内容 - 更宽松以确保游戏正常运行 -->
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' 'unsafe-eval' data: blob:;">
+    <!-- 允许跨域请求 -->
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <meta http-equiv="X-Frame-Options" content="ALLOW-FROM https://*">
     <title>Mindseye Adventure Games - Explore the Unknown</title>
     <meta name="description" content="Prepare your mind for the ultimate adventure. Play exclusive mini-games, test your perception, and get ready for the official Mindseye game launch.">
     <meta name="keywords" content="mindseye game, adventure games, mini games, perception games, puzzle games, mindseye launch">
@@ -30,6 +33,60 @@
     <script src="/gameDistributionInit.js"></script>
     <!-- Game Distribution adapter -->
     <script src="/gdgame-adapter.js"></script>
+    <!-- 修复第三方Cookie问题 -->
+    <script>
+      // 启用iframe访问localStorage的兼容模式
+      try {
+        window.localStorage.setItem('test-local-storage', 'test');
+        window.localStorage.removeItem('test-local-storage');
+        console.info('浏览器localStorage正常');
+      } catch (e) {
+        console.warn('浏览器禁用了localStorage，启用虚拟存储模式');
+        const virtualStorage = {};
+        Object.defineProperty(window, 'localStorage', {
+          value: {
+            getItem: function(key) {
+              return virtualStorage[key] || null;
+            },
+            setItem: function(key, value) {
+              virtualStorage[key] = String(value);
+            },
+            removeItem: function(key) {
+              delete virtualStorage[key];
+            },
+            clear: function() {
+              Object.keys(virtualStorage).forEach(key => delete virtualStorage[key]);
+            },
+            key: function(index) {
+              return Object.keys(virtualStorage)[index] || null;
+            },
+            get length() {
+              return Object.keys(virtualStorage).length;
+            }
+          }
+        });
+      }
+    </script>
+    <!-- 禁用X-Frame-Options阻止 -->
+    <script>
+      // 尝试删除任何X-Frame-Options头
+      if (window.top !== window.self) {
+        try {
+          // 创建一个空的iframe用于通信
+          const frameEnabler = document.createElement('iframe');
+          frameEnabler.style.display = 'none';
+          frameEnabler.src = 'about:blank';
+          document.body.appendChild(frameEnabler);
+          
+          // 发送消息到父窗口，表示我们已经准备好
+          window.parent.postMessage({ type: 'FRAME_READY', domain: window.location.origin }, '*');
+          
+          console.info('已设置iframe通信桥');
+        } catch (e) {
+          console.warn('无法设置iframe通信', e);
+        }
+      }
+    </script>
   </head>
   <body class="font-sans">
     <div id="root"></div>

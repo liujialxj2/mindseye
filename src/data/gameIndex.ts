@@ -68,4 +68,4 @@ export function searchGames(query: string): Game[] {
 }
 
 // 游戏数据生成时间
-export const lastUpdated = '2025-06-10T15:14:04.044Z';
+export const lastUpdated = '2025-06-10T15:36:39.976Z';

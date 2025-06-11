@@ -1,7 +1,7 @@
 include:
   - _headers
   - _redirects
-
+ 
 build:
   command: npm run build
   environment:

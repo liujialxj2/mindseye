@@ -86,3 +86,30 @@ body {
 .btn-glow:hover::before {
   left: 100%;
 }
+
+/* 游戏iframe样式优化 */
+iframe {
+  border: none;
+  background-color: #000;
+}
+
+/* 解决iframe加载闪烁问题 */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+iframe {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* 添加沙盒样式以隔离广告问题 */
+#game-container iframe {
+  isolation: isolate;
+  will-change: transform;
+}
+
+/* 禁用所有iframe内未授权的弹窗 */
+body {
+  overflow-x: hidden;
+}

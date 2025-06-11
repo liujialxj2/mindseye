@@ -1,9 +1,72 @@
 [
   {
-    "path": "/games/sample-game",
+    "path": "/games/2048",
     "component": "GameDetail",
     "props": {
       "gameId": "game-1"
+    }
+  },
+  {
+    "path": "/games/slope",
+    "component": "GameDetail",
+    "props": {
+      "gameId": "game-2"
+    }
+  },
+  {
+    "path": "/games/minecraft-classic",
+    "component": "GameDetail",
+    "props": {
+      "gameId": "game-3"
+    }
+  },
+  {
+    "path": "/games/among-us",
+    "component": "GameDetail",
+    "props": {
+      "gameId": "game-4"
+    }
+  },
+  {
+    "path": "/games/wordle",
+    "component": "GameDetail",
+    "props": {
+      "gameId": "game-5"
+    }
+  },
+  {
+    "path": "/games/car-rush",
+    "component": "GameDetail",
+    "props": {
+      "gameId": "game-6"
+    }
+  },
+  {
+    "path": "/games/cookie-clicker",
+    "component": "GameDetail",
+    "props": {
+      "gameId": "game-7"
+    }
+  },
+  {
+    "path": "/games/basketball-stars",
+    "component": "GameDetail",
+    "props": {
+      "gameId": "game-8"
+    }
+  },
+  {
+    "path": "/games/tower-defense-master",
+    "component": "GameDetail",
+    "props": {
+      "gameId": "game-9"
+    }
+  },
+  {
+    "path": "/games/fireboy-and-watergirl",
+    "component": "GameDetail",
+    "props": {
+      "gameId": "game-10"
     }
   }
 ]

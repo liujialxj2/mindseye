@@ -1,6 +1,14 @@
 /*
-  X-Frame-Options: DENY
+  X-Frame-Options: SAMEORIGIN
+  X-XSS-Protection: 1; mode=block
   X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: interest-cohort=()
+  Content-Security-Policy: frame-ancestors 'self' https://*.gamedistribution.com https://*.crazygames.com https://classic.minecraft.net https://www.powerlanguage.co.uk https://orteil.dashnet.org;
+
+# Specific headers for game pages
+/games/*
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.gamedistribution.com https://*.googletagmanager.com https://*.google-analytics.com https://*.gstatic.com https://*.googleapis.com; frame-src 'self' data: https://*.gamedistribution.com https://*.crazygames.com https://classic.minecraft.net https://www.powerlanguage.co.uk https://orteil.dashnet.org; img-src 'self' data: blob: https://*.crazygames.com https://*.gamedistribution.com https://*.googletagmanager.com https://*.google-analytics.com https://*.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self' https://*.gamedistribution.com https://*.crazygames.com https://*.googletagmanager.com https://*.google-analytics.com https://*.doubleclick.net https://*.googleapis.com; worker-src 'self' blob:;
 
 /*.js
   Content-Type: application/javascript
