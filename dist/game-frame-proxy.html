@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game Loader</title>
+  <script src="/game-compatibility.js"></script>
+  <!-- HTTP headers are more reliable for CSP than meta tags -->
+  <!-- X-Frame-Options and frame-ancestors will be set via server headers -->
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+  </style>
+</head>
+<body>
+  <iframe 
+    id="game-frame" 
+    allowfullscreen 
+    allow="fullscreen; accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-pointer-lock allow-downloads"
+  ></iframe>
+
+  <script>
+    // Get game URL from URL parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    const gameUrl = urlParams.get('game');
+    
+    // If there's a game URL, load it
+    if (gameUrl) {
+      const iframe = document.getElementById('game-frame');
+      iframe.src = decodeURIComponent(gameUrl);
+      
+      // Add event listener to communicate with parent page
+      window.addEventListener('message', (event) => {
+        // Verify message origin
+        if (event.origin !== window.location.origin) return;
+        
+        // Handle fullscreen request
+        if (event.data === 'requestFullscreen') {
+          if (iframe.requestFullscreen) {
+            iframe.requestFullscreen();
+          } else if (iframe.mozRequestFullScreen) {
+            iframe.mozRequestFullScreen();
+          } else if (iframe.webkitRequestFullscreen) {
+            iframe.webkitRequestFullscreen();
+          } else if (iframe.msRequestFullscreen) {
+            iframe.msRequestFullscreen();
+          }
+        }
+        
+        // Handle localStorage operations
+        if (event.data && event.data.type === 'localStorage') {
+          try {
+            switch (event.data.action) {
+              case 'getItem':
+                const value = localStorage.getItem(event.data.key);
+                iframe.contentWindow.postMessage({
+                  type: 'localStorage',
+                  action: 'returnValue',
+                  key: event.data.key,
+                  value: value
+                }, '*');
+                break;
+                
+              case 'setItem':
+                localStorage.setItem(event.data.key, event.data.value);
+                break;
+                
+              case 'removeItem':
+                localStorage.removeItem(event.data.key);
+                break;
+                
+              case 'clear':
+                localStorage.clear();
+                break;
+            }
+          } catch (e) {
+            console.error('localStorage operation failed:', e);
+          }
+        }
+      });
+      
+      // Forward proxy page localStorage events to game iframe
+      window.addEventListener('storage', (e) => {
+        if (iframe.contentWindow) {
+          iframe.contentWindow.postMessage({
+            type: 'localStorage',
+            action: 'storageEvent',
+            key: e.key,
+            oldValue: e.oldValue,
+            newValue: e.newValue,
+            url: e.url
+          }, '*');
+        }
+      });
+    } else {
+      document.body.innerHTML = '<p>Error: No game URL provided</p>';
+    }
+  </script>
+</body>
+</html> 
