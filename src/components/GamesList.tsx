@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Game } from '../types/game';
 import GameCard from './GameCard';
-import gamesJson from '../data/games.json';
-import { setGamesData, getAllGames } from '../utils/gameDataFetcher';
+import { getAllGames } from '../utils/gameDataFetcher';
 import { Search } from 'lucide-react';
 
 const GamesList: React.FC = () => {
@@ -11,36 +10,35 @@ const GamesList: React.FC = () => {
   const [categories, setCategories] = useState<string[]>(['all']);
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [visibleGamesCount, setVisibleGamesCount] = useState<number>(12); // 初始显示12个游戏
+  const [filteredGames, setFilteredGames] = useState<Game[]>([]);
   
   // 初始化游戏数据
   useEffect(() => {
-    // 从JSON文件加载数据
-    const loadedGames = gamesJson.games as Game[];
-    
-    // 设置全局游戏数据
-    setGamesData(loadedGames);
-    
-    // 获取所有游戏数据
+    // 从全局状态获取数据
+    const loadedGames = getAllGames();
     setGames(loadedGames);
     
     // 提取所有分类
     const allCategories = ['all', ...Array.from(new Set(loadedGames.map(game => game.category))).sort()];
     setCategories(allCategories);
     
-    console.log(`已加载 ${loadedGames.length} 个游戏`);
+    console.log(`GamesList: 获取到 ${loadedGames.length} 个游戏`);
   }, []);
   
-  // 处理搜索和分类过滤
-  const filteredGames = games
-    .filter(game => 
+  // 当过滤条件改变时，重新计算过滤后的游戏列表
+  useEffect(() => {
+    const filtered = games.filter(game => 
       // 分类过滤
       (activeCategory === 'all' || game.category === activeCategory) &&
       // 搜索过滤
       (searchQuery === '' || 
         game.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         game.description.toLowerCase().includes(searchQuery.toLowerCase()))
-    )
-    .slice(0, visibleGamesCount); // 限制显示数量
+    );
+    
+    setFilteredGames(filtered);
+    console.log(`GamesList: 过滤后有 ${filtered.length} 个游戏`);
+  }, [games, activeCategory, searchQuery]);
   
   // 处理游戏点击事件
   const handleGameClick = (gameId: string) => {
@@ -49,8 +47,12 @@ const GamesList: React.FC = () => {
   
   // 加载更多游戏
   const handleLoadMore = () => {
+    console.log(`加载更多游戏: ${visibleGamesCount} -> ${visibleGamesCount + 12}`);
     setVisibleGamesCount(prevCount => prevCount + 12);
   };
+  
+  // 显示的游戏列表
+  const visibleGames = filteredGames.slice(0, visibleGamesCount);
   
   return (
     <section id="games" className="py-16 bg-gray-900 relative">
@@ -101,13 +103,13 @@ const GamesList: React.FC = () => {
         
         {/* 游戏数量统计 */}
         <div className="text-sm text-gray-400 mb-4">
-          Showing {filteredGames.length} {activeCategory !== 'all' ? activeCategory + ' ' : ''}games
+          Showing {visibleGames.length} of {filteredGames.length} {activeCategory !== 'all' ? activeCategory + ' ' : ''}games
           {searchQuery ? ` (search: "${searchQuery}")` : ''}
         </div>
         
         {/* 游戏卡片网格 */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
-          {filteredGames.map((game) => (
+          {visibleGames.map((game) => (
             <GameCard 
               key={game.id} 
               game={game} 
@@ -129,7 +131,7 @@ const GamesList: React.FC = () => {
               onClick={handleLoadMore}
               className="bg-blue-700 hover:bg-blue-600 text-white font-medium py-3 px-6 rounded-lg transition duration-200 ease-in-out"
             >
-              Load More Games
+              Load More Games ({filteredGames.length - visibleGamesCount} more)
             </button>
           </div>
         )}

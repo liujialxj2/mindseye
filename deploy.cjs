@@ -59,7 +59,9 @@ async function deploy() {
       'gameDistributionInit.js',
       'gdgame-adapter.js',
       'gd-style-fix.css',
-      'gd-domain-bridge.js'
+      'gd-domain-bridge.js',
+      'game-compatibility.js',
+      'game-frame-proxy.html'
     ];
     
     publicFiles.forEach(file => {
@@ -73,6 +75,19 @@ async function deploy() {
         log(`    ! 未找到 ${file}`, colors.yellow);
       }
     });
+    
+    // 3.2 复制游戏数据文件
+    log('  - 复制游戏数据文件...', colors.cyan);
+    const dataDir = path.join('dist', 'src', 'data');
+    if (!fs.existsSync(dataDir)) {
+      fs.mkdirSync(dataDir, { recursive: true });
+    }
+    if (fs.existsSync('src/data/games.json')) {
+      fs.copyFileSync('src/data/games.json', path.join(dataDir, 'games.json'));
+      log(`    ✓ 复制了 games.json 数据文件`, colors.green);
+    } else {
+      log(`    ! 未找到 games.json 数据文件`, colors.yellow);
+    }
     
     // 4. 部署到Cloudflare Pages
     log('\n🚀 第4步：部署到Cloudflare Pages...', colors.bright + colors.blue);
