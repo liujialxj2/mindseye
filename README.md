@@ -21,6 +21,13 @@ This is the official website project for Mindseye game, showcasing game features
 - **Deployment Platform**: Cloudflare Pages
 - **Game Integration**: GameDistribution SDK
 
+## Recent Updates
+
+- **UI Improvements**: Fixed game card display issues to ensure proper text rendering and button alignment
+- **Language Support**: Converted all content from Chinese to English for international audience
+- **Deployment Configuration**: Added proper build command configuration in wrangler.toml for Cloudflare Pages
+- **SEO Optimization**: Added sitemap and robots.txt for better search engine indexing
+
 ## Page Structure
 
 ### Home Page
@@ -108,140 +115,43 @@ mindseye/
 - Optimized loading of CSS and JavaScript
 - Cross-origin resource sharing solutions
 
+## Deployment Configuration
+
+### Cloudflare Pages Setup
+
+The website is deployed using Cloudflare Pages with the following configuration in `wrangler.toml`:
+
+```toml
+# Cloudflare Pages configuration
+name = "mindseye"
+compatibility_date = "2025-06-08"
+pages_build_output_dir = "dist" 
+
+# Build configuration
+[build]
+command = "npm run build"
+```
+
+### Deployment Process
+
+1. Build the project locally: `npm run build`
+2. Commit the updated `dist` directory to the repository
+3. Push changes to GitHub
+4. Cloudflare automatically detects changes and deploys the website
+
+Alternatively, you can configure Cloudflare Pages to build the project automatically:
+1. In the Cloudflare Pages dashboard, set the build command to `npm run build`
+2. Set the build output directory to `dist`
+3. Push changes to GitHub without building locally
+
+### Troubleshooting Deployment Issues
+
+If the deployed website doesn't match your local development version:
+1. Check if the build command is properly configured in Cloudflare Pages
+2. Ensure the `dist` directory contains the latest build files
+3. Verify that all necessary assets are included in the build
+4. Check the deployment logs for any errors
+
 ## Game Data Structure
 
-Game data is stored in the `src/data/games.json` file, with each game object containing the following fields:
-
-```json
-{
-  "id": "Unique game ID",
-  "title": "Game title",
-  "description": "Game description",
-  "thumbnailUrl": "Thumbnail URL",
-  "iframeUrl": "Game iframe embedding URL",
-  "controls": "Game control instructions",
-  "highlights": ["Game highlight 1", "Game highlight 2", "Game highlight 3"],
-  "category": "Game category",
-  "tags": ["Tag 1", "Tag 2", "Tag 3"]
-}
-```
-
-## GameDistribution Integration
-
-This website integrates HTML5 games from the GameDistribution platform, with the main implementation including:
-
-### Game Embedding
-- Securely embedding third-party games via iframe
-- Support for fullscreen mode and responsive layout
-- Providing game control guides
-
-### API Integration
-- Using GameDistribution SDK for game initialization and loading
-- Handling game events and state management
-- Solving cross-domain and security restriction issues
-
-### Cross-Domain Solutions
-- Implementing domain bridge script
-- Virtual localStorage for cross-domain storage
-- Handling third-party cookie restrictions
-
-## Development Guide
-
-### Local Development
-
-```bash
-# Install dependencies
-npm install
-
-# Start development server
-npm run dev
-
-# Build project
-npm run build
-
-# Preview build result
-npm run preview
-```
-
-### Adding New Games
-
-1. Add new game data in the `src/data/games.json` file
-2. Ensure all necessary fields are provided: id, title, description, thumbnailUrl, iframeUrl, controls, highlights, category, and tags
-3. If you need to add game screenshots, place them in the `public/images/screenshots/` directory
-4. Rebuild and deploy the project
-
-### Deployment Steps
-
-1. Build the project using Vite: `npm run build`
-2. Run the deployment script: `node deploy.cjs` or `npx wrangler pages deploy dist`
-
-## Browser Compatibility
-
-- Latest Chrome version
-- Latest Firefox version
-- Latest Safari version
-- Latest Edge version
-- Mobile device browsers: iOS Safari, Android Chrome
-
-## Design Philosophy
-
-- **Simplicity**: Minimalist interface design, highlighting game content
-- **Modern**: Stylish visual elements and effects
-- **Intuitive**: Easy-to-understand navigation and operation
-- **Immersive**: Dark theme providing an immersive gaming experience
-- **Adaptability**: Optimized for different devices and screen sizes
-
-## Future Plans
-
-- Add user account system
-- Game rating and comment functionality
-- More game categories and tags
-- Game collection and history
-- Achievement system and leaderboards
-
-## SEO Optimization
-
-- Optimized meta tags for better search engine visibility
-- Structured data for rich search results
-- Performance optimization for better page speed scores
-- Mobile-friendly responsive design
-- Keyword optimization based on search volume data:
-  - Primary keywords: mindseye game, adventure games, puzzle games
-  - Secondary keywords: mindseye release date, mindseye gameplay, perception games
-  - Long-tail keywords: mindseye open world, mindseye app, mindseye steam
-
-## Common Issues and Solutions
-
-### Game Loading Issues
-
-**Issue**: Some games show white screen or fail to load.
-
-**Solution**:
-1. Check if third-party cookies are enabled in the browser
-2. Try using a different browser
-3. Ensure network connection is stable
-
-### Game Control Issues
-
-**Issue**: Game controls not responding or behaving abnormally.
-
-**Solution**:
-1. Check the control instructions on the game detail page
-2. On desktop devices, ensure keyboard and mouse are working properly
-3. On mobile devices, ensure touchscreen is clean and responsive
-
-### Slow Page Loading
-
-**Issue**: Website loads slowly.
-
-**Solution**:
-1. Check network connection
-2. Clear browser cache
-3. Close other applications using bandwidth
-
-## Contact and Support
-
-If you have any questions or suggestions, please contact us through:
-- Email: support@mindseye-game.com
-- Official Website: https://mindseye-game.com
-- Social Media: @mindseyegame
+Game data is stored in the `
