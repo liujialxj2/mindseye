@@ -1,21 +1,15 @@
 import React from 'react';
-import { 
-  Twitter, 
-  Facebook, 
-  Instagram, 
-  Youtube, 
-  Mail,
-  MapPin,
-  Phone
-} from 'lucide-react';
+import { Github, Twitter, Mail, Globe } from 'lucide-react';
 
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
+  
   return (
-    <footer className="bg-black border-t border-blue-500/20">
+    <footer className="bg-gray-900 border-t border-blue-900/30">
       <div className="container mx-auto px-4 py-12">
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {/* Brand Section */}
-          <div className="lg:col-span-1">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          {/* Logo and description */}
+          <div className="col-span-1 md:col-span-2">
             <div className="flex items-center space-x-3 mb-4">
               <img 
                 src="/images/logo.webp" 
@@ -24,70 +18,59 @@ const Footer = () => {
               />
               <span className="text-2xl font-bold text-white">MINDSEYE</span>
             </div>
-            <p className="text-gray-400 mb-6 leading-relaxed">
-              Prepare your mind for the ultimate adventure. Experience the future of gaming with Mindseye.
+            <p className="text-gray-400 mb-4">
+              Explore the world of Mindseye. Challenge your perception with our innovative games and prepare for the ultimate gaming experience.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">
+              <a href="https://github.com/mindseye-game" className="text-gray-400 hover:text-blue-400 transition-colors">
+                <Github className="w-5 h-5" />
+              </a>
+              <a href="https://twitter.com/mindseyegame" className="text-gray-400 hover:text-blue-400 transition-colors">
                 <Twitter className="w-5 h-5" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">
-                <Facebook className="w-5 h-5" />
+              <a href="mailto:contact@mindseye-game.com" className="text-gray-400 hover:text-blue-400 transition-colors">
+                <Mail className="w-5 h-5" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">
-                <Instagram className="w-5 h-5" />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">
-                <Youtube className="w-5 h-5" />
+              <a href="https://mindseye-game.com" className="text-gray-400 hover:text-blue-400 transition-colors">
+                <Globe className="w-5 h-5" />
               </a>
             </div>
           </div>
-
-          {/* Quick Links */}
-          <div>
-            <h3 className="text-white font-semibold mb-4">Quick Links</h3>
+          
+          {/* Quick links */}
+          <div className="col-span-1">
+            <h3 className="text-white font-bold mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li><a href="#home" className="text-gray-400 hover:text-blue-400 transition-colors">Home</a></li>
               <li><a href="#games" className="text-gray-400 hover:text-blue-400 transition-colors">Games</a></li>
               <li><a href="#about" className="text-gray-400 hover:text-blue-400 transition-colors">About</a></li>
-              <li><a href="#community" className="text-gray-400 hover:text-blue-400 transition-colors">Community</a></li>
               <li><a href="#faq" className="text-gray-400 hover:text-blue-400 transition-colors">FAQ</a></li>
+              <li><a href="https://mindseye-game.com/blog" className="text-gray-400 hover:text-blue-400 transition-colors">Blog</a></li>
             </ul>
           </div>
-
-          {/* Support */}
-          <div>
-            <h3 className="text-white font-semibold mb-4">Support</h3>
+          
+          {/* Categories */}
+          <div className="col-span-1">
+            <h3 className="text-white font-bold mb-4">Categories</h3>
             <ul className="space-y-2">
-              <li><a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">Help Center</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">Bug Reports</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">Feature Requests</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">Privacy Policy</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">Terms of Service</a></li>
+              <li><a href="#action" className="text-gray-400 hover:text-blue-400 transition-colors">Action</a></li>
+              <li><a href="#adventure" className="text-gray-400 hover:text-blue-400 transition-colors">Adventure</a></li>
+              <li><a href="#puzzle" className="text-gray-400 hover:text-blue-400 transition-colors">Puzzle</a></li>
+              <li><a href="#strategy" className="text-gray-400 hover:text-blue-400 transition-colors">Strategy</a></li>
+              <li><a href="#casual" className="text-gray-400 hover:text-blue-400 transition-colors">Casual</a></li>
             </ul>
           </div>
         </div>
-
-        {/* Contact Info */}
-        <div className="border-t border-gray-800 mt-12 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-6 text-sm text-gray-400">
-              <div className="flex items-center space-x-2">
-                <Mail className="w-4 h-4" />
-                <span>contact@mindseye-games.com</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Phone className="w-4 h-4" />
-                <span>+1 (555) 123-4567</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <MapPin className="w-4 h-4" />
-                <span>San Francisco, CA</span>
-              </div>
-            </div>
-            <div className="text-gray-400 text-sm">
-              © 2024 Mindseye Games. All rights reserved.
-            </div>
+        
+        {/* Copyright */}
+        <div className="border-t border-gray-800 mt-8 pt-8 text-center">
+          <p className="text-gray-500">
+            &copy; {currentYear} Mindseye Game. All rights reserved.
+          </p>
+          <div className="flex justify-center space-x-4 mt-4">
+            <a href="/privacy" className="text-gray-500 hover:text-blue-400 transition-colors text-sm">Privacy Policy</a>
+            <a href="/terms" className="text-gray-500 hover:text-blue-400 transition-colors text-sm">Terms of Service</a>
+            <a href="/contact" className="text-gray-500 hover:text-blue-400 transition-colors text-sm">Contact</a>
           </div>
         </div>
       </div>

@@ -97,19 +97,19 @@ const GameDetail: React.FC<GameDetailProps> = ({ gameId, onBack }) => {
     );
   }
 
-  // 处理游戏加载事件
+  // Handle game load event
   const handleGameLoad = () => {
     console.log("Game loaded successfully");
   };
 
-  // 处理游戏错误事件
+  // Handle game error event
   const handleGameError = (error: string) => {
     console.error("Game loading error:", error);
   };
 
   return (
     <div className="container mx-auto px-4 py-6 max-w-6xl">
-      {/* 返回按钮 */}
+      {/* Back button */}
       <div className="mb-6">
         <Link
           to="/"
@@ -169,8 +169,8 @@ const GameDetail: React.FC<GameDetailProps> = ({ gameId, onBack }) => {
                   >
                     <Play className="w-12 h-12 text-white" />
                   </div>
-                  <h4 className="text-xl font-bold text-white mb-2">准备好了吗?</h4>
-                  <p className="text-gray-400">点击开始按钮开始游戏</p>
+                  <h4 className="text-xl font-bold text-white mb-2">Ready to play?</h4>
+                  <p className="text-gray-400">Click the play button to start the game</p>
                 </div>
               </div>
             )}

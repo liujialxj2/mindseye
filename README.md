@@ -1,161 +1,247 @@
-# Mindseye游戏官方网站
+# Mindseye Game Official Website
 
-这是Mindseye游戏的官方网站项目，展示游戏功能和迷你游戏体验。
+This is the official website project for Mindseye game, showcasing game features and mini-game experiences. The website provides various mini-games for users to enjoy while waiting for the official game release.
 
-## 项目概述
+## Project Overview
 
-- **项目名称**: Mindseye游戏官方网站
-- **部署URL**: https://mindseye-88s.pages.dev/
-- **GitHub仓库**: https://github.com/liujialxj2/mindseye
+- **Project Name**: Mindseye Game Official Website
+- **Deployment URL**: https://mindseye-88s.pages.dev/
+- **Main Features**: 
+  - Showcase Mindseye brand
+  - Provide multiple mini-game experiences
+  - Game categorization and search
+  - Responsive design, supporting multiple devices
 
-## 技术栈
+## Technology Stack
 
-- React + TypeScript
-- Vite构建工具
-- Tailwind CSS框架
-- Cloudflare Pages部署
+- **Frontend Framework**: React 18 + TypeScript
+- **Build Tool**: Vite
+- **Styling Framework**: Tailwind CSS
+- **Routing Management**: React Router
+- **Deployment Platform**: Cloudflare Pages
+- **Game Integration**: GameDistribution SDK
 
-## 项目特点
+## Page Structure
 
-- **响应式设计** - 适配各种设备尺寸的流畅用户体验
-- **游戏集成** - 与GameDistribution平台整合的在线游戏体验
-- **交互式UI** - 动态导航、图片轮播和模态框等用户界面元素
-- **优化的性能** - 快速加载和平滑的页面过渡
-- **无障碍设计** - 符合现代网页可访问性标准
+### Home Page
+- Top navigation bar (Header component)
+- Hero area (Hero component) - Showcases game brand and main information
+- Game list area (GamesList component) - Displays playable mini-games
+- Feature introduction (Features component) - Showcases main features of the website and games
+- User reviews (Testimonials component) - Displays user feedback
+- Frequently asked questions (FAQ component) - Answers questions users might have
+- Footer information (Footer component) - Contains contact information and copyright
 
-## 项目结构
+### Game Detail Page
+- Game information display (GameDetail component) - Shows game title, description, and control instructions
+- Game frame (GameDistributionFrame component) - Embeds and runs the game
+- Return button - Allows users to return to the home page
+
+## Project Structure
 
 ```
 mindseye/
-├── public/             # 静态资源目录
-│   ├── images/         # 图片资源
-│   │   ├── screenshots/  # 游戏截图
-│   │   ├── games/        # 迷你游戏图片
-│   │   └── logo.webp     # 网站标志
-│   ├── gameDistributionInit.js  # GameDistribution SDK初始化
-│   ├── gdgame-adapter.js        # 游戏平台适配器
-│   ├── gd-style-fix.css         # 游戏样式修复
-│   └── gd-domain-bridge.js      # 域名桥接脚本
-├── src/                # 源代码目录
-│   ├── components/     # React组件
-│   ├── App.tsx         # 主应用组件
-│   └── main.tsx        # 入口文件
-├── dist/               # 构建输出目录
-├── _redirects          # Cloudflare重定向规则
-├── deploy.cjs          # 部署辅助脚本
-├── wrangler.toml       # Cloudflare Wrangler配置
-└── package.json        # 项目依赖配置
+├── public/             # Static resource directory
+│   ├── images/         # Image resources
+│   │   ├── screenshots/  # Game screenshots
+│   │   ├── games/        # Mini-game images
+│   │   └── logo.webp     # Website logo
+│   ├── gameDistributionInit.js  # GameDistribution SDK initialization
+│   ├── gdgame-adapter.js        # Game platform adapter
+│   ├── gd-style-fix.css         # Game style fixes
+│   ├── gd-domain-bridge.js      # Domain bridge script
+│   └── game-compatibility.js    # Game compatibility handling
+├── src/                # Source code directory
+│   ├── components/     # React components
+│   │   ├── Header.tsx        # Website header navigation component
+│   │   ├── Hero.tsx         # Homepage hero area component
+│   │   ├── GamesList.tsx    # Game list component
+│   │   ├── GameCard.tsx     # Single game card component
+│   │   ├── GameDetail.tsx   # Game detail component
+│   │   ├── GameDistributionFrame.tsx # Game embedding frame component
+│   │   ├── Features.tsx     # Feature showcase component
+│   │   ├── Testimonials.tsx # User reviews component
+│   │   ├── FAQ.tsx          # FAQ component
+│   │   └── Footer.tsx       # Footer component
+│   ├── pages/          # Page components
+│   │   ├── HomePage.tsx     # Home page component
+│   │   └── GamePage.tsx     # Game detail page component
+│   ├── data/           # Data files
+│   │   └── games.json       # Game data file
+│   ├── utils/          # Utility tools
+│   ├── types/          # TypeScript type definitions
+│   ├── App.tsx         # Main application component
+│   ├── main.tsx        # Entry file
+│   └── index.css       # Global styles
+├── dist/               # Build output directory
+├── _redirects          # Cloudflare redirect rules
+├── _headers            # Cloudflare response header configuration
+├── wrangler.toml       # Cloudflare Wrangler configuration
+├── deploy.cjs          # Deployment helper script
+├── vite.config.ts      # Vite configuration file
+├── tailwind.config.js  # Tailwind configuration file
+└── package.json        # Project dependency configuration
 ```
 
-## 部署配置
+## Features
 
-### Cloudflare Pages配置
+### Responsive Design
+- Adaptive layout, perfectly supporting desktop, tablet, and mobile devices
+- User interface elements optimized for different screen sizes
+- Mobile-friendly interaction methods
 
-项目使用Cloudflare Pages进行部署，配置如下：
+### Game Integration
+- Seamless integration with GameDistribution platform
+- Support for various types of HTML5 games
+- Game control guides and category display
+- Game search and filtering functionality
 
-1. **_redirects文件**: 配置SPA应用程序的路由重定向规则
-2. **wrangler.toml**: Cloudflare Wrangler配置文件，指定构建输出目录和自定义页面规则
-3. **.cloudflare/pages.json**: Cloudflare Pages配置文件，包含构建设置、响应头和重定向规则
+### User Experience
+- Fast-loading page design
+- Clear and intuitive navigation system
+- Smooth page transition animations
+- Dark theme, providing good contrast for game content
 
-### 构建与部署流程
+### Performance Optimization
+- Resource preloading strategy
+- Image lazy loading
+- Optimized loading of CSS and JavaScript
+- Cross-origin resource sharing solutions
 
-1. 使用Vite构建项目: `npm run build`
-2. 部署到Cloudflare Pages: `node deploy.cjs` 或 `npx wrangler pages deploy dist`
+## Game Data Structure
 
-## GameDistribution集成
+Game data is stored in the `src/data/games.json` file, with each game object containing the following fields:
 
-本网站集成了GameDistribution平台的HTML5游戏，主要实现包括：
+```json
+{
+  "id": "Unique game ID",
+  "title": "Game title",
+  "description": "Game description",
+  "thumbnailUrl": "Thumbnail URL",
+  "iframeUrl": "Game iframe embedding URL",
+  "controls": "Game control instructions",
+  "highlights": ["Game highlight 1", "Game highlight 2", "Game highlight 3"],
+  "category": "Game category",
+  "tags": ["Tag 1", "Tag 2", "Tag 3"]
+}
+```
 
-### 游戏嵌入
+## GameDistribution Integration
 
-- 通过iframe安全嵌入第三方游戏
-- 支持全屏模式和响应式布局
-- 实现游戏指令和控制说明
+This website integrates HTML5 games from the GameDistribution platform, with the main implementation including:
 
-### API集成
+### Game Embedding
+- Securely embedding third-party games via iframe
+- Support for fullscreen mode and responsive layout
+- Providing game control guides
 
-- 使用GameDistribution SDK进行游戏初始化和加载
-- 处理游戏事件和状态管理
-- 解决跨域和安全限制问题
+### API Integration
+- Using GameDistribution SDK for game initialization and loading
+- Handling game events and state management
+- Solving cross-domain and security restriction issues
 
-### 性能优化
+### Cross-Domain Solutions
+- Implementing domain bridge script
+- Virtual localStorage for cross-domain storage
+- Handling third-party cookie restrictions
 
-- 延迟加载游戏资源
-- 虚拟localStorage实现跨域存储
-- CSS样式修复确保一致的视觉体验
+## Development Guide
 
-## 常见问题与解决方案
-
-### MIME类型错误
-
-**问题**: 浏览器无法正确加载图片，显示MIME类型错误。
-
-**解决方案**:
-1. 在`.cloudflare/pages.json`中为图片文件添加MIME类型配置
-2. 确保wrangler.toml正确配置
-
-### 资源路径问题
-
-**问题**: 构建后资源引用路径不正确。
-
-**解决方案**:
-1. 修改`index.html`中的资源引用路径，使用正确的相对路径
-2. 确保静态资源正确放置在public目录中
-
-### 游戏嵌入问题
-
-**问题**: GameDistribution游戏无法正常加载或显示。
-
-**解决方案**:
-1. 检查iframe的sandbox属性设置
-2. 确保URL包含正确的`gd_sdk_referrer_url`参数
-3. 在GameDistribution平台注册您的域名
-
-## 开发指南
-
-### 本地开发
+### Local Development
 
 ```bash
-# 安装依赖
+# Install dependencies
 npm install
 
-# 启动开发服务器
+# Start development server
 npm run dev
 
-# 构建项目
+# Build project
 npm run build
 
-# 预览构建结果
+# Preview build result
 npm run preview
-
-# 部署到Cloudflare Pages
-node deploy.cjs
 ```
 
-### 部署更新
+### Adding New Games
 
-1. 提交代码到GitHub仓库
-2. 使用部署脚本手动部署: `node deploy.cjs`
-3. 或者，Cloudflare Pages可以从您的GitHub仓库自动部署
+1. Add new game data in the `src/data/games.json` file
+2. Ensure all necessary fields are provided: id, title, description, thumbnailUrl, iframeUrl, controls, highlights, category, and tags
+3. If you need to add game screenshots, place them in the `public/images/screenshots/` directory
+4. Rebuild and deploy the project
 
-### 手动部署步骤
+### Deployment Steps
 
-如果您喜欢手动部署：
+1. Build the project using Vite: `npm run build`
+2. Run the deployment script: `node deploy.cjs` or `npx wrangler pages deploy dist`
 
-1. 安装Wrangler CLI: `npm install -g wrangler`
-2. 登录Cloudflare: `wrangler login`
-3. 部署: `npx wrangler pages deploy dist`
+## Browser Compatibility
 
-## 最新更新
+- Latest Chrome version
+- Latest Firefox version
+- Latest Safari version
+- Latest Edge version
+- Mobile device browsers: iOS Safari, Android Chrome
 
-### 2025年6月更新
-- 修复Official Site链接点击问题
-- 改进GameDistribution游戏集成
-- 添加游戏说明和控制指南
-- 优化移动设备上的用户体验
+## Design Philosophy
 
-### 2025年5月更新
-- 初始项目设置和基础功能实现
-- 添加主页和游戏展示组件
-- 集成GameDistribution SDK
-- 配置Cloudflare Pages部署
+- **Simplicity**: Minimalist interface design, highlighting game content
+- **Modern**: Stylish visual elements and effects
+- **Intuitive**: Easy-to-understand navigation and operation
+- **Immersive**: Dark theme providing an immersive gaming experience
+- **Adaptability**: Optimized for different devices and screen sizes
+
+## Future Plans
+
+- Add user account system
+- Game rating and comment functionality
+- More game categories and tags
+- Game collection and history
+- Achievement system and leaderboards
+
+## SEO Optimization
+
+- Optimized meta tags for better search engine visibility
+- Structured data for rich search results
+- Performance optimization for better page speed scores
+- Mobile-friendly responsive design
+- Keyword optimization based on search volume data:
+  - Primary keywords: mindseye game, adventure games, puzzle games
+  - Secondary keywords: mindseye release date, mindseye gameplay, perception games
+  - Long-tail keywords: mindseye open world, mindseye app, mindseye steam
+
+## Common Issues and Solutions
+
+### Game Loading Issues
+
+**Issue**: Some games show white screen or fail to load.
+
+**Solution**:
+1. Check if third-party cookies are enabled in the browser
+2. Try using a different browser
+3. Ensure network connection is stable
+
+### Game Control Issues
+
+**Issue**: Game controls not responding or behaving abnormally.
+
+**Solution**:
+1. Check the control instructions on the game detail page
+2. On desktop devices, ensure keyboard and mouse are working properly
+3. On mobile devices, ensure touchscreen is clean and responsive
+
+### Slow Page Loading
+
+**Issue**: Website loads slowly.
+
+**Solution**:
+1. Check network connection
+2. Clear browser cache
+3. Close other applications using bandwidth
+
+## Contact and Support
+
+If you have any questions or suggestions, please contact us through:
+- Email: support@mindseye-game.com
+- Official Website: https://mindseye-game.com
+- Social Media: @mindseyegame

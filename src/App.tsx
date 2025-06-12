@@ -8,23 +8,48 @@ import Testimonials from './components/Testimonials';
 import FAQ from './components/FAQ';
 import Footer from './components/Footer';
 import GamePage from './pages/GamePage';
+import GamesListPage from './pages/GamesListPage';
 import gamesJson from './data/games.json';
 import { setGamesData } from './utils/gameDataFetcher';
 
 function App() {
   const [loading, setLoading] = useState(true);
 
-  // 初始化游戏数据
+  // Remove potential third-party tool scripts
   useEffect(() => {
-    // 开发环境直接使用导入的JSON数据
+    // Remove all potential third-party support tool scripts
+    const scripts = document.querySelectorAll('script[src*="tawk"], script[src*="crisp"], script[src*="intercom"], script[src*="zendesk"], script[src*="help"], script[src*="support"], script[src*="chat"]');
+    scripts.forEach(script => script.remove());
+    
+    // Remove potential floating help buttons
+    const helpElements = document.querySelectorAll('[id*="help"], [class*="help"], [id*="chat"], [class*="chat"], [id*="support"], [class*="support"]');
+    helpElements.forEach(el => {
+      if (el.tagName !== 'SECTION' && el.tagName !== 'DIV' && el.tagName !== 'ARTICLE') {
+        el.remove();
+      }
+    });
+    
+    // Add CSS rules to hide potential help floating buttons
+    const style = document.createElement('style');
+    style.textContent = `
+      #tawk-bubble-container, #crisp-chatbox, .intercom-launcher, .zopim, .drift-widget, .olark-launch-button, .helpButtonEnabled, .help-button, .support-button, .chat-button { 
+        display: none !important; 
+      }
+    `;
+    document.head.appendChild(style);
+  }, []);
+
+  // Initialize game data
+  useEffect(() => {
+    // Development environment directly uses imported JSON data
     if (import.meta.env.DEV) {
       setGamesData(gamesJson.games);
       setLoading(false);
       return;
     }
 
-    // 生产环境通过fetch获取数据
-    const timestamp = new Date().getTime(); // 添加时间戳避免缓存
+    // Production environment fetches data
+    const timestamp = new Date().getTime(); // Add timestamp to avoid caching
     fetch(`/src/data/games.json?t=${timestamp}`)
       .then(response => {
         if (!response.ok) {
@@ -33,13 +58,13 @@ function App() {
         return response.json();
       })
       .then(data => {
-        console.log(`已加载 ${data.games.length} 个游戏`);
+        console.log(`Loaded ${data.games.length} games`);
         setGamesData(data.games);
         setLoading(false);
       })
       .catch(error => {
-        console.error('加载游戏数据失败:', error);
-        // 发生错误时，尝试使用内置数据作为后备
+        console.error('Failed to load game data:', error);
+        // In case of error, try to use built-in data as fallback
         setGamesData(gamesJson.games);
         setLoading(false);
       });
@@ -60,14 +85,21 @@ function App() {
     <Router>
       <div className="min-h-screen bg-black text-white">
         <Routes>
-          {/* 游戏详情页路由 */}
+          {/* Game detail page route */}
           <Route path="/games/:gameId" element={
             <>
               <GamePage />
             </>
           } />
           
-          {/* 主页路由 */}
+          {/* All games list page route */}
+          <Route path="/games" element={
+            <>
+              <GamesListPage />
+            </>
+          } />
+          
+          {/* Home page route */}
           <Route path="/" element={
             <>
               <Header />

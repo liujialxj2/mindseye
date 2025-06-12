@@ -1,5 +1,5 @@
 /**
- * 游戏数据类型定义
+ * Game data type definition
  */
 
 export interface Game {
@@ -13,6 +13,9 @@ export interface Game {
   originalUrl: string;
   category: string;
   slug?: string;
+  tags?: string[];
+  createdAt?: number; // Game creation/addition timestamp
+  rating?: number; // Game rating
 }
 
 export type GamesList = Game[]; 

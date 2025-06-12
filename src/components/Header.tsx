@@ -26,22 +26,6 @@ const Header = () => {
             <a href="#faq" className="text-gray-300 hover:text-blue-400 transition-colors">FAQ</a>
           </nav>
 
-          <div className="hidden md:flex items-center space-x-4">
-            <a 
-              href="https://www.mindseye.game/" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="px-6 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 z-50 cursor-pointer"
-              style={{ position: 'relative' }}
-              onClick={(e) => {
-                window.open('https://www.mindseye.game/', '_blank', 'noopener,noreferrer');
-                e.preventDefault();
-              }}
-            >
-              Official Site
-            </a>
-          </div>
-
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -60,19 +44,6 @@ const Header = () => {
               <a href="#about" className="text-gray-300 hover:text-blue-400 transition-colors">About</a>
               <a href="#community" className="text-gray-300 hover:text-blue-400 transition-colors">Community</a>
               <a href="#faq" className="text-gray-300 hover:text-blue-400 transition-colors">FAQ</a>
-              <a 
-                href="https://www.mindseye.game/" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="w-full px-6 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-lg text-center z-50 cursor-pointer"
-                style={{ position: 'relative' }}
-                onClick={(e) => {
-                  window.open('https://www.mindseye.game/', '_blank', 'noopener,noreferrer');
-                  e.preventDefault();
-                }}
-              >
-                Official Site
-              </a>
             </nav>
           </div>
         )}

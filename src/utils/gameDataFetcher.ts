@@ -1,64 +1,88 @@
 /**
- * 游戏数据抓取和处理工具
+ * Game data fetching and processing utilities
  */
 
 import { Game, GamesList } from '../types/game';
+import { fetchGameRatings } from './gameRatingFetcher';
 
-// 模拟从本地 JSON 文件读取游戏数据
+// Simulate reading game data from local JSON file
 let cachedGames: GamesList = [];
+let hasLoadedRatings = false;
 
 /**
- * 获取所有游戏数据
+ * Get all game data
  */
 export function getAllGames(): GamesList {
+  // If ratings haven't been loaded yet, try to load them asynchronously
+  if (!hasLoadedRatings) {
+    loadGameRatings();
+  }
   return cachedGames;
 }
 
 /**
- * 根据ID获取单个游戏
+ * Asynchronously load game ratings
+ */
+async function loadGameRatings(): Promise<void> {
+  try {
+    hasLoadedRatings = true;
+    // Asynchronously get rating data and update cache
+    const gamesWithRatings = await fetchGameRatings(cachedGames);
+    cachedGames = gamesWithRatings;
+    console.log('Game rating data loaded successfully');
+  } catch (error) {
+    console.error('Failed to load game rating data:', error);
+  }
+}
+
+/**
+ * Get a single game by ID
  */
 export function getGameById(id: string): Game | undefined {
   return cachedGames.find(game => game.id === id);
 }
 
 /**
- * 根据slug获取单个游戏
+ * Get a single game by slug
  */
 export function getGameBySlug(slug: string): Game | undefined {
   return cachedGames.find(game => game.slug === slug);
 }
 
 /**
- * 根据分类获取游戏
+ * Get games by category
  */
 export function getGamesByCategory(category: string): GamesList {
   return cachedGames.filter(game => game.category === category);
 }
 
 /**
- * 设置游戏数据（在应用初始化时从JSON文件加载）
+ * Set game data (loaded from JSON file during application initialization)
  */
 export function setGamesData(games: GamesList): void {
   cachedGames = games.map(game => ({
     ...game,
-    // 如果没有slug，根据标题生成
+    // Generate slug from title if not provided
     slug: game.slug || generateSlug(game.title)
   }));
+  
+  // Reset rating load status to load ratings next time games are fetched
+  hasLoadedRatings = false;
 }
 
 /**
- * 根据标题生成slug
+ * Generate slug from title
  */
 export function generateSlug(title: string): string {
   return title
     .toLowerCase()
-    .replace(/[^\w\s-]/g, '') // 移除特殊字符
-    .replace(/\s+/g, '-') // 空格替换为连字符
-    .replace(/--+/g, '-'); // 多个连字符替换为单个
+    .replace(/[^\w\s-]/g, '') // Remove special characters
+    .replace(/\s+/g, '-') // Replace spaces with hyphens
+    .replace(/--+/g, '-'); // Replace multiple hyphens with a single one
 }
 
 /**
- * 添加新游戏到数据集
+ * Add a new game to the dataset
  */
 export function addGame(game: Game): void {
   const newGame = {
@@ -69,7 +93,7 @@ export function addGame(game: Game): void {
 }
 
 /**
- * 更新游戏数据
+ * Update game data
  */
 export function updateGame(id: string, updatedData: Partial<Game>): boolean {
   const index = cachedGames.findIndex(game => game.id === id);
@@ -87,7 +111,7 @@ export function updateGame(id: string, updatedData: Partial<Game>): boolean {
 }
 
 /**
- * 删除游戏
+ * Remove a game
  */
 export function removeGame(id: string): boolean {
   const initialLength = cachedGames.length;

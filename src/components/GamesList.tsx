@@ -1,73 +1,101 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Game } from '../types/game';
 import GameCard from './GameCard';
 import { getAllGames } from '../utils/gameDataFetcher';
-import { Search } from 'lucide-react';
+import { Search, ChevronRight, ChevronLeft, Filter } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const GamesList: React.FC = () => {
   const [games, setGames] = useState<Game[]>([]);
-  const [activeCategory, setActiveCategory] = useState<string>('all');
-  const [categories, setCategories] = useState<string[]>(['all']);
   const [searchQuery, setSearchQuery] = useState<string>('');
-  const [visibleGamesCount, setVisibleGamesCount] = useState<number>(12); // 初始显示12个游戏
-  const [filteredGames, setFilteredGames] = useState<Game[]>([]);
+  const [categoryGroups, setCategoryGroups] = useState<{ category: string; games: Game[] }[]>([]);
+  const [visibleCategories, setVisibleCategories] = useState<string[]>([]);
+  const [activeFilters, setActiveFilters] = useState<string[]>(['Popular']);
+  const scrollContainerRefs = useRef<{[key: string]: HTMLDivElement | null}>({});
   
-  // 初始化游戏数据
+  // Initialize game data
   useEffect(() => {
-    // 从全局状态获取数据
+    // Get data from global state
     const loadedGames = getAllGames();
     setGames(loadedGames);
     
-    // 提取所有分类
-    const allCategories = ['all', ...Array.from(new Set(loadedGames.map(game => game.category))).sort()];
-    setCategories(allCategories);
+    // Extract all categories
+    const allCategories = Array.from(new Set(loadedGames.map(game => game.category))).sort();
     
-    console.log(`GamesList: 获取到 ${loadedGames.length} 个游戏`);
+    // Popular games (in a real app, this would be based on metrics like click-through rate)
+    const popularGames = [...loadedGames].sort(() => 0.5 - Math.random()).slice(0, 10);
+    
+    // New games (in a real app, this would be based on release date)
+    const newGames = [...loadedGames].sort(() => 0.5 - Math.random()).slice(0, 10);
+    
+    // Recommended games
+    const recommendedGames = [...loadedGames].sort(() => 0.5 - Math.random()).slice(0, 10);
+    
+    // Create category groups
+    const groups = [
+      { category: 'Popular', games: popularGames },
+      { category: 'New', games: newGames },
+      { category: 'Recommended', games: recommendedGames },
+      ...allCategories.map(category => ({
+        category,
+        games: loadedGames.filter(game => game.category === category).slice(0, 10)
+      }))
+    ];
+    
+    setCategoryGroups(groups);
+    // Show first 5 categories by default
+    setVisibleCategories(groups.slice(0, 5).map(g => g.category));
+    
+    console.log(`GamesList: Loaded ${loadedGames.length} games, ${allCategories.length} categories`);
   }, []);
   
-  // 当过滤条件改变时，重新计算过滤后的游戏列表
-  useEffect(() => {
-    const filtered = games.filter(game => 
-      // 分类过滤
-      (activeCategory === 'all' || game.category === activeCategory) &&
-      // 搜索过滤
-      (searchQuery === '' || 
-        game.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        game.description.toLowerCase().includes(searchQuery.toLowerCase()))
-    );
-    
-    setFilteredGames(filtered);
-    console.log(`GamesList: 过滤后有 ${filtered.length} 个游戏`);
-  }, [games, activeCategory, searchQuery]);
-  
-  // 处理游戏点击事件
+  // Handle game click event
   const handleGameClick = (gameId: string) => {
     window.location.href = `/games/${gameId}`;
   };
   
-  // 加载更多游戏
-  const handleLoadMore = () => {
-    console.log(`加载更多游戏: ${visibleGamesCount} -> ${visibleGamesCount + 12}`);
-    setVisibleGamesCount(prevCount => prevCount + 12);
+  // Scroll control
+  const scrollCategory = (category: string, direction: 'left' | 'right') => {
+    const container = scrollContainerRefs.current[category];
+    if (container) {
+      const scrollAmount = container.clientWidth * 0.8;
+      const scrollTo = direction === 'left' ? container.scrollLeft - scrollAmount : container.scrollLeft + scrollAmount;
+      container.scrollTo({ left: scrollTo, behavior: 'smooth' });
+    }
   };
   
-  // 显示的游戏列表
-  const visibleGames = filteredGames.slice(0, visibleGamesCount);
+  // Toggle category visibility
+  const toggleCategoryVisibility = (category: string) => {
+    setVisibleCategories(prev => 
+      prev.includes(category) 
+        ? prev.filter(c => c !== category) 
+        : [...prev, category]
+    );
+  };
+  
+  // Toggle filter
+  const toggleFilter = (filter: string) => {
+    setActiveFilters(prev => 
+      prev.includes(filter) 
+        ? prev.filter(f => f !== filter) 
+        : [...prev, filter]
+    );
+  };
   
   return (
-    <section id="games" className="py-16 bg-gray-900 relative">
-      <div className="container mx-auto px-4 py-8">
-        <div className="text-center mb-10">
+    <section id="games" className="py-12 bg-gray-900 relative">
+      <div className="container mx-auto px-4 py-4">
+        <div className="text-center mb-8">
           <h2 className="text-3xl font-bold text-white mb-2">
-            Explore More Games
+            Explore Game World
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            Try more exciting games, from thrilling racing games to casual puzzle games, there's always something for you.
+            From exciting racing games to casual puzzle games, there's something for everyone here
           </p>
         </div>
         
-        {/* 搜索框 */}
-        <div className="flex flex-col lg:flex-row gap-4 mb-6 justify-between">
+        {/* Search and filter */}
+        <div className="flex flex-col lg:flex-row gap-4 mb-8 justify-between">
           <div className="relative flex-grow max-w-md">
             <input
               type="text"
@@ -80,61 +108,100 @@ const GamesList: React.FC = () => {
               <Search className="h-5 w-5 text-gray-400" size={20} />
             </div>
           </div>
+          
+          {/* Remove quick filter tags area */}
         </div>
         
-        {/* 分类过滤器 */}
-        <div className="flex flex-wrap justify-center gap-3 mb-10">
-          {categories.map((category) => (
+        {/* Horizontally scrolling game lists grouped by category */}
+        {categoryGroups
+          .filter(group => 
+            // Filter visible categories and those matching search query
+            (visibleCategories.includes(group.category) || activeFilters.includes(group.category)) &&
+            (searchQuery === '' || group.games.some(game => 
+              game.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
+              game.description.toLowerCase().includes(searchQuery.toLowerCase())
+            ))
+          )
+          .map(group => {
+            // Filter games matching search query
+            const filteredGames = searchQuery 
+              ? group.games.filter(game => 
+                  game.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                  game.description.toLowerCase().includes(searchQuery.toLowerCase())
+                )
+              : group.games;
+              
+            // Don't show category if no games after filtering
+            if (filteredGames.length === 0) return null;
+            
+            return (
+              <div key={group.category} className="mb-12">
+                <div className="flex justify-between items-center mb-4">
+                  <h3 className="text-2xl font-bold text-white flex items-center">
+                    {group.category} 
+                    <span className="text-gray-400 text-sm ml-2">({filteredGames.length})</span>
+                  </h3>
+                  <div className="flex items-center gap-2">
+                    <button 
+                      onClick={() => scrollCategory(group.category, 'left')}
+                      className="p-2 rounded-full bg-gray-800 hover:bg-gray-700 text-gray-300"
+                      aria-label="Scroll left"
+                    >
+                      <ChevronLeft size={20} />
+                    </button>
             <button
-              key={category}
-              onClick={() => setActiveCategory(category)}
-              className={`px-4 py-2 rounded-lg transition-colors ${
-                activeCategory === category
-                  ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white'
-                  : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
-              }`}
-            >
-              <span className="font-medium">
-                {category === 'all' ? 'All Games' : category}
-              </span>
+                      onClick={() => scrollCategory(group.category, 'right')}
+                      className="p-2 rounded-full bg-gray-800 hover:bg-gray-700 text-gray-300"
+                      aria-label="Scroll right"
+                    >
+                      <ChevronRight size={20} />
             </button>
-          ))}
+                    <Link 
+                      to={`/games?category=${encodeURIComponent(group.category)}`}
+                      className="px-4 py-1.5 rounded-lg bg-blue-700 hover:bg-blue-600 text-white text-sm font-medium flex items-center"
+                    >
+                      View All <ChevronRight size={16} />
+                    </Link>
+        </div>
         </div>
         
-        {/* 游戏数量统计 */}
-        <div className="text-sm text-gray-400 mb-4">
-          Showing {visibleGames.length} of {filteredGames.length} {activeCategory !== 'all' ? activeCategory + ' ' : ''}games
-          {searchQuery ? ` (search: "${searchQuery}")` : ''}
-        </div>
-        
-        {/* 游戏卡片网格 */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
-          {visibleGames.map((game) => (
+                <div 
+                  ref={el => scrollContainerRefs.current[group.category] = el}
+                  className="flex overflow-x-auto gap-4 pb-4 hide-scrollbar snap-x snap-mandatory"
+                  style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+                >
+                  {filteredGames.map((game) => (
+                    <div key={game.id} className="flex-none snap-start" style={{ width: 'calc(100% / 5 - 16px)' }}>
             <GameCard 
-              key={game.id} 
               game={game} 
               onPlay={() => handleGameClick(game.id)} 
             />
+                    </div>
           ))}
+                  
+                  <Link 
+                    to={`/games?category=${encodeURIComponent(group.category)}`}
+                    className="flex-none snap-start flex items-center justify-center w-40 h-full min-h-48 rounded-xl bg-gray-800/30 hover:bg-gray-700/50 border border-dashed border-gray-600 hover:border-blue-500 transition-all"
+                  >
+                    <div className="text-center">
+                      <ChevronRight size={40} className="text-blue-500 mx-auto" />
+                      <div className="text-gray-400 text-sm mt-2">View More</div>
+                    </div>
+                  </Link>
+                </div>
         </div>
+            );
+          })}
         
-        {filteredGames.length === 0 && (
-          <div className="text-center py-12">
-            <p className="text-gray-400 text-lg">No games found matching your criteria</p>
-          </div>
-        )}
-        
-        {/* 加载更多按钮 */}
-        {visibleGamesCount < filteredGames.length && (
-          <div className="text-center mt-10">
-            <button
-              onClick={handleLoadMore}
-              className="bg-blue-700 hover:bg-blue-600 text-white font-medium py-3 px-6 rounded-lg transition duration-200 ease-in-out"
-            >
-              Load More Games ({filteredGames.length - visibleGamesCount} more)
-            </button>
-          </div>
-        )}
+        {/* View all games button */}
+        <div className="text-center mt-10 mb-4">
+          <Link
+            to="/games"
+            className="bg-gradient-to-r from-blue-700 to-purple-800 hover:from-blue-600 hover:to-purple-700 text-white font-medium py-3 px-8 rounded-lg transition duration-200 ease-in-out"
+          >
+            View All Games
+          </Link>
+        </div>
       </div>
     </section>
   );

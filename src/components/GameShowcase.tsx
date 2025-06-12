@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Play, RotateCcw, Trophy, Users, Maximize, Info } from 'lucide-react';
 import GameDistributionFrame from './GameDistributionFrame';
 
-// 为不同浏览器的全屏API扩展类型定义
+// Extended type definitions for fullscreen API across different browsers
 declare global {
   interface HTMLElement {
     mozRequestFullScreen?: () => Promise<void>;
@@ -27,16 +27,16 @@ const GameShowcase = () => {
   const [showInstructions, setShowInstructions] = useState(false);
   const gameFrameRef = useRef<HTMLDivElement>(null);
 
-  // 获取当前域名，用于 GameDistribution 集成
+  // Get current domain for GameDistribution integration
   const currentDomain = typeof window !== 'undefined' ? window.location.origin : 'https://www.mindseye.cool';
 
-  // 精选游戏数据
+  // Featured games data
   const games = [
     {
       id: 'perception-puzzle',
-      title: '知觉拼图',
-      description: '在这款引人入胜的游戏中测试你的知觉能力。识别模式、解决视觉谜题，提升你的观察技巧。',
-      instructions: '使用鼠标点击匹配的图形。在时间结束前找出所有匹配项，以获得最高分。\n\n技巧：先专注于边缘部分，再向中心移动。',
+      title: 'Perception Puzzle',
+      description: 'Test your perception abilities in this engaging game. Identify patterns, solve visual puzzles, and enhance your observation skills.',
+      instructions: 'Use your mouse to click on matching shapes. Find all matches before time runs out to achieve the highest score.\n\nTip: Focus on the edges first, then move toward the center.',
       thumbnailUrl: 'https://img.gamedistribution.com/62381d033e714230acd2147b60a24550-512x384.jpg',
       embedUrl: 'https://html5.gamedistribution.com/62381d033e714230acd2147b60a24550/',
       highScore: 2840,
@@ -45,9 +45,9 @@ const GameShowcase = () => {
     },
     {
       id: 'memory-maze',
-      title: '记忆迷宫',
-      description: '一款测试你的空间记忆能力的挑战性游戏。记住路径，避开障碍，找到通往下一关的道路。',
-      instructions: '使用方向键或WASD移动。记住迷宫的布局，并在黑暗环境中找到出口。\n\n每一关的难度都会增加，保持专注！',
+      title: 'Memory Maze',
+      description: 'A challenging game that tests your spatial memory. Remember paths, avoid obstacles, and find your way to the next level.',
+      instructions: 'Use arrow keys or WASD to move. Remember the maze layout and find the exit in dark environments.\n\nDifficulty increases with each level, stay focused!',
       thumbnailUrl: 'https://img.gamedistribution.com/6c82ded251754899bace3d781d03d607-512x384.jpg',
       embedUrl: 'https://html5.gamedistribution.com/6c82ded251754899bace3d781d03d607/',
       highScore: 1560,
@@ -56,9 +56,9 @@ const GameShowcase = () => {
     },
     {
       id: 'pattern-recognition',
-      title: '图案识别',
-      description: '提高你的图案识别能力。在这款游戏中，你需要在不断变化的背景中识别隐藏的图案。',
-      instructions: '观察屏幕上显示的图案，然后在接下来的选项中选择匹配的一项。\n\n随着关卡的进展，图案会变得更加复杂，背景干扰也会增加。',
+      title: 'Pattern Recognition',
+      description: 'Improve your pattern recognition skills. In this game, you need to identify hidden patterns in constantly changing backgrounds.',
+      instructions: 'Observe the pattern shown on screen, then select the matching option from the choices provided.\n\nAs levels progress, patterns become more complex and background interference increases.',
       thumbnailUrl: 'https://img.gamedistribution.com/5ecf233acb5a453bb50dbcb77df39df8-512x384.jpg',
       embedUrl: 'https://html5.gamedistribution.com/5ecf233acb5a453bb50dbcb77df39df8/',
       highScore: 3250,
@@ -67,17 +67,17 @@ const GameShowcase = () => {
     }
   ];
 
-  // 处理游戏加载事件
+  // Handle game loaded event
   const handleGameLoaded = () => {
-    console.log('游戏加载完成');
+    console.log('Game loaded successfully');
   };
 
-  // 处理游戏错误事件
+  // Handle game error event
   const handleGameError = (error: string) => {
-    console.error('游戏加载错误:', error);
+    console.error('Game loading error:', error);
   };
 
-  // 处理全屏
+  // Handle fullscreen
   const handleFullscreen = () => {
     if (!gameFrameRef.current) return;
     
@@ -106,7 +106,7 @@ const GameShowcase = () => {
     }
   };
 
-  // 监听全屏变化事件
+  // Monitor fullscreen change events
   useEffect(() => {
     const fullscreenChangeHandler = () => {
       setIsFullscreen(
@@ -135,23 +135,23 @@ const GameShowcase = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-5xl font-bold text-white mb-6 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-            体验精选小游戏
+            Experience Featured Mini-Games
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            沉浸在这些为 Mindseye 宇宙设计的小游戏中，训练你的感知能力，为完整的游戏体验做好准备。
+            Immerse yourself in these mini-games designed for the Mindseye universe, train your perception abilities, and prepare for the complete game experience.
           </p>
         </div>
 
         <div className="max-w-6xl mx-auto">
-          {/* 游戏选择器 */}
+          {/* Game selector */}
           <div className="flex flex-wrap justify-center gap-4 mb-8">
             {games.map((game, index) => (
               <button
                 key={index}
                 onClick={() => {
                   setActiveGame(index);
-                  setIsPlaying(false); // 切换游戏时重置播放状态
-                  setShowInstructions(false); // 隐藏说明
+                  setIsPlaying(false); // Reset play state when switching games
+                  setShowInstructions(false); // Hide instructions
                 }}
                 className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
                   activeGame === index
@@ -164,7 +164,7 @@ const GameShowcase = () => {
             ))}
           </div>
 
-          {/* 游戏显示区域 */}
+          {/* Game display area */}
           <div className="bg-gray-900 rounded-2xl p-6 border border-blue-500/30">
             <div className="mb-6">
               <h3 className="text-2xl font-bold text-white mb-2">
@@ -175,17 +175,17 @@ const GameShowcase = () => {
               </p>
             </div>
 
-            {/* 游戏说明 */}
+            {/* Game instructions */}
             {showInstructions && (
               <div className="bg-gray-800 rounded-xl p-4 mb-6 border border-blue-500/20">
-                <h4 className="text-lg font-semibold text-blue-400 mb-2">游戏说明</h4>
+                <h4 className="text-lg font-semibold text-blue-400 mb-2">Game Instructions</h4>
                 <p className="text-gray-300 whitespace-pre-line">
                   {games[activeGame].instructions}
                 </p>
               </div>
             )}
 
-            {/* 游戏框架 */}
+            {/* Game frame */}
             <div ref={gameFrameRef} className="bg-black rounded-xl overflow-hidden border border-blue-500/20 mb-6">
               {isPlaying ? (
                 <div className="aspect-video w-full h-full">
@@ -226,14 +226,14 @@ const GameShowcase = () => {
                     >
                       <Play className="w-12 h-12 text-white" />
                     </div>
-                    <h4 className="text-xl font-bold text-white mb-2">准备好了吗？</h4>
-                    <p className="text-gray-400">点击播放按钮开始你的冒险</p>
+                    <h4 className="text-xl font-bold text-white mb-2">Ready to play?</h4>
+                    <p className="text-gray-400">Click the play button to start your adventure</p>
                   </div>
                 </div>
               )}
             </div>
 
-            {/* 游戏控制 */}
+            {/* Game controls */}
             <div className="flex flex-wrap gap-4 justify-between items-center">
               <div className="flex gap-4">
                 <button 
@@ -243,12 +243,12 @@ const GameShowcase = () => {
                   {isPlaying ? (
                     <>
                       <RotateCcw className="w-4 h-4 mr-2" />
-                      <span>重新开始</span>
+                      <span>Restart</span>
                     </>
                   ) : (
                     <>
                       <Play className="w-4 h-4 mr-2" />
-                      <span>开始</span>
+                      <span>Start</span>
                     </>
                   )}
                 </button>
@@ -259,7 +259,7 @@ const GameShowcase = () => {
                     onClick={handleFullscreen}
                   >
                     <Maximize className="w-4 h-4 mr-2" />
-                    <span>全屏</span>
+                    <span>Fullscreen</span>
                   </button>
                 )}
                 
@@ -268,18 +268,18 @@ const GameShowcase = () => {
                   onClick={() => setShowInstructions(!showInstructions)}
                 >
                   <Info className="w-4 h-4 mr-2" />
-                  <span>{showInstructions ? '隐藏说明' : '查看说明'}</span>
+                  <span>{showInstructions ? 'Hide instructions' : 'Show instructions'}</span>
                 </button>
               </div>
               
               <div className="flex items-center space-x-6 text-gray-300">
                 <div className="flex items-center space-x-2">
                   <Trophy className="w-4 h-4 text-yellow-500" />
-                  <span>最高分: {games[activeGame].highScore}</span>
+                  <span>Highest score: {games[activeGame].highScore}</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <Users className="w-4 h-4 text-blue-400" />
-                  <span>在线玩家: {games[activeGame].onlinePlayers}</span>
+                  <span>Online players: {games[activeGame].onlinePlayers}</span>
                 </div>
               </div>
             </div>

@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import GameDetail from '../components/GameDetail';
 
 const GamePage: React.FC = () => {
-  // 从URL参数中获取gameId
+  // Get gameId from URL parameters
   const { gameId } = useParams<{ gameId: string }>();
   
   if (!gameId) {

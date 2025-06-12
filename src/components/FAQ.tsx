@@ -1,89 +1,90 @@
 import React, { useState } from 'react';
-import { ChevronDown, ChevronUp } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
+
+// FAQ item interface
+interface FAQItem {
+  question: string;
+  answer: string;
+}
 
 const FAQ = () => {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
-
-  const faqs = [
+  // FAQ data
+  const faqData: FAQItem[] = [
     {
-      question: "What is Mindseye and when will it be released?",
-      answer: "Mindseye is an upcoming revolutionary adventure game that challenges your perception and cognitive abilities. The official release is planned for early 2024, with our countdown timer showing the exact time remaining."
+      question: "What is Mindseye?",
+      answer: "Mindseye is an innovative gaming platform that offers a collection of perception-challenging games. Our platform features a variety of mini-games designed to test your cognitive abilities while providing an entertaining experience."
     },
     {
-      question: "How do these mini-games relate to the main Mindseye game?",
-      answer: "Our mini-games are designed to introduce key gameplay mechanics and concepts from Mindseye. They serve as training grounds to develop the skills you'll need in the full game, including pattern recognition, memory challenges, and perception tests."
+      question: "How do I play games on this website?",
+      answer: "Simply browse our game collection, click on any game that interests you, and press the 'Play Now' button. Our games are browser-based and don't require any downloads or installations. Just make sure you have a stable internet connection."
     },
     {
       question: "Are these games free to play?",
-      answer: "Yes! All mini-games on our platform are completely free to play. We want everyone to experience the Mindseye universe and prepare for the main game launch."
+      answer: "Yes, all mini-games on our website are completely free to play. We believe in providing accessible entertainment for everyone while we develop our main Mindseye game."
+    },
+    {
+      question: "When will the full Mindseye game be released?",
+      answer: "The full Mindseye game is currently in development. While we don't have an exact release date yet, you can subscribe to our newsletter or follow us on social media for the latest updates and announcements."
     },
     {
       question: "Do I need to create an account to play?",
-      answer: "While you can play our games without an account, creating one allows you to save your progress, compete on leaderboards, and receive exclusive updates about the Mindseye launch."
+      answer: "No, you don't need to create an account to play our mini-games. However, creating an account in the future will allow you to save your progress, participate in leaderboards, and access exclusive content."
     },
     {
-      question: "Will my progress carry over to the main Mindseye game?",
-      answer: "Yes! Players who complete certain challenges and achieve high scores in our mini-games will receive exclusive bonuses and early access content in the main Mindseye game."
-    },
-    {
-      question: "What platforms will Mindseye be available on?",
-      answer: "Mindseye will be available on PC, PlayStation 5, Xbox Series X/S, and Nintendo Switch at launch, with mobile versions planned for later release."
-    },
-    {
-      question: "How can I stay updated on Mindseye news?",
-      answer: "Subscribe to our newsletter, follow our social media channels, and keep playing our mini-games for the latest updates, exclusive content, and early access opportunities."
-    },
-    {
-      question: "Can I suggest features or report bugs?",
-      answer: "Absolutely! We value community feedback. Use our contact form or community forums to share suggestions, report issues, or connect with other players."
+      question: "What devices are supported?",
+      answer: "Our games are designed to work on most modern devices including desktops, laptops, tablets, and smartphones. We recommend using the latest version of Chrome, Firefox, Safari, or Edge for the best experience."
     }
   ];
 
-  const toggleFAQ = (index: number) => {
+  // State to track which FAQ item is open
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  // Toggle FAQ item
+  const toggleItem = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
   return (
-    <section id="faq" className="py-20 bg-gray-900 relative">
+    <section id="faq" className="py-20 bg-gray-900">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-5xl font-bold text-white mb-6 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-            Frequently Asked Questions
-          </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Get answers to common questions about Mindseye, our mini-games, and what to expect from the full gaming experience.
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Frequently Asked Questions</h2>
+          <p className="text-gray-400 max-w-2xl mx-auto">
+            Find answers to common questions about Mindseye games and our platform.
           </p>
         </div>
 
-        <div className="max-w-4xl mx-auto">
-          {faqs.map((faq, index) => (
-            <div
+        <div className="max-w-3xl mx-auto">
+          {faqData.map((item, index) => (
+            <div 
               key={index}
-              className="bg-black/40 backdrop-blur-md rounded-xl border border-blue-500/20 mb-4 overflow-hidden hover:border-blue-500/50 transition-colors duration-300"
+              className="mb-4 border border-gray-800 rounded-lg overflow-hidden bg-gray-800/50 backdrop-blur-sm"
             >
               <button
-                onClick={() => toggleFAQ(index)}
-                className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-blue-500/10 transition-colors duration-300"
+                className="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none"
+                onClick={() => toggleItem(index)}
               >
-                <h3 className="text-lg font-semibold text-white pr-4">
-                  {faq.question}
-                </h3>
-                {openIndex === index ? (
-                  <ChevronUp className="w-5 h-5 text-blue-400 flex-shrink-0" />
-                ) : (
-                  <ChevronDown className="w-5 h-5 text-blue-400 flex-shrink-0" />
-                )}
+                <span className="text-lg font-medium text-white">{item.question}</span>
+                <ChevronDown 
+                  className={`w-5 h-5 text-gray-400 transition-transform duration-300 ${openIndex === index ? 'transform rotate-180' : ''}`} 
+                />
               </button>
               
-              {openIndex === index && (
-                <div className="px-6 pb-4 border-t border-blue-500/20">
-                  <p className="text-gray-300 leading-relaxed pt-4">
-                    {faq.answer}
-                  </p>
-                </div>
-              )}
+              <div 
+                className={`px-6 overflow-hidden transition-all duration-300 ease-in-out ${
+                  openIndex === index ? 'max-h-96 pb-6' : 'max-h-0'
+                }`}
+              >
+                <p className="text-gray-300">{item.answer}</p>
+              </div>
             </div>
           ))}
+        </div>
+        
+        <div className="text-center mt-12">
+          <p className="text-gray-400">
+            Still have questions? <a href="/contact" className="text-blue-400 hover:underline">Contact our support team</a>
+          </p>
         </div>
       </div>
     </section>

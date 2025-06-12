@@ -11,8 +11,8 @@ interface GameDistributionFrameProps {
 }
 
 /**
- * GameDistribution 游戏嵌入框架组件
- * 此组件处理 GameDistribution 游戏的嵌入，解决跨域和 localStorage 访问问题
+ * GameDistribution game embedding frame component
+ * This component handles embedding GameDistribution games, resolving cross-domain and localStorage access issues
  */
 const GameDistributionFrame: React.FC<GameDistributionFrameProps> = ({
   gameId,
@@ -28,27 +28,27 @@ const GameDistributionFrame: React.FC<GameDistributionFrameProps> = ({
   const [hasError, setHasError] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
-  // 构建代理URL
+  // Build proxy URL
   const buildProxyUrl = (originalUrl: string): string => {
-    // 判断URL格式，确保它是有效的GameDistribution嵌入URL
+    // Check URL format to ensure it's a valid GameDistribution embed URL
     if (originalUrl.includes('gamedistribution.com')) {
-      // 确保URL使用https协议
+      // Ensure URL uses https protocol
       let secureUrl = originalUrl;
       if (secureUrl.startsWith('http:')) {
         secureUrl = secureUrl.replace('http:', 'https:');
       }
 
-      // 处理URL格式，确保是嵌入格式
+      // Process URL format to ensure it's embed format
       if (!secureUrl.includes('/embed/') && !secureUrl.includes('html5.gamedistribution.com')) {
-        // 提取游戏ID
+        // Extract game ID
         const gameIdMatch = secureUrl.match(/\/([^\/]+)\/?$/);
         if (gameIdMatch && gameIdMatch[1]) {
-          const extractedId = gameIdMatch[1].split('?')[0]; // 移除查询参数
+          const extractedId = gameIdMatch[1].split('?')[0]; // Remove query parameters
           secureUrl = `https://html5.gamedistribution.com/${extractedId}/`;
         }
       }
       
-      // 添加额外参数
+      // Add additional parameters
       const domain = window.location.hostname;
       if (!secureUrl.includes('?')) {
         secureUrl += '?';
@@ -58,15 +58,15 @@ const GameDistributionFrame: React.FC<GameDistributionFrameProps> = ({
       
       secureUrl += `domain=${domain}&parentURL=${encodeURIComponent(window.location.href)}&parentDomain=${domain}`;
       
-      // 使用我们的代理页面
+      // Use our proxy page
       return `/game-frame-proxy.html?game=${encodeURIComponent(secureUrl)}`;
     }
     
-    // 如果不是GameDistribution URL，直接返回
+    // If not a GameDistribution URL, return directly
     return originalUrl;
   };
 
-  // 处理iframe加载事件
+  // Handle iframe load event
   const handleIframeLoad = () => {
     setIsLoading(false);
     if (onGameLoaded) {
@@ -74,7 +74,7 @@ const GameDistributionFrame: React.FC<GameDistributionFrameProps> = ({
     }
   };
 
-  // 处理iframe错误
+  // Handle iframe error
   const handleIframeError = () => {
     setIsLoading(false);
     setHasError(true);
@@ -84,10 +84,10 @@ const GameDistributionFrame: React.FC<GameDistributionFrameProps> = ({
     }
   };
 
-  // 监听来自iframe的消息
+  // Listen for messages from iframe
   useEffect(() => {
     const handleMessage = (event: MessageEvent) => {
-      // 只处理来自我们自己域名的消息
+      // Only process messages from our own domain
       if (event.origin === window.location.origin) {
         try {
           const data = typeof event.data === 'string' ? JSON.parse(event.data) : event.data;
@@ -101,7 +101,7 @@ const GameDistributionFrame: React.FC<GameDistributionFrameProps> = ({
             if (onGameError) onGameError(data.message);
           }
         } catch (e) {
-          // 忽略无法解析的消息
+          // Ignore messages that can't be parsed
         }
       }
     };
@@ -110,7 +110,7 @@ const GameDistributionFrame: React.FC<GameDistributionFrameProps> = ({
     return () => window.removeEventListener('message', handleMessage);
   }, [onGameLoaded, onGameError]);
 
-  // 构建最终的游戏URL
+  // Build final game URL
   const finalGameUrl = buildProxyUrl(gameUrl);
 
   return (
