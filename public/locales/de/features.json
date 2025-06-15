@@ -1,0 +1,30 @@
+{
+  "title": "Spielfunktionen",
+  "subtitle": "Entdecken Sie, warum Spieler unsere Gaming-Plattform lieben. Wir bieten eine einzigartige Kombination von Funktionen, die Ihr Spielerlebnis verbessern.",
+  "features": [
+    {
+      "title": "Vielfältige Spielesammlung",
+      "description": "Zugriff auf Hunderte von Spielen in verschiedenen Genres - von Action und Abenteuer bis hin zu Rätseln und Strategie. Wöchentlich werden neue Spiele hinzugefügt, um das Erlebnis frisch zu halten."
+    },
+    {
+      "title": "Sofortiges Spielen",
+      "description": "Keine Downloads oder Installationen erforderlich. Alle Spiele werden innerhalb von Sekunden direkt in Ihrem Browser geladen, sodass Sie sofort ins Geschehen einsteigen können."
+    },
+    {
+      "title": "Aktive Community",
+      "description": "Schließen Sie sich Tausenden von Spielern weltweit an. Teilen Sie Ihre Erfolge, treten Sie in Bestenlisten gegeneinander an und entdecken Sie neue Spiele durch Community-Empfehlungen."
+    },
+    {
+      "title": "Plattformübergreifendes Spielen",
+      "description": "Genießen Sie nahtloses Gaming auf all Ihren Geräten. Unser responsives Design sorgt für optimales Gameplay, egal ob Sie auf dem Desktop, Tablet oder Mobilgerät spielen."
+    },
+    {
+      "title": "Regelmäßige Updates",
+      "description": "Wir aktualisieren unsere Spielesammlung kontinuierlich mit den neuesten Titeln und Verbesserungen für bestehende Spiele, sodass es immer etwas Neues zu entdecken gibt."
+    },
+    {
+      "title": "Sichere Spielumgebung",
+      "description": "Alle Spiele werden gründlich auf Inhalt und Leistung überprüft. Wir betreiben eine familienfreundliche Plattform mit angemessenen Inhaltsbewertungen für alle Altersgruppen."
+    }
+  ]
+} 

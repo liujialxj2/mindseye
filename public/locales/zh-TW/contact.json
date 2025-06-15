@@ -1,0 +1,57 @@
+{
+  "title": "聯繫我們",
+  "subtitle": "有問題或建議？請隨時聯繫我們。",
+  "form": {
+    "name": {
+      "label": "您的姓名",
+      "placeholder": "請輸入您的姓名"
+    },
+    "email": {
+      "label": "電子郵件",
+      "placeholder": "請輸入您的電子郵件"
+    },
+    "subject": {
+      "label": "主題",
+      "placeholder": "請選擇一個主題",
+      "options": {
+        "general": "一般查詢",
+        "technical": "技術支持",
+        "feedback": "網站反饋",
+        "business": "商務合作",
+        "other": "其他"
+      }
+    },
+    "message": {
+      "label": "訊息",
+      "placeholder": "請輸入您的訊息"
+    },
+    "submit": "提交",
+    "reset": "重置"
+  },
+  "success": {
+    "title": "謝謝您的訊息！",
+    "message": "我們已收到您的訊息，並會盡快回复您。"
+  },
+  "error": {
+    "title": "發生錯誤",
+    "message": "提交您的訊息時出現問題。請稍後再試。",
+    "retry": "重試"
+  },
+  "validation": {
+    "required": "此欄位為必填項",
+    "invalidEmail": "請輸入有效的電子郵件地址",
+    "tooShort": "輸入內容太短",
+    "tooLong": "輸入內容太長"
+  },
+  "info": {
+    "title": "其他聯繫方式",
+    "email": "電子郵件",
+    "phone": "電話",
+    "address": "地址",
+    "hours": "營業時間"
+  },
+  "faq": {
+    "title": "常見問題",
+    "viewAll": "查看所有常見問題"
+  }
+} 

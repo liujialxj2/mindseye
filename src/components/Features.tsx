@@ -1,57 +1,47 @@
 import React from 'react';
-import { Car, Crosshair, Skull, Medal } from 'lucide-react';
+import { Gamepad2, Zap, Users, Globe, Sparkles, Shield } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const Features = () => {
-  const features = [
-    {
-      icon: <Car className="w-12 h-12" />,
-      title: "Aventador Vice Crime City",
-      description: "Experience thrilling city driving with realistic traffic, police chases, and customizable vehicles. Navigate busy streets, monitor your fuel, and enjoy stunning urban environments while evading law enforcement."
-    },
-    {
-      icon: <Crosshair className="w-12 h-12" />,
-      title: "Strykon FPS Action",
-      description: "Jump into intense first-person shooter combat with multiple game modes including Deathmatch and Team Deathmatch. Choose from an arsenal of weapons and test your tactical skills in fast-paced battles."
-    },
-    {
-      icon: <Skull className="w-12 h-12" />,
-      title: "Feed me Monsters",
-      description: "Face challenging enemies in this strategic idle battle game. Defeat bizarre creatures, earn rewards, unlock new abilities, and develop unique strategies to overcome increasingly difficult opponents."
-    },
-    {
-      icon: <Medal className="w-12 h-12" />,
-      title: "Compete for High Scores",
-      description: "Challenge thousands of online players across all three games, climbing leaderboards and earning achievements while testing your reflexes, strategy, and perception skills in the Mindseye gaming universe."
-    }
+  const { t } = useTranslation('features');
+  
+  // Feature icons
+  const featureIcons = [
+    <Gamepad2 className="w-7 h-7 text-blue-400" />,
+    <Zap className="w-7 h-7 text-blue-400" />,
+    <Users className="w-7 h-7 text-blue-400" />,
+    <Globe className="w-7 h-7 text-blue-400" />,
+    <Sparkles className="w-7 h-7 text-blue-400" />,
+    <Shield className="w-7 h-7 text-blue-400" />
   ];
+  
+  // Get features from translation file
+  const features = t('features', { returnObjects: true }) || [];
 
   return (
-    <section className="py-20 bg-gray-900 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-transparent"></div>
-      
-      <div className="container mx-auto px-4 relative z-10">
+    <section className="py-20 bg-gradient-to-b from-black to-gray-900">
+      <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-5xl font-bold text-white mb-6 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-            Game Features
-          </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Explore three distinct gaming experiences that challenge different skills - from driving and shooting to strategic combat. Each game offers unique mechanics that test your perception and reflexes.
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">{t('title')}</h2>
+          <p className="text-gray-400 max-w-2xl mx-auto">
+            {t('subtitle')}
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {features.map((feature, index) => (
-            <div
-              key={index}
-              className="group bg-black/40 backdrop-blur-md rounded-2xl p-6 border border-blue-500/20 hover:border-blue-500/50 transition-all duration-300 hover:transform hover:scale-105"
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {Array.isArray(features) && features.map((feature, index) => (
+            <div 
+              key={index} 
+              id={index === 2 ? 'community' : undefined}
+              className="bg-gray-800/50 backdrop-blur-sm p-6 rounded-xl border border-blue-500/20 hover:border-blue-500/40 transition-colors"
             >
-              <div className="text-blue-400 mb-4 group-hover:text-blue-300 transition-colors">
-                {feature.icon}
+              <div className="bg-blue-600/20 w-14 h-14 rounded-lg flex items-center justify-center mb-6">
+                {featureIcons[index % featureIcons.length]}
               </div>
-              <h3 className="text-xl font-bold text-white mb-3 group-hover:text-blue-300 transition-colors">
+              <h3 className="text-xl font-bold text-white mb-3">
                 {feature.title}
               </h3>
-              <p className="text-gray-400 leading-relaxed group-hover:text-gray-300 transition-colors">
+              <p className="text-gray-400">
                 {feature.description}
               </p>
             </div>

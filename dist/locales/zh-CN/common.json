@@ -1,0 +1,65 @@
+{
+  "header": {
+    "home": "首页",
+    "games": "游戏",
+    "faq": "常见问题",
+    "openMenu": "打开菜单",
+    "closeMenu": "关闭菜单"
+  },
+  "footer": {
+    "copyright": "© {{year}} Mindseye 游戏。保留所有权利。",
+    "terms": "服务条款",
+    "privacy": "隐私政策",
+    "contact": "联系我们",
+    "quickLinks": "快速链接",
+    "community": "社区",
+    "allGames": "所有游戏",
+    "description": "探索Mindseye游戏的世界。体验独家迷你游戏，测试你的感知能力，挑战你的思维。"
+  },
+  "languageSwitcher": {
+    "selectLanguage": "选择语言",
+    "search": "搜索语言...",
+    "noResults": "未找到结果",
+    "moreLangComing": "更多语言即将推出"
+  },
+  "loading": {
+    "games": "正在加载游戏..."
+  },
+  "buttons": {
+    "playNow": "立即游戏",
+    "learnMore": "了解更多",
+    "viewAll": "查看所有游戏",
+    "submit": "提交",
+    "send": "发送消息"
+  },
+  "gamesList": {
+    "title": "探索游戏世界",
+    "subtitle": "从刺激的赛车游戏到休闲益智游戏，这里有适合每个人的内容",
+    "searchPlaceholder": "搜索游戏...",
+    "scrollLeft": "向左滚动",
+    "scrollRight": "向右滚动",
+    "viewAll": "查看全部",
+    "viewMore": "查看更多",
+    "categories": "类别"
+  },
+  "categories": {
+    "popular": "热门",
+    "new": "新品",
+    "recommended": "推荐",
+    "action": "动作",
+    "adventure": "冒险",
+    "puzzle": "益智",
+    "strategy": "策略",
+    "casual": "休闲",
+    "racing": "赛车",
+    "sports": "体育",
+    "rpg": "角色扮演",
+    "shooter": "射击",
+    "arcade": "街机",
+    "simulation": "模拟",
+    "board": "棋盘",
+    "card": "卡牌",
+    "educational": "教育",
+    "family": "家庭"
+  }
+} 

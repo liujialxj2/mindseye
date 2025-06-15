@@ -1,0 +1,65 @@
+{
+  "header": {
+    "home": "Accueil",
+    "games": "Jeux",
+    "faq": "FAQ",
+    "openMenu": "Ouvrir le menu",
+    "closeMenu": "Fermer le menu"
+  },
+  "footer": {
+    "copyright": "© {{year}} Mindseye Game. Tous droits réservés.",
+    "terms": "Conditions d'utilisation",
+    "privacy": "Politique de confidentialité",
+    "contact": "Contact",
+    "quickLinks": "Liens rapides",
+    "community": "Communauté",
+    "allGames": "Tous les jeux",
+    "description": "Explorez le monde des jeux Mindseye. Jouez à des mini-jeux exclusifs, testez votre perception et défiez votre esprit."
+  },
+  "languageSwitcher": {
+    "selectLanguage": "Sélectionner la langue",
+    "search": "Rechercher des langues...",
+    "noResults": "Aucun résultat trouvé",
+    "moreLangComing": "Plus de langues à venir"
+  },
+  "loading": {
+    "games": "Chargement des jeux..."
+  },
+  "buttons": {
+    "playNow": "Jouer maintenant",
+    "learnMore": "En savoir plus",
+    "viewAll": "Voir tous les jeux",
+    "submit": "Soumettre",
+    "send": "Envoyer le message"
+  },
+  "gamesList": {
+    "title": "Explorez le monde du jeu",
+    "subtitle": "Des jeux de course passionnants aux puzzles décontractés, il y en a pour tous les goûts",
+    "searchPlaceholder": "Rechercher des jeux...",
+    "scrollLeft": "Défiler vers la gauche",
+    "scrollRight": "Défiler vers la droite",
+    "viewAll": "Voir tout",
+    "viewMore": "Voir plus",
+    "categories": "Catégories"
+  },
+  "categories": {
+    "popular": "Populaire",
+    "new": "Nouveau",
+    "recommended": "Recommandé",
+    "action": "Action",
+    "adventure": "Aventure",
+    "puzzle": "Puzzle",
+    "strategy": "Stratégie",
+    "casual": "Casual",
+    "racing": "Course",
+    "sports": "Sports",
+    "rpg": "RPG",
+    "shooter": "Tir",
+    "arcade": "Arcade",
+    "simulation": "Simulation",
+    "board": "Jeux de plateau",
+    "card": "Jeux de cartes",
+    "educational": "Éducatif",
+    "family": "Famille"
+  }
+} 

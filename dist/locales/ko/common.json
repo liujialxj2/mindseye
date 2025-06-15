@@ -1,0 +1,65 @@
+{
+  "header": {
+    "home": "홈",
+    "games": "게임",
+    "faq": "자주 묻는 질문",
+    "openMenu": "메뉴 열기",
+    "closeMenu": "메뉴 닫기"
+  },
+  "footer": {
+    "copyright": "© {{year}} Mindseye Game. 모든 권리 보유.",
+    "terms": "서비스 약관",
+    "privacy": "개인정보 보호정책",
+    "contact": "연락처",
+    "quickLinks": "빠른 링크",
+    "community": "커뮤니티",
+    "allGames": "모든 게임",
+    "description": "Mindseye 게임의 세계를 탐험하세요. 독점 미니게임을 플레이하고, 인지 능력을 테스트하고, 마음에 도전하세요."
+  },
+  "languageSwitcher": {
+    "selectLanguage": "언어 선택",
+    "search": "언어 검색...",
+    "noResults": "결과를 찾을 수 없습니다",
+    "moreLangComing": "더 많은 언어가 곧 제공됩니다"
+  },
+  "loading": {
+    "games": "게임 로딩 중..."
+  },
+  "buttons": {
+    "playNow": "지금 플레이",
+    "learnMore": "더 알아보기",
+    "viewAll": "모든 게임 보기",
+    "submit": "제출",
+    "send": "메시지 보내기"
+  },
+  "gamesList": {
+    "title": "게임 세계 탐험",
+    "subtitle": "스릴 넘치는 레이싱 게임부터 캐주얼 퍼즐까지, 모든 사람을 위한 콘텐츠가 있습니다",
+    "searchPlaceholder": "게임 검색...",
+    "scrollLeft": "왼쪽으로 스크롤",
+    "scrollRight": "오른쪽으로 스크롤",
+    "viewAll": "모두 보기",
+    "viewMore": "더 보기",
+    "categories": "카테고리"
+  },
+  "categories": {
+    "popular": "인기",
+    "new": "신규",
+    "recommended": "추천",
+    "action": "액션",
+    "adventure": "어드벤처",
+    "puzzle": "퍼즐",
+    "strategy": "전략",
+    "casual": "캐주얼",
+    "racing": "레이싱",
+    "sports": "스포츠",
+    "rpg": "RPG",
+    "shooter": "슈팅",
+    "arcade": "아케이드",
+    "simulation": "시뮬레이션",
+    "board": "보드",
+    "card": "카드",
+    "educational": "교육",
+    "family": "가족"
+  }
+} 

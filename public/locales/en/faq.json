@@ -1,0 +1,46 @@
+{
+  "title": "Frequently Asked Questions",
+  "subtitle": "Find answers to common questions about our platform and games",
+  "moreQuestions": {
+    "text": "Still have questions?",
+    "contactLink": "Contact our support team"
+  },
+  "questions": [
+    {
+      "question": "What is Mindseye Games?",
+      "answer": "Mindseye Games is a browser-based gaming platform that offers a variety of free HTML5 games. Our platform is designed to provide instant entertainment without requiring downloads or installations."
+    },
+    {
+      "question": "Do I need to create an account to play games?",
+      "answer": "No, you don't need to create an account to play most games on our platform. However, creating a free account allows you to save your progress, track your favorite games, and participate in our community features."
+    },
+    {
+      "question": "Are the games free to play?",
+      "answer": "Yes, all games on our platform are free to play. Some games may offer optional in-game purchases, but you can enjoy the core gameplay without spending any money."
+    },
+    {
+      "question": "Can I play games on my mobile device?",
+      "answer": "Absolutely! Our platform is fully responsive and optimized for mobile play. You can enjoy our games on smartphones, tablets, and desktop computers with a consistent experience across all devices."
+    },
+    {
+      "question": "Why do some games take longer to load?",
+      "answer": "Game loading times can vary based on your internet connection speed, device performance, and the game's size and complexity. Most games load within seconds, but more graphically intensive titles might take a bit longer. If a game consistently fails to load, try refreshing your browser or switching to a different browser."
+    },
+    {
+      "question": "Can I suggest games to add to your collection?",
+      "answer": "We love hearing your suggestions! Please send your ideas through our Contact page or join our community forums to discuss new game and feature ideas with other players and our development team."
+    },
+    {
+      "question": "Is there a way to save my game progress?",
+      "answer": "Game progress is automatically saved in your browser's local storage. For a more permanent solution and to access your progress across devices, we recommend creating a free account, which allows cloud saving for supported games."
+    },
+    {
+      "question": "Can I play games offline?",
+      "answer": "Most of our games require an internet connection to play. However, some games may work offline once they've been loaded. We're working on expanding our offline play options in the future."
+    },
+    {
+      "question": "How do I remove ads from games?",
+      "answer": "While we keep ads minimal and non-intrusive, you can enjoy an ad-free experience by upgrading to our Premium tier. This affordable subscription removes all advertisements and provides additional benefits like early access to new games."
+    }
+  ]
+} 

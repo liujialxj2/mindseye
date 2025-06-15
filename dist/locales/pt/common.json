@@ -1,0 +1,31 @@
+{
+  "header": {
+    "home": "Início",
+    "games": "Jogos",
+    "faq": "Perguntas frequentes",
+    "openMenu": "Abrir menu",
+    "closeMenu": "Fechar menu"
+  },
+  "footer": {
+    "copyright": "© {{year}} Mindseye Game. Todos os direitos reservados.",
+    "terms": "Termos de serviço",
+    "privacy": "Política de privacidade",
+    "contact": "Contato"
+  },
+  "languageSwitcher": {
+    "selectLanguage": "Selecionar idioma",
+    "search": "Buscar idiomas...",
+    "noResults": "Nenhum resultado encontrado",
+    "moreLangComing": "Mais idiomas em breve"
+  },
+  "loading": {
+    "games": "Carregando jogos..."
+  },
+  "buttons": {
+    "playNow": "Jogar agora",
+    "learnMore": "Saiba mais",
+    "viewAll": "Ver todos os jogos",
+    "submit": "Enviar",
+    "send": "Enviar mensagem"
+  }
+} 

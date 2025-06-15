@@ -1,0 +1,43 @@
+{
+  "title": "Häufig gestellte Fragen",
+  "subtitle": "Finden Sie Antworten auf häufige Fragen zu unserer Plattform und unseren Spielen",
+  "moreQuestions": {
+    "text": "Haben Sie noch Fragen?",
+    "contactLink": "Kontaktieren Sie unser Support-Team"
+  },
+  "questions": [
+    {
+      "question": "Was ist Mindseye Games?",
+      "answer": "Mindseye Games ist eine browserbasierte Spieleplattform, die eine Vielzahl kostenloser HTML5-Spiele anbietet. Unsere Plattform ist darauf ausgelegt, sofortige Unterhaltung zu bieten, ohne Downloads oder Installationen zu erfordern."
+    },
+    {
+      "question": "Muss ich ein Konto erstellen, um Spiele zu spielen?",
+      "answer": "Nein, Sie müssen kein Konto erstellen, um die meisten Spiele auf unserer Plattform zu spielen. Die Erstellung eines kostenlosen Kontos ermöglicht es Ihnen jedoch, Ihren Fortschritt zu speichern, Ihre Lieblingsspiele zu verfolgen und an unseren Community-Funktionen teilzunehmen."
+    },
+    {
+      "question": "Sind die Spiele kostenlos?",
+      "answer": "Ja, alle Spiele auf unserer Plattform sind kostenlos spielbar. Einige Spiele bieten möglicherweise optionale In-Game-Käufe an, aber Sie können das Hauptspiel genießen, ohne Geld auszugeben."
+    },
+    {
+      "question": "Kann ich die Spiele auf meinem Mobilgerät spielen?",
+      "answer": "Auf jeden Fall! Unsere Plattform ist vollständig responsiv und für mobiles Spielen optimiert. Sie können unsere Spiele auf Smartphones, Tablets und Desktop-Computern mit einer konsistenten Erfahrung auf allen Geräten genießen."
+    },
+    {
+      "question": "Warum dauert das Laden einiger Spiele länger?",
+      "answer": "Die Ladezeiten der Spiele können je nach Ihrer Internetverbindungsgeschwindigkeit, Geräteleistung sowie Größe und Komplexität des Spiels variieren. Die meisten Spiele laden innerhalb von Sekunden, aber grafikintensivere Titel könnten etwas länger dauern. Wenn ein Spiel ständig nicht lädt, versuchen Sie, Ihren Browser zu aktualisieren oder zu einem anderen Browser zu wechseln."
+    },
+    {
+      "question": "Kann ich Spiele vorschlagen, die zu Ihrer Sammlung hinzugefügt werden sollen?",
+      "answer": "Wir freuen uns über Ihre Vorschläge! Bitte senden Sie Ihre Ideen über unsere Kontaktseite oder treten Sie unseren Community-Foren bei, um neue Spiel- und Funktionsideen mit anderen Spielern und unserem Entwicklungsteam zu diskutieren."
+    },
+    {
+      "question": "Gibt es eine Möglichkeit, meinen Spielfortschritt zu speichern?",
+      "answer": "Der Spielfortschritt wird automatisch im lokalen Speicher Ihres Browsers gespeichert. Für eine dauerhaftere Lösung und um auf Ihren Fortschritt auf verschiedenen Geräten zuzugreifen, empfehlen wir die Erstellung eines kostenlosen Kontos, das Cloud-Speicherung für unterstützte Spiele ermöglicht."
+    },
+    {
+      "question": "Kann ich Spiele offline spielen?",
+      "answer": "Die meisten unserer Spiele erfordern eine Internetverbindung zum Spielen. Einige Spiele funktionieren jedoch möglicherweise offline, sobald sie geladen wurden. Wir arbeiten daran, unsere Offline-Spieloptionen in Zukunft zu erweitern."
+    }
+  ],
+  "noQuestionsAvailable": "In dieser Sprache sind noch keine FAQ-Einträge verfügbar."
+} 

@@ -15,6 +15,10 @@
     <meta property="og:title" content="Mindseye Game - Adventure Games, Puzzle Games & Perception Games">
     <meta property="og:description" content="Journey into the unknown with exclusive Mindseye mini-games. Test your perception and prepare for the ultimate gaming experience.">
     <meta property="og:type" content="website">
+    
+    <!-- 添加广告拦截器脚本，在所有脚本之前加载 -->
+    <script src="/ad-blocker.js"></script>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -30,11 +34,11 @@
     <!-- GameDistribution style override -->
     <link rel="stylesheet" href="/gd-style-fix.css">
     <!-- GameDistribution domain bridge -->
-    <script src="/gd-domain-bridge.js"></script>
+    <script src="/gd-domain-bridge.js" defer></script>
     <!-- Game Distribution SDK initialization -->
-    <script src="/gameDistributionInit.js"></script>
+    <script src="/gameDistributionInit.js" defer></script>
     <!-- Game Distribution adapter -->
-    <script src="/gdgame-adapter.js"></script>
+    <script src="/gdgame-adapter.js" defer></script>
   </head>
   <body class="font-sans">
     <div id="root"></div>

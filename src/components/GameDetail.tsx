@@ -3,8 +3,9 @@ import { ArrowLeft, Maximize, Info, RotateCcw, Play } from 'lucide-react';
 import { getGameById } from '../utils/gameDataFetcher';
 import { Game } from '../types/game';
 import GameDistributionFrame from './GameDistributionFrame';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { IoArrowBack, IoPlayCircle, IoEye, IoEyeOff, IoExpand, IoContract, IoRefresh } from 'react-icons/io5';
+import { useTranslation } from 'react-i18next';
 
 interface GameDetailProps {
   gameId: string;
@@ -12,6 +13,10 @@ interface GameDetailProps {
 }
 
 const GameDetail: React.FC<GameDetailProps> = ({ gameId, onBack }) => {
+  const { t } = useTranslation('games');
+  const { lang } = useParams<{ lang: string }>();
+  const currentLang = lang || 'en';
+  
   const [game, setGame] = useState<Game | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
@@ -92,7 +97,7 @@ const GameDetail: React.FC<GameDetailProps> = ({ gameId, onBack }) => {
   if (!game) {
     return (
       <div className="h-96 flex items-center justify-center">
-        <p className="text-white text-xl">Loading game...</p>
+        <p className="text-white text-xl">{t('gameDetails.loading', 'Loading game...')}</p>
       </div>
     );
   }
@@ -112,11 +117,11 @@ const GameDetail: React.FC<GameDetailProps> = ({ gameId, onBack }) => {
       {/* Back button */}
       <div className="mb-6">
         <Link
-          to="/"
+          to={`/${currentLang}`}
           className="text-blue-400 hover:text-blue-300 flex items-center group"
         >
           <IoArrowBack className="mr-1 group-hover:-translate-x-1 transition-transform" />
-          <span>Back to Games</span>
+          <span>{t('gamesList.backToGames', 'Back to Games')}</span>
         </Link>
       </div>
 
@@ -134,7 +139,7 @@ const GameDetail: React.FC<GameDetailProps> = ({ gameId, onBack }) => {
           {/* Game instructions */}
           {showInstructions && (
             <div className="bg-gray-800 rounded-xl p-4 mb-6 border border-blue-500/20">
-              <h3 className="text-lg font-semibold text-blue-400 mb-2">Game Controls</h3>
+              <h3 className="text-lg font-semibold text-blue-400 mb-2">{t('gameDetails.controls', 'Game Controls')}</h3>
               <p className="text-gray-300 whitespace-pre-line">
                 {game.controls}
               </p>
@@ -169,8 +174,8 @@ const GameDetail: React.FC<GameDetailProps> = ({ gameId, onBack }) => {
                   >
                     <Play className="w-12 h-12 text-white" />
                   </div>
-                  <h4 className="text-xl font-bold text-white mb-2">Ready to play?</h4>
-                  <p className="text-gray-400">Click the play button to start the game</p>
+                  <h4 className="text-xl font-bold text-white mb-2">{t('gameDetails.readyToPlay', 'Ready to play?')}</h4>
+                  <p className="text-gray-400">{t('gameDetails.clickToStart', 'Click the play button to start the game')}</p>
                 </div>
               </div>
             )}
@@ -186,7 +191,7 @@ const GameDetail: React.FC<GameDetailProps> = ({ gameId, onBack }) => {
                     className="px-4 py-2 bg-yellow-600 hover:bg-yellow-700 text-white rounded-lg flex items-center transition-colors"
                   >
                     <IoRefresh className="mr-1" />
-                    <span>Restart</span>
+                    <span>{t('gameDetails.restart', 'Restart')}</span>
                   </button>
                 </div>
               ) : (
@@ -195,7 +200,7 @@ const GameDetail: React.FC<GameDetailProps> = ({ gameId, onBack }) => {
                   className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg flex items-center transition-colors"
                 >
                   <IoPlayCircle className="mr-2 text-xl" />
-                  <span>Start Game</span>
+                  <span>{t('gameDetails.play', 'Start Game')}</span>
                 </button>
               )}
 
@@ -204,7 +209,7 @@ const GameDetail: React.FC<GameDetailProps> = ({ gameId, onBack }) => {
                 className="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg flex items-center transition-colors"
               >
                 {isFullscreen ? <IoContract className="mr-1" /> : <IoExpand className="mr-1" />}
-                <span>Fullscreen</span>
+                <span>{t('gameDetails.fullscreen', 'Fullscreen')}</span>
               </button>
 
               <button
@@ -212,7 +217,11 @@ const GameDetail: React.FC<GameDetailProps> = ({ gameId, onBack }) => {
                 className="px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg flex items-center transition-colors"
               >
                 {showInstructions ? <IoEyeOff className="mr-1" /> : <IoEye className="mr-1" />}
-                <span>{showInstructions ? 'Hide Instructions' : 'Game Instructions'}</span>
+                <span>
+                  {showInstructions 
+                    ? t('gameDetails.hideInstructions', 'Hide Instructions') 
+                    : t('gameDetails.showInstructions', 'Game Instructions')}
+                </span>
               </button>
             </div>
           </div>
@@ -221,11 +230,11 @@ const GameDetail: React.FC<GameDetailProps> = ({ gameId, onBack }) => {
         {/* Game highlights */}
         {game.highlights && game.highlights.length > 0 && (
           <div className="mt-8 bg-gray-800/50 p-4 rounded-lg border border-gray-700">
-            <h3 className="text-xl font-bold text-white mb-4">Game Highlights</h3>
+            <h3 className="text-xl font-bold text-white mb-4">{t('gameDetails.highlights', 'Game Highlights')}</h3>
             <div className="space-y-3">
               {game.highlights.map((highlight, index) => (
                 <div key={index} className="flex">
-                  <div className="text-blue-400 font-semibold mb-1">Highlight {index + 1}</div>
+                  <div className="text-blue-400 font-semibold mb-1">{t('gameDetails.highlight', 'Highlight')} {index + 1}</div>
                   <div className="text-gray-300 ml-4">{highlight}</div>
                 </div>
               ))}

@@ -8,14 +8,22 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "deploy": "node deploy.cjs"
+    "deploy": "node deploy.cjs",
+    "check-translations": "node scripts/check-translations.js",
+    "create-translation-template": "node scripts/create-translation-template.js",
+    "extract-hardcoded-text": "node scripts/extract-hardcoded-text.js",
+    "i18n-check": "npm run check-translations && npm run extract-hardcoded-text"
   },
   "dependencies": {
     "axios": "^1.9.0",
     "cheerio": "^1.1.0",
+    "i18next": "^25.2.1",
+    "i18next-browser-languagedetector": "^8.2.0",
+    "i18next-http-backend": "^3.0.2",
     "lucide-react": "^0.344.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-i18next": "^15.5.3",
     "react-icons": "^5.5.0",
     "react-router-dom": "^6.21.3"
   },
@@ -29,6 +37,7 @@
     "eslint-plugin-react-hooks": "^5.1.0-rc.0",
     "eslint-plugin-react-refresh": "^0.4.11",
     "fs-extra": "^11.3.0",
+    "glob": "^11.0.3",
     "globals": "^15.9.0",
     "postcss": "^8.4.35",
     "tailwindcss": "^3.4.1",

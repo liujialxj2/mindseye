@@ -1,0 +1,30 @@
+{
+  "title": "Why Choose Mindseye Games",
+  "subtitle": "Experience the best in browser gaming",
+  "features": [
+    {
+      "title": "Instant Play",
+      "description": "No downloads or installations required. Start playing your favorite games in seconds directly in your browser."
+    },
+    {
+      "title": "Cross-Platform",
+      "description": "Play seamlessly across all your devices - desktop, tablet, or mobile. Your progress syncs automatically."
+    },
+    {
+      "title": "Free to Play",
+      "description": "All games are completely free to play. Enjoy hours of entertainment without spending a penny."
+    },
+    {
+      "title": "Regular Updates",
+      "description": "We add new games every week, ensuring there's always something fresh and exciting to discover."
+    },
+    {
+      "title": "No Ads",
+      "description": "Enjoy an uninterrupted gaming experience with minimal advertisements that don't interfere with gameplay."
+    },
+    {
+      "title": "Community",
+      "description": "Join a vibrant community of gamers. Share your achievements, compete on leaderboards, and make new friends."
+    }
+  ]
+} 

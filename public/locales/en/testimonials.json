@@ -1,0 +1,30 @@
+{
+  "title": "What Our Players Say",
+  "subtitle": "Hear from the Mindseye gaming community",
+  "testimonials": [
+    {
+      "name": "Sarah Johnson",
+      "role": "Casual Gamer",
+      "text": "I love how I can just jump in and play without downloading anything. The puzzle games are perfect for my coffee breaks!",
+      "rating": 5
+    },
+    {
+      "name": "Michael Chen",
+      "role": "Student",
+      "text": "Mindseye Games has been a lifesaver during boring lectures. The games load quickly even on campus Wi-Fi and don't drain my battery.",
+      "rating": 4
+    },
+    {
+      "name": "Emma Rodriguez",
+      "role": "Mobile Gamer",
+      "text": "The mobile experience is fantastic! I can play the same games on my phone that I enjoy on my computer. The touch controls are very responsive.",
+      "rating": 5
+    },
+    {
+      "name": "David Kim",
+      "role": "Gaming Enthusiast",
+      "text": "I'm impressed by the quality of games available. They're not just simple HTML games - many have depth and replayability that keep me coming back.",
+      "rating": 5
+    }
+  ]
+} 

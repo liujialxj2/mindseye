@@ -1,0 +1,38 @@
+{
+  "title": "联系我们",
+  "subtitle": "有问题或反馈？我们很乐意听取您的意见！",
+  "getInTouch": {
+    "title": "联系方式",
+    "email": {
+      "label": "电子邮件",
+      "response": "我们会尽快回复"
+    },
+    "followUs": "关注我们"
+  },
+  "form": {
+    "name": {
+      "label": "您的姓名",
+      "placeholder": "请输入您的姓名"
+    },
+    "email": {
+      "label": "您的电子邮件",
+      "placeholder": "请输入您的电子邮件"
+    },
+    "subject": {
+      "label": "主题",
+      "placeholder": "请输入主题"
+    },
+    "message": {
+      "label": "留言",
+      "placeholder": "请输入您的留言"
+    },
+    "submit": "发送",
+    "sending": "发送中...",
+    "error": "提交表单时出错。请重试。"
+  },
+  "success": {
+    "title": "消息已发送！",
+    "message": "感谢您的留言。我们会尽快回复您。",
+    "button": "发送另一条消息"
+  }
+} 

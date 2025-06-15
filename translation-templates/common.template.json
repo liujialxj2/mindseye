@@ -1,0 +1,65 @@
+{
+  "header": {
+    "home": "",
+    "games": "",
+    "faq": "",
+    "openMenu": "",
+    "closeMenu": ""
+  },
+  "footer": {
+    "copyright": "",
+    "terms": "",
+    "privacy": "",
+    "contact": "",
+    "quickLinks": "",
+    "community": "",
+    "allGames": "",
+    "description": ""
+  },
+  "languageSwitcher": {
+    "selectLanguage": "",
+    "search": "",
+    "noResults": "",
+    "moreLangComing": ""
+  },
+  "loading": {
+    "games": ""
+  },
+  "buttons": {
+    "playNow": "",
+    "learnMore": "",
+    "viewAll": "",
+    "submit": "",
+    "send": ""
+  },
+  "gamesList": {
+    "title": "",
+    "subtitle": "",
+    "searchPlaceholder": "",
+    "scrollLeft": "",
+    "scrollRight": "",
+    "viewAll": "",
+    "viewMore": "",
+    "categories": ""
+  },
+  "categories": {
+    "popular": "",
+    "new": "",
+    "recommended": "",
+    "action": "",
+    "adventure": "",
+    "puzzle": "",
+    "strategy": "",
+    "casual": "",
+    "racing": "",
+    "sports": "",
+    "rpg": "",
+    "shooter": "",
+    "arcade": "",
+    "simulation": "",
+    "board": "",
+    "card": "",
+    "educational": "",
+    "family": ""
+  }
+}

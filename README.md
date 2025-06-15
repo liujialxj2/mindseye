@@ -1,157 +1,208 @@
-# Mindseye Game Official Website
+# Mindseye 游戏平台
 
-This is the official website project for Mindseye game, showcasing game features and mini-game experiences. The website provides various mini-games for users to enjoy while waiting for the official game release.
+一个现代化的HTML5游戏平台，提供各种类型的免费在线游戏。
 
-## Project Overview
+## 项目特点
 
-- **Project Name**: Mindseye Game Official Website
-- **Deployment URL**: https://mindseye-88s.pages.dev/
-- **Main Features**: 
-  - Showcase Mindseye brand
-  - Provide multiple mini-game experiences
-  - Game categorization and search
-  - Responsive design, supporting multiple devices
+- 响应式设计，适配所有设备
+- 无需下载，即点即玩
+- 多种游戏类别
+- 多语言支持
+- 用户友好界面
 
-## Technology Stack
+## 项目说明
 
-- **Frontend Framework**: React 18 + TypeScript
-- **Build Tool**: Vite
-- **Styling Framework**: Tailwind CSS
-- **Routing Management**: React Router
-- **Deployment Platform**: Cloudflare Pages
-- **Game Integration**: GameDistribution SDK
+Mindseye是一个基于浏览器的游戏平台，提供各种免费的HTML5游戏。玩家可以在不同设备上享受游戏，无需下载或安装任何内容。
 
-## Recent Updates
+### 主要功能
 
-- **UI Improvements**: Fixed game card display issues to ensure proper text rendering and button alignment
-- **Language Support**: Converted all content from Chinese to English for international audience
-- **Deployment Configuration**: Added proper build command configuration in wrangler.toml for Cloudflare Pages
-- **SEO Optimization**: Added sitemap and robots.txt for better search engine indexing
+- **多样化游戏集合**：从动作和冒险到益智和策略的多种游戏类型
+- **即时游戏**：所有游戏直接在浏览器中加载，几秒钟内启动
+- **跨平台兼容**：在桌面、平板和移动设备上提供一致的游戏体验
+- **用户评价系统**：玩家可以评价和查看游戏评分
+- **游戏分类**：通过类别、标签和搜索功能轻松找到游戏
 
-## Page Structure
+## 多语言支持
 
-### Home Page
-- Top navigation bar (Header component)
-- Hero area (Hero component) - Showcases game brand and main information
-- Game list area (GamesList component) - Displays playable mini-games
-- Feature introduction (Features component) - Showcases main features of the website and games
-- User reviews (Testimonials component) - Displays user feedback
-- Frequently asked questions (FAQ component) - Answers questions users might have
-- Footer information (Footer component) - Contains contact information and copyright
+本项目支持多种语言，使用i18next框架实现国际化。
 
-### Game Detail Page
-- Game information display (GameDetail component) - Shows game title, description, and control instructions
-- Game frame (GameDistributionFrame component) - Embeds and runs the game
-- Return button - Allows users to return to the home page
+### 支持的语言
 
-## Project Structure
+- 英语 (en)
+- 简体中文 (zh-CN)
+- 繁体中文 (zh-TW)
+- 日语 (ja)
+- 韩语 (ko)
+- 德语 (de)
+- 法语 (fr)
+- 西班牙语 (es)
+- 葡萄牙语 (pt)
+- 俄语 (ru)
+
+### 翻译文件结构
+
+翻译文件位于 `public/locales` 目录下，按语言代码组织，每种语言包含多个命名空间：
 
 ```
-mindseye/
-├── public/             # Static resource directory
-│   ├── images/         # Image resources
-│   │   ├── screenshots/  # Game screenshots
-│   │   ├── games/        # Mini-game images
-│   │   └── logo.webp     # Website logo
-│   ├── gameDistributionInit.js  # GameDistribution SDK initialization
-│   ├── gdgame-adapter.js        # Game platform adapter
-│   ├── gd-style-fix.css         # Game style fixes
-│   ├── gd-domain-bridge.js      # Domain bridge script
-│   └── game-compatibility.js    # Game compatibility handling
-├── src/                # Source code directory
-│   ├── components/     # React components
-│   │   ├── Header.tsx        # Website header navigation component
-│   │   ├── Hero.tsx         # Homepage hero area component
-│   │   ├── GamesList.tsx    # Game list component
-│   │   ├── GameCard.tsx     # Single game card component
-│   │   ├── GameDetail.tsx   # Game detail component
-│   │   ├── GameDistributionFrame.tsx # Game embedding frame component
-│   │   ├── Features.tsx     # Feature showcase component
-│   │   ├── Testimonials.tsx # User reviews component
-│   │   ├── FAQ.tsx          # FAQ component
-│   │   └── Footer.tsx       # Footer component
-│   ├── pages/          # Page components
-│   │   ├── HomePage.tsx     # Home page component
-│   │   └── GamePage.tsx     # Game detail page component
-│   ├── data/           # Data files
-│   │   └── games.json       # Game data file
-│   ├── utils/          # Utility tools
-│   ├── types/          # TypeScript type definitions
-│   ├── App.tsx         # Main application component
-│   ├── main.tsx        # Entry file
-│   └── index.css       # Global styles
-├── dist/               # Build output directory
-├── _redirects          # Cloudflare redirect rules
-├── _headers            # Cloudflare response header configuration
-├── wrangler.toml       # Cloudflare Wrangler configuration
-├── deploy.cjs          # Deployment helper script
-├── vite.config.ts      # Vite configuration file
-├── tailwind.config.js  # Tailwind configuration file
-└── package.json        # Project dependency configuration
+/public
+  /locales
+    /en          # 英语（基准语言）
+      common.json
+      faq.json
+      games.json
+      ...
+    /zh-CN       # 简体中文
+      common.json
+      faq.json
+      games.json
+      ...
+    /zh-TW       # 繁体中文
+      common.json
+      faq.json
+      games.json
+      ...
 ```
 
-## Features
+### 翻译工具
 
-### Responsive Design
-- Adaptive layout, perfectly supporting desktop, tablet, and mobile devices
-- User interface elements optimized for different screen sizes
-- Mobile-friendly interaction methods
+我们提供了几个实用工具来帮助管理翻译：
 
-### Game Integration
-- Seamless integration with GameDistribution platform
-- Support for various types of HTML5 games
-- Game control guides and category display
-- Game search and filtering functionality
+- `npm run check-translations` - 检查所有语言的翻译文件是否包含相同的键
+- `npm run create-translation-template` - 从基准语言生成翻译模板
+- `npm run extract-hardcoded-text` - 检查组件中可能存在的硬编码文本
+- `npm run i18n-check` - 运行所有检查
 
-### User Experience
-- Fast-loading page design
-- Clear and intuitive navigation system
-- Smooth page transition animations
-- Dark theme, providing good contrast for game content
+### 使用方法
 
-### Performance Optimization
-- Resource preloading strategy
-- Image lazy loading
-- Optimized loading of CSS and JavaScript
-- Cross-origin resource sharing solutions
+在组件中使用翻译：
 
-## Deployment Configuration
+```jsx
+import TranslatedText from '@/components/common/TranslatedText';
 
-### Cloudflare Pages Setup
-
-The website is deployed using Cloudflare Pages with the following configuration in `wrangler.toml`:
-
-```toml
-# Cloudflare Pages configuration
-name = "mindseye"
-compatibility_date = "2025-06-08"
-pages_build_output_dir = "dist" 
-
-# Build configuration
-[build]
-command = "npm run build"
+function MyComponent() {
+  return (
+    <div>
+      <h1>
+        <TranslatedText i18nKey="myComponent.title" />
+      </h1>
+      <p>
+        <TranslatedText 
+          i18nKey="myComponent.description" 
+          ns="features" 
+          values={{ name: 'Mindseye' }} 
+        />
+      </p>
+    </div>
+  );
+}
 ```
 
-### Deployment Process
+在属性中使用翻译：
 
-1. Build the project locally: `npm run build`
-2. Commit the updated `dist` directory to the repository
-3. Push changes to GitHub
-4. Cloudflare automatically detects changes and deploys the website
+```jsx
+import { useTranslatedText } from '@/components/common/TranslatedText';
 
-Alternatively, you can configure Cloudflare Pages to build the project automatically:
-1. In the Cloudflare Pages dashboard, set the build command to `npm run build`
-2. Set the build output directory to `dist`
-3. Push changes to GitHub without building locally
+function MyComponent() {
+  const placeholderText = useTranslatedText('myComponent.searchPlaceholder');
+  
+  return (
+    <input 
+      type="text" 
+      placeholder={placeholderText} 
+    />
+  );
+}
+```
 
-### Troubleshooting Deployment Issues
+- 英语 (English)
+- 简体中文 (Chinese Simplified)
+- 繁体中文 (Chinese Traditional)
+- 日语 (Japanese)
+- 韩语 (Korean)
+- 西班牙语 (Spanish)
+- 葡萄牙语 (Portuguese)
+- 俄语 (Russian)
+- 德语 (German)
+- 法语 (French)
 
-If the deployed website doesn't match your local development version:
-1. Check if the build command is properly configured in Cloudflare Pages
-2. Ensure the `dist` directory contains the latest build files
-3. Verify that all necessary assets are included in the build
-4. Check the deployment logs for any errors
+### 多语言实现方式
 
-## Game Data Structure
+项目使用 `i18next` 和 `react-i18next` 实现多语言支持：
 
-Game data is stored in the `
+1. 翻译文件存储在 `public/locales/{语言代码}/{命名空间}.json` 中
+2. 使用语言检测自动选择用户语言
+3. 支持通过URL路径切换语言 (例如: `/en/games`, `/zh-CN/games`)
+4. 提供语言切换器组件
+
+### 翻译命名空间
+
+项目使用以下翻译命名空间：
+
+- **common.json**: 通用翻译，包括页眉、页脚、按钮等
+- **games.json**: 游戏相关翻译，包括游戏详情、控制说明等
+- **faq.json**: 常见问题解答
+- **hero.json**: 首页英雄区域
+- **features.json**: 特色功能介绍
+- **testimonials.json**: 用户评价
+- **terms.json**: 服务条款
+- **privacy.json**: 隐私政策
+- **contact.json**: 联系我们页面
+
+### 添加新语言
+
+要添加新语言支持：
+
+1. 在 `src/i18n/languageConfig.ts` 中添加语言配置
+2. 在 `public/locales` 下创建新语言的文件夹
+3. 为每个命名空间创建翻译文件 (common.json, games.json, faq.json 等)
+
+## 技术栈
+
+- React
+- TypeScript
+- Tailwind CSS
+- Vite
+- i18next
+
+## 开发
+
+```bash
+# 安装依赖
+npm install
+
+# 启动开发服务器
+npm run dev
+
+# 构建生产版本
+npm run build
+
+# 预览生产版本
+npm run preview
+```
+
+## 项目结构
+
+```
+/
+├── public/               # 静态资源
+│   ├── images/           # 图片资源
+│   └── locales/          # 多语言翻译文件
+│       ├── en/           # 英语
+│       ├── zh-CN/        # 简体中文
+│       └── ...           # 其他语言
+├── src/
+│   ├── components/       # React组件
+│   ├── i18n/             # 国际化配置
+│   ├── pages/            # 页面组件
+│   ├── types/            # TypeScript类型定义
+│   └── utils/            # 工具函数
+└── ...
+```
+
+## 贡献
+
+欢迎提交Pull Request或Issue来改进项目。
+
+## 许可证
+
+MIT

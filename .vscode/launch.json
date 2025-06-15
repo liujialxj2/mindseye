@@ -5,20 +5,39 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "request": "launch",
-            "name": "Launch Program",
             "type": "node",
-            "program": "${workspaceFolder}/main.ts",
-            "cwd": "${workspaceFolder}",
-            "env": {},
-            "runtimeExecutable": "deno",
+            "request": "launch",
+            "name": "Launch Development Server",
+            "runtimeExecutable": "npm",
             "runtimeArgs": [
                 "run",
-                "--unstable",
-                "--inspect-brk",
-                "--allow-all"
+                "dev"
             ],
-            "attachSimplePort": 9229
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "console": "integratedTerminal"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Build Project",
+            "runtimeExecutable": "npm",
+            "runtimeArgs": [
+                "run",
+                "build"
+            ],
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "console": "integratedTerminal"
+        },
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Launch Chrome against localhost",
+            "url": "http://localhost:5173",
+            "webRoot": "${workspaceFolder}"
         }
     ]
 }

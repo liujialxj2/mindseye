@@ -1,0 +1,65 @@
+{
+  "header": {
+    "home": "首頁",
+    "games": "遊戲",
+    "faq": "常見問題",
+    "openMenu": "打開選單",
+    "closeMenu": "關閉選單"
+  },
+  "footer": {
+    "copyright": "© {{year}} Mindseye 遊戲。保留所有權利。",
+    "terms": "服務條款",
+    "privacy": "隱私政策",
+    "contact": "聯絡我們",
+    "quickLinks": "快速連結",
+    "community": "社區",
+    "allGames": "所有遊戲",
+    "description": "探索Mindseye遊戲的世界。體驗獨家迷你遊戲，測試你的感知能力，挑戰你的思維。"
+  },
+  "languageSwitcher": {
+    "selectLanguage": "選擇語言",
+    "search": "搜索語言...",
+    "noResults": "未找到結果",
+    "moreLangComing": "更多語言即將推出"
+  },
+  "loading": {
+    "games": "正在載入遊戲..."
+  },
+  "buttons": {
+    "playNow": "立即遊戲",
+    "learnMore": "瞭解更多",
+    "viewAll": "查看所有遊戲",
+    "submit": "提交",
+    "send": "發送訊息"
+  },
+  "gamesList": {
+    "title": "探索遊戲世界",
+    "subtitle": "從刺激的賽車遊戲到休閒益智遊戲，這裡有適合每個人的內容",
+    "searchPlaceholder": "搜索遊戲...",
+    "scrollLeft": "向左滾動",
+    "scrollRight": "向右滾動",
+    "viewAll": "查看全部",
+    "viewMore": "查看更多",
+    "categories": "類別"
+  },
+  "categories": {
+    "popular": "熱門",
+    "new": "新品",
+    "recommended": "推薦",
+    "action": "動作",
+    "adventure": "冒險",
+    "puzzle": "益智",
+    "strategy": "策略",
+    "casual": "休閒",
+    "racing": "賽車",
+    "sports": "體育",
+    "rpg": "角色扮演",
+    "shooter": "射擊",
+    "arcade": "街機",
+    "simulation": "模擬",
+    "board": "棋盤",
+    "card": "卡牌",
+    "educational": "教育",
+    "family": "家庭"
+  }
+} 

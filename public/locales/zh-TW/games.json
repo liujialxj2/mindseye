@@ -1,0 +1,68 @@
+{
+  "title": "遊戲",
+  "subtitle": "探索我們多樣化的遊戲集合",
+  "featured": {
+    "title": "精選遊戲",
+    "subtitle": "我們最受歡迎的遊戲",
+    "viewAll": "查看全部"
+  },
+  "categories": {
+    "title": "遊戲類別",
+    "subtitle": "按類型瀏覽遊戲",
+    "action": "動作",
+    "adventure": "冒險",
+    "puzzle": "益智",
+    "strategy": "策略",
+    "casual": "休閒",
+    "racing": "賽車",
+    "sports": "體育",
+    "rpg": "角色扮演",
+    "shooter": "射擊",
+    "arcade": "街機",
+    "simulation": "模擬",
+    "board": "棋盤",
+    "card": "卡牌",
+    "educational": "教育",
+    "family": "家庭"
+  },
+  "filters": {
+    "title": "過濾器",
+    "category": "類別",
+    "platform": "平台",
+    "rating": "評分",
+    "apply": "應用",
+    "reset": "重置",
+    "noResults": "沒有符合您條件的遊戲。請嘗試不同的過濾器。"
+  },
+  "gameCard": {
+    "play": "開始遊戲",
+    "details": "詳情",
+    "favorite": "收藏",
+    "share": "分享"
+  },
+  "gameDetail": {
+    "description": "描述",
+    "howToPlay": "如何遊玩",
+    "relatedGames": "相關遊戲",
+    "reviews": "評論",
+    "writeReview": "寫評論",
+    "playNow": "立即遊玩",
+    "addToFavorites": "添加到收藏",
+    "removeFromFavorites": "從收藏中移除",
+    "reportIssue": "報告問題"
+  },
+  "search": {
+    "placeholder": "搜索遊戲...",
+    "noResults": "未找到符合「{{query}}」的遊戲。",
+    "suggestions": "建議:",
+    "tryDifferentKeywords": "嘗試不同的關鍵詞",
+    "checkSpelling": "檢查拼寫",
+    "browseCategories": "瀏覽類別",
+    "popularSearches": "熱門搜索"
+  },
+  "pagination": {
+    "previous": "上一頁",
+    "next": "下一頁",
+    "page": "頁 {{current}} / {{total}}"
+  }
+} 

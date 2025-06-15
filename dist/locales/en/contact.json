@@ -1,0 +1,38 @@
+{
+  "title": "Contact Us",
+  "subtitle": "Have questions or feedback? We'd love to hear from you!",
+  "getInTouch": {
+    "title": "Get in Touch",
+    "email": {
+      "label": "Email",
+      "response": "We'll respond as soon as possible"
+    },
+    "followUs": "Follow Us"
+  },
+  "form": {
+    "name": {
+      "label": "Your Name",
+      "placeholder": "Enter your name"
+    },
+    "email": {
+      "label": "Your Email",
+      "placeholder": "Enter your email"
+    },
+    "subject": {
+      "label": "Subject",
+      "placeholder": "Enter subject"
+    },
+    "message": {
+      "label": "Message",
+      "placeholder": "Enter your message"
+    },
+    "submit": "Send Message",
+    "sending": "Sending...",
+    "error": "An error occurred while submitting the form. Please try again."
+  },
+  "success": {
+    "title": "Message Sent!",
+    "message": "Thank you for reaching out. We'll get back to you as soon as possible.",
+    "button": "Send Another Message"
+  }
+} 

@@ -1,0 +1,65 @@
+{
+  "header": {
+    "home": "ホーム",
+    "games": "ゲーム",
+    "faq": "よくある質問",
+    "openMenu": "メニューを開く",
+    "closeMenu": "メニューを閉じる"
+  },
+  "footer": {
+    "copyright": "© {{year}} Mindseye Game. All rights reserved.",
+    "terms": "利用規約",
+    "privacy": "プライバシーポリシー",
+    "contact": "お問い合わせ",
+    "quickLinks": "クイックリンク",
+    "community": "コミュニティ",
+    "allGames": "すべてのゲーム",
+    "description": "Mindseyeゲームの世界を探索しましょう。独占ミニゲームをプレイし、知覚力をテストし、心を挑戦しましょう。"
+  },
+  "languageSwitcher": {
+    "selectLanguage": "言語を選択",
+    "search": "言語を検索...",
+    "noResults": "結果が見つかりません",
+    "moreLangComing": "他の言語も近日公開予定"
+  },
+  "loading": {
+    "games": "ゲームを読み込み中..."
+  },
+  "buttons": {
+    "playNow": "今すぐプレイ",
+    "learnMore": "詳細を見る",
+    "viewAll": "すべてのゲームを見る",
+    "submit": "送信",
+    "send": "メッセージを送信"
+  },
+  "gamesList": {
+    "title": "ゲームの世界を探索",
+    "subtitle": "刺激的なレースゲームからカジュアルなパズルゲームまで、誰にでも楽しめるコンテンツがあります",
+    "searchPlaceholder": "ゲームを検索...",
+    "scrollLeft": "左にスクロール",
+    "scrollRight": "右にスクロール",
+    "viewAll": "すべて表示",
+    "viewMore": "もっと見る",
+    "categories": "カテゴリー"
+  },
+  "categories": {
+    "popular": "人気",
+    "new": "新着",
+    "recommended": "おすすめ",
+    "action": "アクション",
+    "adventure": "アドベンチャー",
+    "puzzle": "パズル",
+    "strategy": "戦略",
+    "casual": "カジュアル",
+    "racing": "レーシング",
+    "sports": "スポーツ",
+    "rpg": "RPG",
+    "shooter": "シューティング",
+    "arcade": "アーケード",
+    "simulation": "シミュレーション",
+    "board": "ボード",
+    "card": "カード",
+    "educational": "教育",
+    "family": "ファミリー"
+  }
+} 

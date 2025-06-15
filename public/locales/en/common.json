@@ -1,0 +1,65 @@
+{
+  "header": {
+    "home": "Home",
+    "games": "Games",
+    "faq": "FAQ",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "footer": {
+    "copyright": "© {{year}} Mindseye Game. All rights reserved.",
+    "terms": "Terms of Service",
+    "privacy": "Privacy Policy",
+    "contact": "Contact",
+    "quickLinks": "Quick Links",
+    "community": "Community",
+    "allGames": "All Games",
+    "description": "Explore the world of Mindseye games. Play exclusive mini-games, test your perception, and challenge your mind."
+  },
+  "languageSwitcher": {
+    "selectLanguage": "Select language",
+    "search": "Search languages...",
+    "noResults": "No results found",
+    "moreLangComing": "More languages coming soon"
+  },
+  "loading": {
+    "games": "Loading games..."
+  },
+  "buttons": {
+    "playNow": "Play Now",
+    "learnMore": "Learn More",
+    "viewAll": "View All Games",
+    "submit": "Submit",
+    "send": "Send Message"
+  },
+  "gamesList": {
+    "title": "Explore the Gaming World",
+    "subtitle": "From thrilling racing games to casual puzzles, there's something for everyone",
+    "searchPlaceholder": "Search games...",
+    "scrollLeft": "Scroll left",
+    "scrollRight": "Scroll right",
+    "viewAll": "View all",
+    "viewMore": "View more",
+    "categories": "Categories"
+  },
+  "categories": {
+    "popular": "Popular",
+    "new": "New",
+    "recommended": "Recommended",
+    "action": "Action",
+    "adventure": "Adventure",
+    "puzzle": "Puzzle",
+    "strategy": "Strategy",
+    "casual": "Casual",
+    "racing": "Racing",
+    "sports": "Sports",
+    "rpg": "RPG",
+    "shooter": "Shooter",
+    "arcade": "Arcade",
+    "simulation": "Simulation",
+    "board": "Board",
+    "card": "Card",
+    "educational": "Educational",
+    "family": "Family"
+  }
+} 

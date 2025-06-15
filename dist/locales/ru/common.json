@@ -1,0 +1,31 @@
+{
+  "header": {
+    "home": "Главная",
+    "games": "Игры",
+    "faq": "Вопросы и ответы",
+    "openMenu": "Открыть меню",
+    "closeMenu": "Закрыть меню"
+  },
+  "footer": {
+    "copyright": "© {{year}} Mindseye Game. Все права защищены.",
+    "terms": "Условия использования",
+    "privacy": "Политика конфиденциальности",
+    "contact": "Контакты"
+  },
+  "languageSwitcher": {
+    "selectLanguage": "Выбрать язык",
+    "search": "Поиск языков...",
+    "noResults": "Результаты не найдены",
+    "moreLangComing": "Скоро будут добавлены другие языки"
+  },
+  "loading": {
+    "games": "Загрузка игр..."
+  },
+  "buttons": {
+    "playNow": "Играть сейчас",
+    "learnMore": "Подробнее",
+    "viewAll": "Все игры",
+    "submit": "Отправить",
+    "send": "Отправить сообщение"
+  }
+} 

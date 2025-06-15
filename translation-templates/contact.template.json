@@ -1,0 +1,38 @@
+{
+  "title": "",
+  "subtitle": "",
+  "getInTouch": {
+    "title": "",
+    "email": {
+      "label": "",
+      "response": ""
+    },
+    "followUs": ""
+  },
+  "form": {
+    "name": {
+      "label": "",
+      "placeholder": ""
+    },
+    "email": {
+      "label": "",
+      "placeholder": ""
+    },
+    "subject": {
+      "label": "",
+      "placeholder": ""
+    },
+    "message": {
+      "label": "",
+      "placeholder": ""
+    },
+    "submit": "",
+    "sending": "",
+    "error": ""
+  },
+  "success": {
+    "title": "",
+    "message": "",
+    "button": ""
+  }
+}

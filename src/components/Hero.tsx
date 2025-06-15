@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Play, ExternalLink, X } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 // Simplified screenshot type definition, removed title and description
 interface Screenshot {
@@ -8,6 +9,8 @@ interface Screenshot {
 }
 
 const Hero = () => {
+  const { t } = useTranslation('hero');
+  
   // Image scrolling state
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [isMouseOver, setIsMouseOver] = useState(false);
@@ -156,15 +159,14 @@ const Hero = () => {
 
       <div className="relative z-10 text-center px-4 max-w-6xl mx-auto">
         <h1 className="text-6xl md:text-8xl font-bold text-white mb-6 bg-gradient-to-r from-blue-400 via-purple-500 to-blue-600 bg-clip-text text-transparent">
-          EXPLORE THE WORLD OF
+          {t('title.part1')}
           <br />
-          <span className="text-7xl md:text-9xl">MINDSEYE</span>
+          <span className="text-7xl md:text-9xl">{t('title.part2')}</span>
+          {t('title.part3')}
         </h1>
         
         <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
-          Journey into the unknown. Test your perception. Challenge your mind.
-          <br />
-          Where perception meets reality.
+          {t('subtitle')}
         </p>
 
         {/* Improved film strip style horizontal scrolling screenshots */}
@@ -243,32 +245,27 @@ const Hero = () => {
             onClick={() => document.getElementById('games')?.scrollIntoView({ behavior: 'smooth' })}
             className="group flex items-center space-x-3 px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-bold text-lg rounded-xl hover:shadow-2xl hover:shadow-blue-500/30 transition-all duration-300 transform hover:scale-105">
             <Play className="w-6 h-6 group-hover:scale-110 transition-transform" />
-            <span>PLAY ONLINE NOW</span>
+            <span>{t('ctaButton')}</span>
           </button>
         </div>
       </div>
 
-      {/* Full-size image viewing modal */}
-      {showModal && selectedImagePath && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center">
-          <div 
-            className="absolute inset-0 bg-black/90 backdrop-blur-md"
-            onClick={() => setShowModal(false)}
-          ></div>
-          <div className="relative z-10 max-w-6xl w-full p-4">
-            <div className="relative">
-              <img 
-                src={selectedImagePath} 
-                alt="Game Screenshot" 
-                className="w-full h-auto rounded-lg max-h-[80vh] object-contain"
-              />
-              <button 
-                className="absolute top-4 right-4 bg-black/70 hover:bg-red-600 rounded-full p-2 transition-colors"
-                onClick={() => setShowModal(false)}
-              >
-                <X className="w-6 h-6 text-white" />
-              </button>
-            </div>
+      {/* Modal for viewing screenshots */}
+      {showModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md">
+          <div className="relative max-w-4xl w-full bg-gray-900 border border-blue-500/30 rounded-xl overflow-hidden">
+            <button 
+              onClick={() => setShowModal(false)}
+              className="absolute top-4 right-4 text-gray-400 hover:text-white bg-gray-800/50 rounded-full p-2"
+              aria-label={t('imageModal.close')}
+            >
+              <X className="w-6 h-6" />
+            </button>
+            <img 
+              src={selectedImagePath} 
+              alt="Screenshot" 
+              className="w-full h-auto"
+            />
           </div>
         </div>
       )}

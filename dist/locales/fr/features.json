@@ -1,0 +1,30 @@
+{
+  "title": "Fonctionnalités de jeu",
+  "subtitle": "Découvrez pourquoi les joueurs adorent notre plateforme de jeu. Nous offrons une combinaison unique de fonctionnalités conçues pour améliorer votre expérience de jeu.",
+  "features": [
+    {
+      "title": "Collection de jeux diversifiée",
+      "description": "Accédez à des centaines de jeux dans différents genres - de l'action et l'aventure aux puzzles et à la stratégie. De nouveaux jeux sont ajoutés chaque semaine pour garder l'expérience fraîche."
+    },
+    {
+      "title": "Jeu instantané",
+      "description": "Pas de téléchargements ou d'installations nécessaires. Tous les jeux se chargent directement dans votre navigateur en quelques secondes, vous permettant de plonger directement dans l'action."
+    },
+    {
+      "title": "Communauté active",
+      "description": "Rejoignez des milliers de joueurs du monde entier. Partagez vos réussites, participez aux classements et découvrez de nouveaux jeux grâce aux recommandations de la communauté."
+    },
+    {
+      "title": "Jeu multi-plateforme",
+      "description": "Profitez d'une expérience de jeu fluide sur tous vos appareils. Notre design responsive assure un gameplay optimal, que vous soyez sur ordinateur, tablette ou mobile."
+    },
+    {
+      "title": "Mises à jour régulières",
+      "description": "Nous mettons continuellement à jour notre collection de jeux avec les derniers titres et des améliorations pour les jeux existants, garantissant qu'il y a toujours quelque chose de nouveau à découvrir."
+    },
+    {
+      "title": "Environnement de jeu sécurisé",
+      "description": "Tous les jeux sont minutieusement examinés pour leur contenu et leurs performances. Nous maintenons une plateforme familiale avec des évaluations de contenu appropriées pour tous les âges."
+    }
+  ]
+} 

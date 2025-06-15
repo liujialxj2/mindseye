@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Play, Star, ChevronRight, Award } from 'lucide-react';
 import { Game } from '../types/game';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { fetchGameRatingDetails } from '../utils/gameRatingFetcher';
+import { useTranslation } from 'react-i18next';
 
 interface GameCardProps {
   game: Game;
@@ -33,6 +34,10 @@ const IMAGE_HEIGHT = 180; // Image area height
 const CONTENT_HEIGHT = CARD_HEIGHT - IMAGE_HEIGHT; // Content area height
 
 const GameCard: React.FC<GameCardProps> = ({ game, onPlay }) => {
+  const { t, i18n } = useTranslation(['common', 'games']);
+  const { lang } = useParams<{ lang: string }>();
+  const currentLang = lang || i18n.language;
+  
   const [isHovered, setIsHovered] = useState(false);
   const [ratingDetails, setRatingDetails] = useState<{ rating: number, votes: number } | null>(null);
   
@@ -69,6 +74,12 @@ const GameCard: React.FC<GameCardProps> = ({ game, onPlay }) => {
     }
     return votes.toString();
   };
+  
+  // Translate category name
+  const translatedCategory = t(`categories.${game.category.toLowerCase()}`, game.category);
+  
+  // 检测当前语言是否为中文
+  const isChinese = currentLang.startsWith('zh');
   
   return (
     <div 
@@ -114,7 +125,7 @@ const GameCard: React.FC<GameCardProps> = ({ game, onPlay }) => {
               transform: isHovered ? 'translateY(0)' : 'translateY(0)'
             }}
           >
-            {game.category}
+            {translatedCategory}
           </span>
         </div>
         
@@ -145,7 +156,7 @@ const GameCard: React.FC<GameCardProps> = ({ game, onPlay }) => {
       {/* Fixed height content container */}
       <div className="flex-1 p-4 flex flex-col" style={{ height: `${CONTENT_HEIGHT}px` }}>
         <div className="flex justify-between items-start mb-2">
-          <Link to={`/games/${game.id}`} className="block group/title">
+          <Link to={`/${currentLang}/games/${game.id}`} className="block group/title">
             <h3 className="text-lg font-bold text-white transition-colors duration-200 line-clamp-1 group-hover/title:text-blue-400">
               {game.title}
             </h3>
@@ -153,7 +164,7 @@ const GameCard: React.FC<GameCardProps> = ({ game, onPlay }) => {
           
           {/* Rating */}
           <div 
-            className="flex items-center bg-gray-800 rounded-full px-2 py-1 transition-transform duration-200"
+            className="flex items-center bg-gray-800 rounded-full px-2 py-1 transition-transform duration-200 flex-shrink-0 ml-1"
             style={{ transform: isHovered ? 'scale(1.05)' : 'scale(1)' }}
             title={ratingDetails ? `${ratingDetails.rating.toFixed(1)}/5.0 (${ratingDetails.votes} votes)` : ''}
           >
@@ -186,28 +197,36 @@ const GameCard: React.FC<GameCardProps> = ({ game, onPlay }) => {
           ))}
         </div>
         
-        {/* Button area - Fixed at bottom */}
-        <div className="flex justify-between items-center mt-auto">
+        {/* 修改按钮区域 - 优化布局和宽度 */}
+        <div className="flex justify-between items-center mt-auto gap-2">
           <button 
             onClick={() => onPlay && onPlay(game.id)}
-            className="px-3 py-1.5 text-sm rounded-lg flex items-center justify-center transition-all duration-300 w-24"
+            className="flex-1 py-1.5 text-sm rounded-lg flex items-center justify-center transition-all duration-300 whitespace-nowrap overflow-hidden"
             style={{ 
               background: isHovered 
                 ? 'linear-gradient(to right, rgb(37, 99, 235), rgb(124, 58, 237))' 
                 : 'rgb(37, 99, 235)',
               color: 'white',
-              transform: isHovered ? 'translateY(0)' : 'translateY(0)'
+              transform: isHovered ? 'translateY(0)' : 'translateY(0)',
+              minWidth: isChinese ? '40%' : '45%',
+              maxWidth: isChinese ? '45%' : '48%'
             }}
           >
-            <Play className="h-3 w-3 mr-1" /> Play
+            <Play className="h-3 w-3 mr-1 flex-shrink-0" /> 
+            <span className="truncate">{t('buttons.playNow', 'Play')}</span>
           </button>
           
           <Link 
-            to={`/games/${game.id}`}
-            className="px-3 py-1.5 text-sm bg-gray-800/70 text-gray-300 hover:text-white rounded-lg transition-all duration-200 flex items-center justify-center w-24"
-            style={{ backdropFilter: 'blur(3px)' }}
+            to={`/${currentLang}/games/${game.id}`}
+            className="flex-1 py-1.5 text-sm bg-gray-800/70 text-gray-300 hover:text-white rounded-lg transition-all duration-200 flex items-center justify-center whitespace-nowrap overflow-hidden"
+            style={{ 
+              backdropFilter: 'blur(3px)',
+              minWidth: isChinese ? '40%' : '45%',
+              maxWidth: isChinese ? '45%' : '48%'
+            }}
           >
-            Details <ChevronRight className="h-3 w-3 ml-1 transition-transform duration-200 group-hover:translate-x-0.5" />
+            <span className="truncate">{t('gamesList.viewMore', 'Details')}</span>
+            <ChevronRight className="h-3 w-3 ml-1 flex-shrink-0 transition-transform duration-200 group-hover:translate-x-0.5" />
           </Link>
         </div>
       </div>
@@ -215,4 +234,4 @@ const GameCard: React.FC<GameCardProps> = ({ game, onPlay }) => {
   );
 };
 
-export default GameCard; 
+export default GameCard;

@@ -1,0 +1,43 @@
+{
+  "title": "Questions fréquemment posées",
+  "subtitle": "Trouvez des réponses aux questions courantes sur notre plateforme et nos jeux",
+  "moreQuestions": {
+    "text": "Vous avez encore des questions?",
+    "contactLink": "Contactez notre équipe de support"
+  },
+  "questions": [
+    {
+      "question": "Qu'est-ce que Mindseye Games?",
+      "answer": "Mindseye Games est une plateforme de jeux basée sur navigateur qui propose une variété de jeux HTML5 gratuits. Notre plateforme est conçue pour offrir un divertissement instantané sans nécessiter de téléchargements ou d'installations."
+    },
+    {
+      "question": "Dois-je créer un compte pour jouer aux jeux?",
+      "answer": "Non, vous n'avez pas besoin de créer un compte pour jouer à la plupart des jeux sur notre plateforme. Cependant, la création d'un compte gratuit vous permet de sauvegarder votre progression, de suivre vos jeux préférés et de participer aux fonctionnalités de notre communauté."
+    },
+    {
+      "question": "Les jeux sont-ils gratuits?",
+      "answer": "Oui, tous les jeux sur notre plateforme sont gratuits. Certains jeux peuvent proposer des achats optionnels en jeu, mais vous pouvez profiter du gameplay principal sans dépenser d'argent."
+    },
+    {
+      "question": "Puis-je jouer aux jeux sur mon appareil mobile?",
+      "answer": "Absolument! Notre plateforme est entièrement responsive et optimisée pour le jeu mobile. Vous pouvez profiter de nos jeux sur smartphones, tablettes et ordinateurs de bureau avec une expérience cohérente sur tous les appareils."
+    },
+    {
+      "question": "Pourquoi certains jeux prennent-ils plus de temps à charger?",
+      "answer": "Les temps de chargement des jeux peuvent varier en fonction de votre vitesse de connexion Internet, des performances de votre appareil et de la taille et de la complexité du jeu. La plupart des jeux se chargent en quelques secondes, mais les titres plus gourmands en graphismes peuvent prendre un peu plus de temps. Si un jeu ne se charge pas, essayez de rafraîchir votre navigateur ou de passer à un autre navigateur."
+    },
+    {
+      "question": "Puis-je suggérer des jeux à ajouter à votre collection?",
+      "answer": "Nous adorons recevoir vos suggestions! Veuillez envoyer vos idées via notre page de contact ou rejoignez nos forums communautaires pour discuter de nouvelles idées de jeux et de fonctionnalités avec d'autres joueurs et notre équipe de développement."
+    },
+    {
+      "question": "Y a-t-il un moyen de sauvegarder ma progression de jeu?",
+      "answer": "La progression du jeu est automatiquement sauvegardée dans le stockage local de votre navigateur. Pour une solution plus permanente et pour accéder à votre progression sur différents appareils, nous vous recommandons de créer un compte gratuit, qui permet la sauvegarde dans le cloud pour les jeux pris en charge."
+    },
+    {
+      "question": "Puis-je jouer aux jeux hors ligne?",
+      "answer": "La plupart de nos jeux nécessitent une connexion Internet pour jouer. Cependant, certains jeux peuvent fonctionner hors ligne une fois qu'ils ont été chargés. Nous travaillons à l'expansion de nos options de jeu hors ligne à l'avenir."
+    }
+  ],
+  "noQuestionsAvailable": "Aucune FAQ n'est disponible dans cette langue pour le moment."
+} 
