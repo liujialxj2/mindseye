@@ -1,0 +1,12 @@
+{
+  "private": true,
+  "name": "mindseye-worker",
+  "version": "1.0.0",
+  "description": "Mindseye Cloudflare Worker",
+  "main": "index.js",
+  "author": "Mindseye Team",
+  "license": "MIT",
+  "dependencies": {
+    "@cloudflare/kv-asset-handler": "^0.3.0"
+  }
+} 

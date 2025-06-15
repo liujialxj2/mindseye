@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "include": ["/*"],
+  "exclude": [
+    "/build/*",
+    "/static/*",
+    "/assets/*",
+    "/api/*",
+    "/*.ico",
+    "/*.png",
+    "/*.svg",
+    "/*.jpg",
+    "/*.jpeg",
+    "/*.gif",
+    "/*.json",
+    "/*.js",
+    "/*.css"
+  ],
+  "routes": [
+    {
+      "src": "/*",
+      "dest": "/index.html"
+    }
+  ]
+} 
