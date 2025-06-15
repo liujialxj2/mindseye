@@ -2,7 +2,3 @@
 name = "mindseye"
 compatibility_date = "2025-06-08"
 pages_build_output_dir = "dist" 
-
-# 构建配置
-[build]
-command = "npm run build" 

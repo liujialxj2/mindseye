@@ -1,0 +1,14 @@
+{
+  "name": "mindseye",
+  "build": {
+    "command": "npm run build",
+    "output_dir": "dist",
+    "environment": {
+      "NODE_VERSION": "18"
+    }
+  },
+  "routes": [
+    { "pattern": "/api/*", "script": "api/index.js" },
+    { "pattern": "/*", "serve": "dist/index.html", "status": 200 }
+  ]
+} 
